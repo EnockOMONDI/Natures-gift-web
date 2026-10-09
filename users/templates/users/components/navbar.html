@@ -1,0 +1,264 @@
+{% load static %}
+<header class="sticky top-0 z-40 w-full shadow-xs">
+  <!-- Top Utility Contact & Currency Bar -->
+  <div class="bg-[#0B192C] text-slate-200 text-xs py-2 px-4 sm:px-8 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex flex-wrap items-center gap-4 sm:gap-6 text-slate-300">
+        <div class="flex items-center gap-1.5 hover:text-amber-400 transition-colors">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-amber-500"></i>
+          <span class="hidden md:inline">{{ company.address.full|default:"Parklands, Crescent Business Center, 6th Floor, Nairobi, Kenya" }}</span>
+          <span class="md:hidden">Nairobi, Kenya</span>
+        </div>
+        <div class="hidden sm:flex items-center gap-1.5 hover:text-amber-400 transition-colors">
+          <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-500"></i>
+          <span>Mon-Fri 8:30am - 5:30pm | Sat 9am - 1pm</span>
+        </div>
+        <a 
+          href="tel:{{ company.contacts.primary_phone|default:'+254712236522' }}"
+          class="flex items-center gap-1.5 hover:text-amber-400 transition-colors font-medium"
+        >
+          <i data-lucide="phone" class="w-3.5 h-3.5 text-amber-500"></i>
+          <span>{{ company.contacts.phone_formatted|default:"+254 (0) 712 236 522" }}</span>
+        </a>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a 
+          href="mailto:{{ company.contacts.email_general|default:'info@myriad-travel.com' }}"
+          class="hidden lg:flex items-center gap-1.5 hover:text-amber-400 transition-colors"
+        >
+          <i data-lucide="mail" class="w-3.5 h-3.5 text-amber-500"></i>
+          <span>{{ company.contacts.email_general|default:"info@myriad-travel.com" }}</span>
+        </a>
+
+        <!-- Currency Selector -->
+        <div class="flex items-center bg-slate-800/80 rounded-full p-0.5 border border-slate-700">
+          <button
+            type="button"
+            id="btn-currency-kes"
+            class="px-2.5 py-0.5 text-[11px] font-semibold rounded-full transition-all bg-amber-600 text-white shadow-xs"
+          >
+            KES (KSh)
+          </button>
+          <button
+            type="button"
+            id="btn-currency-usd"
+            class="px-2.5 py-0.5 text-[11px] font-semibold rounded-full transition-all text-slate-400 hover:text-white"
+          >
+            USD ($)
+          </button>
+        </div>
+
+        <!-- Direct WhatsApp Link -->
+        <a
+          href="https://wa.me/{{ company.contacts.whatsapp|default:'254712236522' }}?text=Hello%20Myriad%20Travel,%20I%20would%20like%20to%20enquire%20about%20planning%20a%20trip%20/%20holiday."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-600/90 hover:bg-emerald-600 text-white text-[11px] font-medium rounded-full transition-all"
+        >
+          <i data-lucide="send" class="w-3 h-3"></i>
+          <span>WhatsApp Us</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <nav 
+    id="main-nav"
+    class="w-full bg-white py-2 border-b border-slate-100 transition-all duration-200"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
+      <!-- Logo & Brand Identity -->
+      <a 
+        href="/" 
+        id="brand-logo-link"
+        class="flex items-center group"
+      >
+        <div class="relative w-20 h-20 sm:w-24 sm:h-24 lg:w-24 lg:h-24 flex items-center justify-center rounded-xl bg-white p-1.5 shadow-xs group-hover:scale-105 transition-transform duration-200">
+          <img 
+            src="{% static 'images/myriad-logo.png' %}" 
+            alt="Myriad Travel Logo" 
+            class="w-full h-full object-contain"
+          />
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <div class="hidden lg:flex items-center gap-0 xl:gap-1 text-[13px] xl:text-sm font-medium text-slate-700">
+        <div class="relative group">
+          <button
+            type="button"
+            class="flex items-center gap-1 px-2 xl:px-3 py-2 rounded-lg hover:text-amber-600 hover:bg-amber-50/50 transition-colors whitespace-nowrap"
+          >
+            <span>Explore Kenya</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 group-hover:rotate-180 transition-transform"></i>
+          </button>
+          <div class="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-slate-100 py-2 hidden group-hover:block z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+            <div class="px-4 py-1.5 text-[11px] font-semibold text-amber-700 uppercase tracking-wider bg-amber-50/60 border-b border-amber-100/40 mb-1">
+              Kenya Highlights
+            </div>
+            <a href="/#packages-section" class="cat-link-trigger block px-4 py-2 text-sm text-slate-700 hover:bg-amber-50 hover:text-amber-800 transition-colors" data-target-category="kenya-safari">Amboseli</a>
+            <a href="/#packages-section" class="cat-link-trigger block px-4 py-2 text-sm text-slate-700 hover:bg-amber-50 hover:text-amber-800 transition-colors" data-target-category="kenya-safari">Maasai Mara</a>
+            <a href="/#packages-section" class="cat-link-trigger block px-4 py-2 text-sm text-slate-700 hover:bg-amber-50 hover:text-amber-800 transition-colors" data-target-category="kenya-coast">Coast</a>
+            <a href="/#packages-section" class="cat-link-trigger block px-4 py-2 text-sm text-slate-700 hover:bg-amber-50 hover:text-amber-800 transition-colors" data-target-category="kenya-coast">Malindi</a>
+            <a href="/#packages-section" class="cat-link-trigger block px-4 py-2 text-sm text-slate-700 hover:bg-amber-50 hover:text-amber-800 transition-colors" data-target-category="kenya-coast">Watamu</a>
+          </div>
+        </div>
+
+        <div class="relative group">
+          <button
+            type="button"
+            class="flex items-center gap-1 px-2 xl:px-3 py-2 rounded-lg hover:text-amber-600 hover:bg-amber-50/50 transition-colors whitespace-nowrap"
+          >
+            <span>Explore The World</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 group-hover:rotate-180 transition-transform"></i>
+          </button>
+          <div class="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-slate-100 py-2 hidden group-hover:block z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+            <div class="px-4 py-1.5 text-[11px] font-semibold text-amber-700 uppercase tracking-wider bg-amber-50/60 border-b border-amber-100/40 mb-1">
+              Global Holidays
+            </div>
+            <a href="/#packages-section" class="cat-link-trigger block px-4 py-2 text-sm text-slate-700 hover:bg-amber-50 hover:text-amber-800 transition-colors" data-target-category="international">Dubai</a>
+            <a href="/#packages-section" class="cat-link-trigger block px-4 py-2 text-sm text-slate-700 hover:bg-amber-50 hover:text-amber-800 transition-colors" data-target-category="international">South Africa</a>
+            <a href="/#packages-section" class="cat-link-trigger block px-4 py-2 text-sm text-slate-700 hover:bg-amber-50 hover:text-amber-800 transition-colors" data-target-category="international">Egypt</a>
+            <a href="/#packages-section" class="cat-link-trigger block px-4 py-2 text-sm text-slate-700 hover:bg-amber-50 hover:text-amber-800 transition-colors" data-target-category="international">Rwanda</a>
+            <a href="/#packages-section" class="cat-link-trigger block px-4 py-2 text-sm text-slate-700 hover:bg-amber-50 hover:text-amber-800 transition-colors" data-target-category="international">Seychelles</a>
+          </div>
+        </div>
+
+        <a
+          href="/#packages-section"
+          class="cat-link-trigger px-2 xl:px-3 py-2 rounded-lg hover:text-amber-600 hover:bg-amber-50/50 transition-colors whitespace-nowrap"
+          data-target-category="kenya-safari"
+        >
+          Tours &amp; Safaris
+        </a>
+
+        <a
+          href="/#packages-section"
+          class="cat-link-trigger px-2 xl:px-3 py-2 rounded-lg hover:text-amber-600 hover:bg-amber-50/50 transition-colors whitespace-nowrap"
+          data-target-category="day-trips"
+        >
+          Signature Experiences
+        </a>
+
+        <a
+          href="{% url 'blog:blog-list' %}"
+          class="px-2 xl:px-3 py-2 rounded-lg hover:text-amber-600 hover:bg-amber-50/50 transition-colors whitespace-nowrap"
+        >
+          Blogs
+        </a>
+
+        <a
+          href="{% url 'users:aboutus' %}"
+          class="px-2 xl:px-3 py-2 rounded-lg hover:text-amber-600 hover:bg-amber-50/50 transition-colors whitespace-nowrap"
+        >
+          About Us
+        </a>
+
+        <a
+          href="{% url 'users:contact' %}"
+          class="px-2 xl:px-3 py-2 rounded-lg hover:text-amber-600 hover:bg-amber-50/50 transition-colors whitespace-nowrap"
+        >
+          Contact Us
+        </a>
+      </div>
+
+      <!-- Action CTA Buttons -->
+      <div class="hidden lg:flex items-center gap-2 shrink-0">
+        <a
+          href="/#search-interface"
+          class="p-2.5 text-slate-600 hover:text-amber-700 hover:bg-amber-50 rounded-lg transition-colors"
+          title="Search packages"
+        >
+          <i data-lucide="search" class="w-5 h-5"></i>
+        </a>
+
+        <button
+          type="button"
+          class="open-plan-modal-btn inline-flex items-center gap-2 px-4 py-2.5 bg-amber-600 hover:bg-amber-700 text-white font-semibold text-sm rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer whitespace-nowrap"
+          style="background:#d97706;color:#fff;"
+        >
+          <i data-lucide="calendar" class="w-4 h-4"></i>
+          <span>Request Quote</span>
+        </button>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <div class="flex items-center gap-2 lg:hidden">
+        <button
+          type="button"
+          class="open-plan-modal-btn px-3 py-1.5 bg-amber-600 text-white text-xs font-semibold rounded-md shadow-xs"
+        >
+          Request Quote
+        </button>
+
+        <button
+          type="button"
+          id="mobile-menu-toggle-btn"
+          class="p-2 text-slate-700 hover:bg-slate-100 rounded-lg focus:outline-hidden cursor-pointer"
+          aria-label="Toggle navigation menu"
+        >
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Slide-Down Drawer -->
+    <div id="mobile-menu-drawer" class="hidden lg:hidden border-t border-slate-100 bg-white px-4 pt-3 pb-6 space-y-3 shadow-xl">
+      <div class="grid grid-cols-2 gap-2 pb-3 border-b border-slate-100">
+        <a
+          href="/#packages-section"
+          class="mobile-nav-link flex items-center gap-2 p-2.5 bg-slate-50 border border-slate-100 rounded-lg text-slate-800 text-xs font-semibold"
+        >
+          <i data-lucide="compass" class="w-4 h-4 text-slate-500"></i>
+          <span>Explore Kenya</span>
+        </a>
+        <a
+          href="/#packages-section"
+          class="mobile-nav-link flex items-center gap-2 p-2.5 bg-slate-50 border border-slate-100 rounded-lg text-slate-800 text-xs font-semibold"
+        >
+          <span>Explore The World</span>
+        </a>
+        <a
+          href="/#packages-section"
+          class="mobile-nav-link flex items-center gap-2 p-2.5 bg-slate-50 border border-slate-100 rounded-lg text-slate-800 text-xs font-semibold"
+        >
+          <span>Tours &amp; Safaris</span>
+        </a>
+        <a
+          href="/#packages-section"
+          class="mobile-nav-link flex items-center gap-2 p-2.5 bg-slate-50 border border-slate-100 rounded-lg text-slate-800 text-xs font-semibold"
+        >
+          <i data-lucide="sparkles" class="w-4 h-4 text-slate-500"></i>
+          <span>Signature Experiences</span>
+        </a>
+      </div>
+
+      <div class="flex flex-col space-y-1 text-slate-800 text-sm font-medium">
+        <a href="{% url 'blog:blog-list' %}" class="mobile-nav-link text-left py-2 px-3 hover:bg-slate-50 rounded-md">Blogs</a>
+        <a href="{% url 'users:aboutus' %}" class="mobile-nav-link text-left py-2 px-3 hover:bg-slate-50 rounded-md">About Us</a>
+        <a href="{% url 'users:contact' %}" class="mobile-nav-link text-left py-2 px-3 hover:bg-slate-50 rounded-md">Contact Us</a>
+      </div>
+
+      <div class="pt-2 border-t border-slate-100 flex flex-col gap-2">
+        <button
+          type="button"
+          class="open-plan-modal-btn w-full py-3 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg text-center shadow-xs"
+        >
+          Request Quote
+        </button>
+
+        <a
+          href="https://wa.me/{{ company.contacts.whatsapp|default:'254712236522' }}?text=Hello%20Myriad%20Travel,%20I%20would%20like%20to%20consult%20with%20a%20travel%20specialist."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg text-center text-sm flex items-center justify-center gap-2"
+        >
+          <i data-lucide="send" class="w-4 h-4"></i>
+          <span>Chat on WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>

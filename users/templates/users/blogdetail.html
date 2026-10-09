@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}{{ post.title }} — Myriad Travel{% endblock %}
+{% block content %}
+<article class="py-16 px-4 sm:px-8 max-w-4xl mx-auto">
+  <a href="{% url 'blog:blog-list' %}" class="text-sm text-amber-700 font-semibold">Back to blog</a>
+  <h1 class="text-3xl sm:text-5xl font-bold font-serif text-slate-900 mt-4">{{ post.title }}</h1>
+  <p class="text-sm text-slate-500 mt-3">{{ post.date|date:"M d, Y" }} · {{ post.get_reading_time_display }}</p>
+  {% if post.image %}<img src="{{ post.image.cdn_url }}" class="w-full rounded-2xl mt-8" alt="{{ post.title }}">{% endif %}
+  <div class="prose max-w-none mt-8 bg-white border border-slate-200 rounded-2xl p-6">{{ post.content|safe }}</div>
+</article>
+{% endblock %}

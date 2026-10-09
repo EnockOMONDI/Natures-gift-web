@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Edit Profile — Myriad Travel{% endblock %}
+{% block content %}
+<section class="py-16 px-4 sm:px-8 max-w-3xl mx-auto"><h1 class="text-3xl font-bold font-serif mb-8">Edit Profile</h1><form method="post" class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">{% csrf_token %}
+  <div class="grid sm:grid-cols-2 gap-4"><p><label>First Name</label><input name="first_name" value="{{ user.first_name }}"></p><p><label>Last Name</label><input name="last_name" value="{{ user.last_name }}"></p></div>
+  <p><label>Email</label><input type="email" name="email" value="{{ user.email }}"></p><p><label>Phone</label><input name="phone_number" value="{{ profile.phone_number|default:'' }}"></p>
+  <div class="grid sm:grid-cols-2 gap-4"><p><label>Date of Birth</label><input type="date" name="date_of_birth" value="{{ profile.date_of_birth|date:'Y-m-d' }}"></p><p><label>Nationality</label><input name="nationality" value="{{ profile.nationality|default:'' }}"></p></div>
+  <p><label>Passport Number</label><input name="passport_number" value="{{ profile.passport_number|default:'' }}"></p><p><label>Emergency Contact Name</label><input name="emergency_contact_name" value="{{ profile.emergency_contact_name|default:'' }}"></p><p><label>Emergency Contact Phone</label><input name="emergency_contact_phone" value="{{ profile.emergency_contact_phone|default:'' }}"></p><p><label>Preferred Travel Style</label><input name="preferred_travel_style" value="{{ profile.preferred_travel_style|default:'' }}"></p><p><label>Dietary Requirements</label><textarea name="dietary_requirements">{{ profile.dietary_requirements|default:'' }}</textarea></p><p><label>Special Needs</label><textarea name="special_needs">{{ profile.special_needs|default:'' }}</textarea></p>
+  <button class="w-full py-3 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-xl">Save Profile</button></form></section>
+{% endblock %}

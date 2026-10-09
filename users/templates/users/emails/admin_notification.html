@@ -1,0 +1,2 @@
+{% extends 'users/emails/base_email.html' %}
+{% block content %}<h2>New Booking Received</h2><p><strong>{{ booking.full_name }}</strong> booked {{ booking.package.name }}.</p><p>Reference: {{ booking.booking_reference }}</p><p>Email: {{ booking.email }}<br>Phone: {{ booking.phone_number }}</p>{% endblock %}

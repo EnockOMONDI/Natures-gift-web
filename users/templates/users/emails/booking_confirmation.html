@@ -1,0 +1,2 @@
+{% extends 'users/emails/base_email.html' %}
+{% block content %}<h2>Booking Confirmation</h2><p>Hello {{ booking.full_name }}, your booking request for <strong>{{ booking.package.name }}</strong> has been received.</p><p><strong>Reference:</strong> {{ booking.booking_reference }}</p><p><strong>Total:</strong> KSh {{ booking.total_amount }}</p>{% if whatsapp_link %}<p><a href="{{ whatsapp_link }}">Message our concierge on WhatsApp</a></p>{% endif %}{% endblock %}

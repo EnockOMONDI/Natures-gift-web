@@ -1,0 +1,2 @@
+{% extends 'users/emails/base_email.html' %}
+{% block content %}<h2>New Job Application</h2><p>{{ job_application.full_name }} applied for {{ job_application.position_applied_for }}.</p><p>Email: {{ job_application.email }}<br>Phone: {{ job_application.phone_number }}</p>{% endblock %}

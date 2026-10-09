@@ -1,0 +1,95 @@
+{% load static %}
+<section id="packages-section" class="py-16 sm:py-24 px-4 sm:px-8 w-full">
+  <div class="max-w-7xl mx-auto">
+  <!-- Section Header -->
+  <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+    <div class="space-y-3 max-w-2xl">
+      <h2 class="text-3xl sm:text-5xl font-serif font-bold leading-[0.95] text-slate-900">
+        Signature Safaris, Coastal Escapes &amp; Holidays
+      </h2>
+      <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+        Explore our latest safaris, coastal holidays and travel offers.
+      </p>
+    </div>
+
+    <!-- Custom Request Button -->
+    <div class="flex flex-wrap items-center gap-3">
+      <button
+        type="button"
+        class="open-plan-modal-btn inline-flex items-center gap-1.5 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold transition-colors shadow-xs cursor-pointer"
+      >
+        <span>Need Custom Dates?</span>
+        <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Category Pills Bar -->
+  <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
+    <button
+      type="button"
+      class="cat-filter-btn whitespace-nowrap px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer bg-amber-600 text-white shadow-sm"
+      data-category="all"
+    >
+      All Collections
+    </button>
+    <button
+      type="button"
+      class="cat-filter-btn whitespace-nowrap px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/80"
+      data-category="kenya-safari"
+    >
+      Kenya Safaris &amp; Bush
+    </button>
+    <button
+      type="button"
+      class="cat-filter-btn whitespace-nowrap px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/80"
+      data-category="kenya-coast"
+    >
+      Kenya Coast &amp; Beach
+    </button>
+    <button
+      type="button"
+      class="cat-filter-btn whitespace-nowrap px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/80"
+      data-category="international"
+    >
+      International Escapes
+    </button>
+    <button
+      type="button"
+      class="cat-filter-btn whitespace-nowrap px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/80"
+      data-category="day-trips"
+    >
+      Weekend Hikes &amp; Day Trips
+    </button>
+  </div>
+
+  <!-- Packages Grid -->
+  <div id="packages-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+    {% if packages %}
+      {% for pkg in packages %}
+        {% include 'components/package_card.html' with pkg=pkg %}
+      {% endfor %}
+    {% else %}
+      <div class="col-span-full text-center py-16 bg-white rounded-2xl border border-slate-200 p-8 space-y-4">
+        <h3 class="text-lg font-bold text-slate-800">No packages are currently published</h3>
+        <p class="text-sm text-slate-500 max-w-md mx-auto">Contact us for available trips and travel dates.</p>
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Empty state if search filters have no results -->
+  <div id="packages-empty-state" class="hidden text-center py-16 bg-white rounded-2xl border border-slate-200 p-8 space-y-4 mt-4">
+    <i data-lucide="filter" class="w-12 h-12 text-slate-300 mx-auto"></i>
+    <h3 class="text-lg font-bold text-slate-800">No packages match your specific filters</h3>
+    <p class="text-sm text-slate-500 max-w-md mx-auto">
+      Try another filter, or tell us your destination and preferred travel dates.
+    </p>
+    <button
+      type="button"
+      class="open-plan-modal-btn px-5 py-2.5 bg-amber-600 text-white rounded-lg text-xs font-semibold cursor-pointer"
+    >
+      Plan Custom Trip
+    </button>
+  </div>
+  </div>
+</section>

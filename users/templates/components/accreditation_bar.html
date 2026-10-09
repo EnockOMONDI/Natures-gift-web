@@ -1,0 +1,79 @@
+{% load static %}
+<section class="w-full bg-[#FDFBF7] border-y border-amber-900/10 py-8 px-4 sm:px-8">
+  <div class="max-w-7xl mx-auto space-y-7">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+      <div class="lg:col-span-12 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wider text-amber-800">
+            Official Accreditations &amp; Licensing
+          </p>
+          <h2 class="text-xl sm:text-2xl font-serif font-bold leading-tight text-slate-900">
+            Licensed, Verified &amp; Trusted Travel Partners
+          </h2>
+        </div>
+        <p class="max-w-2xl text-xs sm:text-sm text-slate-600 sm:text-right">
+          Verified traveler satisfaction backed by Kenya tourism authorities, airline industry standards, and national park partners.
+        </p>
+      </div>
+
+      <div class="lg:col-span-12 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3 sm:gap-4">
+        <div class="min-h-28 bg-white rounded-xl border border-slate-200/80 shadow-xs px-4 py-4 flex flex-col justify-center gap-2">
+          <div class="flex text-amber-500">
+            <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+          </div>
+          <div class="leading-tight">
+            <span class="text-lg font-extrabold text-slate-900 block">5.0 / 5.0</span>
+            <span class="text-xs text-slate-500 font-semibold">SafariBookings Rating</span>
+          </div>
+        </div>
+
+        <div class="min-h-28 bg-white rounded-xl border border-slate-200/80 shadow-xs px-4 py-4 flex flex-col items-center justify-center gap-3 text-center" title="Magical Kenya">
+          <img src="{% static 'images/partners/magical.png' %}" alt="Magical Kenya" class="h-14 sm:h-16 w-auto object-contain max-w-[130px]" />
+          <span class="text-xs font-bold text-slate-700">Magical Kenya</span>
+        </div>
+        <div class="min-h-28 bg-white rounded-xl border border-slate-200/80 shadow-xs px-4 py-4 flex flex-col items-center justify-center gap-3 text-center" title="International Air Transport Association">
+          <img src="{% static 'images/partners/iata.jpg' %}" alt="IATA" class="h-14 sm:h-16 w-auto object-contain max-w-[130px]" />
+          <span class="text-xs font-bold text-slate-700">IATA</span>
+        </div>
+        <div class="min-h-28 bg-white rounded-xl border border-slate-200/80 shadow-xs px-4 py-4 flex flex-col items-center justify-center gap-3 text-center" title="Tourism Regulatory Authority Kenya">
+          <img src="{% static 'images/partners/tra.png' %}" alt="TRA Kenya" class="h-14 sm:h-16 w-auto object-contain max-w-[130px]" />
+          <span class="text-xs font-bold text-slate-700">TRA Kenya</span>
+        </div>
+        <div class="min-h-28 bg-white rounded-xl border border-slate-200/80 shadow-xs px-4 py-4 flex flex-col items-center justify-center gap-3 text-center" title="Kenya Association of Tour Operators">
+          <img src="{% static 'images/partners/kato.png' %}" alt="KATO Member" class="h-14 sm:h-16 w-auto object-contain max-w-[130px]" />
+          <span class="text-xs font-bold text-slate-700">KATO</span>
+        </div>
+        <div class="min-h-28 bg-white rounded-xl border border-slate-200/80 shadow-xs px-4 py-4 flex flex-col items-center justify-center gap-3 text-center" title="Kenya Wildlife Service">
+          <img src="{% static 'images/partners/kws.png' %}" alt="KWS Approved" class="h-14 sm:h-16 w-auto object-contain max-w-[130px]" />
+          <span class="text-xs font-bold text-slate-700">KWS Approved</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Value Badges Strip -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 mt-6 border-t border-slate-200/60 text-xs text-slate-600">
+      <div class="flex items-center gap-2">
+        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+        <span><strong>100% Customized</strong> itineraries tailored to your pace</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <i data-lucide="award" class="w-4 h-4 text-amber-600 shrink-0"></i>
+        <span><strong>KPSGA Certified</strong> professional driver-naturalists</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <i data-lucide="clock" class="w-4 h-4 text-blue-600 shrink-0"></i>
+        <span><strong>24/7 Nairobi Concierge</strong> &amp; on-ground emergency dispatch</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-[10px] shrink-0">
+          KSh
+        </span>
+        <span><strong>Tailor-made</strong> safari, coast, and global holiday planning</span>
+      </div>
+    </div>
+  </div>
+</section>

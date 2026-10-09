@@ -1,0 +1,493 @@
+"""
+Synchronous email sending using an HTTP email provider for Myriad Travel
+
+This module contains all email sending functions that use Resend or Mailtrap
+for direct, synchronous email delivery. No background workers required.
+"""
+
+import logging
+import requests
+from mailtrap import Mail, Address, MailtrapClient
+from email.utils import parseaddr
+from django.template.loader import render_to_string
+from django.conf import settings
+from django.utils import timezone
+
+logger = logging.getLogger(__name__)
+
+
+def _provider_name():
+    return getattr(settings, 'EMAIL_PROVIDER', 'mailtrap').lower()
+
+
+def _parse_from_email(from_email):
+    from_name, from_email_addr = parseaddr(from_email)
+    return from_name or "Myriad Travel", from_email_addr or from_email.strip()
+
+
+def _send_email_via_resend(subject, html_message, from_email, recipient_list):
+    api_key = getattr(settings, 'RESEND_API_KEY', None)
+    if not api_key:
+        logger.error("RESEND_API_KEY is not configured")
+        return False
+
+    from_name, from_email_addr = _parse_from_email(from_email)
+    sender = f"{from_name} <{from_email_addr}>" if from_name else from_email_addr
+    payload = {
+        'from': sender,
+        'to': [email.strip() for email in recipient_list],
+        'subject': subject,
+        'html': html_message,
+    }
+    headers = {
+        'Authorization': f'Bearer {api_key}',
+        'Content-Type': 'application/json',
+    }
+    response = requests.post(
+        'https://api.resend.com/emails',
+        headers=headers,
+        json=payload,
+        timeout=(3, 8),
+    )
+    response.raise_for_status()
+    data = response.json()
+    return bool(data.get('id'))
+
+
+def _send_email_via_mailtrap(subject, html_message, from_email, recipient_list):
+    # Initialize Mailtrap client
+    client = MailtrapClient(token=settings.MAILTRAP_API_TOKEN)
+
+    from_name, from_email_addr = _parse_from_email(from_email)
+
+    # Create mail object
+    mail = Mail(
+        sender=Address(email=from_email_addr, name=from_name),
+        to=[Address(email=email.strip()) for email in recipient_list],
+        subject=subject,
+        html=html_message,
+    )
+
+    # Send email. The installed SDK sends without a timeout. Bound HTTPS requests
+    # so unavailable email infrastructure cannot exhaust the web worker.
+    response = requests.post(client.api_send_url, headers=client.headers,
+                             json=mail.api_data, timeout=(3, 8))
+    response.raise_for_status()
+    response = response.json()
+    return response.get('success') is True
+
+
+def send_email_via_mailtrap(subject, html_message, from_email, recipient_list):
+    """
+    Send email using the configured HTTP email provider.
+
+    Args:
+        subject (str): Email subject
+        html_message (str): HTML message content
+        from_email (str): From email address (e.g., "Myriad Travel <info@myriad-travel.com>")
+        recipient_list (list): List of recipient email addresses
+
+    Returns:
+        bool: True if email sent successfully, False otherwise
+    """
+    try:
+        provider = _provider_name()
+        logger.info(f"Sending email via {provider} API: subject='{subject}', recipients={recipient_list}")
+
+        if provider == 'django':
+            from django.core.mail import EmailMultiAlternatives
+            from django.utils.html import strip_tags
+
+            message = EmailMultiAlternatives(
+                subject, strip_tags(html_message), from_email, recipient_list,
+            )
+            message.attach_alternative(html_message, 'text/html')
+            sent = message.send() == 1
+        elif provider == 'resend':
+            sent = _send_email_via_resend(subject, html_message, from_email, recipient_list)
+        else:
+            sent = _send_email_via_mailtrap(subject, html_message, from_email, recipient_list)
+
+        if sent:
+            logger.info(f"Email sent successfully via {provider} API")
+        return sent
+
+    except Exception as e:
+        logger.error(f"Failed to send email via {_provider_name()} API: {e}")
+        return False
+
+
+def send_quote_request_emails(quote_request_id):
+    """
+    Send email notifications for quote requests using Mailtrap HTTP API
+
+    Args:
+        quote_request_id (int): ID of the QuoteRequest object
+
+    Returns:
+        dict: Status of email sending with details
+    """
+    try:
+        # Import here to avoid circular imports
+        from users.models import QuoteRequest
+
+        # Get the quote request object
+        try:
+            quote_request = QuoteRequest.objects.get(id=quote_request_id)
+        except QuoteRequest.DoesNotExist:
+            error_msg = f"QuoteRequest with ID {quote_request_id} not found"
+            logger.error(error_msg)
+            return {'success': False, 'error': error_msg}
+
+        logger.info(f"Sending emails for quote request {quote_request_id}")
+
+        # Track email sending status
+        admin_sent = False
+        user_sent = False
+
+        # Send admin notification email
+        try:
+            admin_subject = f'New Quote Request from {quote_request.full_name}'
+            admin_message_html = render_to_string('users/emails/quote_request_admin.html', {
+                'quote_request': quote_request
+            })
+
+            admin_email = getattr(settings, 'ADMIN_EMAIL', 'info@myriad-travel.com')
+
+            admin_sent = send_email_via_mailtrap(
+                subject=admin_subject,
+                html_message=admin_message_html,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[admin_email],
+            )
+
+            if admin_sent:
+                logger.info(f"Admin notification sent for quote request {quote_request_id}")
+            else:
+                logger.error(f"Failed to send admin email for quote request {quote_request_id}")
+
+        except Exception as e:
+            logger.error(f"Failed to send admin email for quote request {quote_request_id}: {e}")
+
+        # Send user confirmation email
+        try:
+            user_subject = 'Quote Request Received - Myriad Travel'
+            user_message_html = render_to_string('users/emails/quote_request_confirmation.html', {
+                'quote_request': quote_request
+            })
+
+            user_sent = send_email_via_mailtrap(
+                subject=user_subject,
+                html_message=user_message_html,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[quote_request.email],
+            )
+
+            if user_sent:
+                logger.info(f"User confirmation sent for quote request {quote_request_id}")
+            else:
+                logger.error(f"Failed to send user email for quote request {quote_request_id}")
+
+        except Exception as e:
+            logger.error(f"Failed to send user email for quote request {quote_request_id}: {e}")
+
+        # Update quote request with email status
+        try:
+            quote_request.admin_notification_sent = admin_sent
+            quote_request.confirmation_email_sent = user_sent
+            quote_request.save()
+            logger.info(f"Updated email status for quote request {quote_request_id}")
+        except Exception as e:
+            logger.error(f"Failed to update quote request {quote_request_id}: {e}")
+
+        # Return status
+        success = admin_sent and user_sent
+        result = {
+            'success': success,
+            'admin_sent': admin_sent,
+            'user_sent': user_sent,
+            'quote_request_id': quote_request_id,
+            'timestamp': timezone.now().isoformat()
+        }
+
+        if success:
+            logger.info(f"All emails sent successfully for quote request {quote_request_id}")
+        else:
+            logger.warning(f"Some emails failed for quote request {quote_request_id}: admin={admin_sent}, user={user_sent}")
+
+        return result
+
+    except Exception as e:
+        error_msg = f"Unexpected error in quote request email task: {e}"
+        logger.error(error_msg)
+        return {'success': False, 'error': error_msg}
+
+
+def send_job_application_emails(application_id):
+    """
+    Send email notifications for job applications using Mailtrap HTTP API
+
+    Args:
+        application_id (int): ID of the JobApplication object
+
+    Returns:
+        dict: Status of email sending with details
+    """
+    try:
+        from users.models import JobApplication
+
+        try:
+            job_application = JobApplication.objects.get(id=application_id)
+        except JobApplication.DoesNotExist:
+            error_msg = f"JobApplication with ID {application_id} not found"
+            logger.error(error_msg)
+            return {'success': False, 'error': error_msg}
+
+        logger.info(f"Sending emails for job application {application_id}")
+
+        admin_sent = False
+        applicant_sent = False
+
+        # Send admin notification
+        try:
+            admin_subject = f'New Job Application - {job_application.get_position_display()}'
+            admin_message = render_to_string('users/emails/job_application_admin.html', {
+                'application': job_application
+            })
+
+            careers_email = getattr(settings, 'JOBS_EMAIL', 'info@myriad-travel.com')
+            info_email = getattr(settings, 'ADMIN_EMAIL', 'info@myriad-travel.com')
+            recipient_list = [careers_email, info_email]
+
+            admin_sent = send_email_via_mailtrap(
+                subject=admin_subject,
+                html_message=admin_message,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=recipient_list,
+            )
+
+            if admin_sent:
+                logger.info(f"Admin notification sent for job application {application_id}")
+            else:
+                logger.error(f"Failed to send admin email for job application {application_id}")
+
+        except Exception as e:
+            logger.error(f"Failed to send admin email for job application {application_id}: {e}")
+
+        # Send applicant confirmation
+        try:
+            applicant_subject = f'Application Received - {job_application.get_position_display()}'
+            applicant_message = render_to_string('users/emails/job_application_confirmation.html', {
+                'application': job_application
+            })
+
+            applicant_sent = send_email_via_mailtrap(
+                subject=applicant_subject,
+                html_message=applicant_message,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[job_application.email],
+            )
+
+            if applicant_sent:
+                logger.info(f"Applicant confirmation sent for job application {application_id}")
+            else:
+                logger.error(f"Failed to send applicant email for job application {application_id}")
+
+        except Exception as e:
+            logger.error(f"Failed to send applicant email for job application {application_id}: {e}")
+
+        # Update application status
+        try:
+            job_application.admin_notification_sent = admin_sent
+            job_application.confirmation_email_sent = applicant_sent
+            job_application.save()
+        except Exception as e:
+            logger.error(f"Failed to update job application {application_id}: {e}")
+
+        success = admin_sent and applicant_sent
+        result = {
+            'success': success,
+            'admin_sent': admin_sent,
+            'applicant_sent': applicant_sent,
+            'application_id': application_id,
+            'timestamp': timezone.now().isoformat()
+        }
+
+        logger.info(f"Job application emails completed for {application_id}: success={success}")
+        return result
+
+    except Exception as e:
+        error_msg = f"Unexpected error in job application email task: {e}"
+        logger.error(error_msg)
+        return {'success': False, 'error': error_msg}
+
+
+def send_newsletter_subscription_emails(subscription_id):
+    """
+    Send email notifications for newsletter subscriptions using Mailtrap HTTP API
+
+    Args:
+        subscription_id (int): ID of the NewsletterSubscription object
+
+    Returns:
+        dict: Status of email sending with details
+    """
+    try:
+        from users.models import NewsletterSubscription
+
+        try:
+            subscription = NewsletterSubscription.objects.get(id=subscription_id)
+        except NewsletterSubscription.DoesNotExist:
+            error_msg = f"NewsletterSubscription with ID {subscription_id} not found"
+            logger.error(error_msg)
+            return {'success': False, 'error': error_msg}
+
+        logger.info(f"Sending emails for newsletter subscription {subscription_id}")
+
+        admin_sent = False
+        subscriber_sent = False
+
+        # Send admin notification
+        try:
+            admin_subject = f'New Newsletter Subscription - {subscription.email}'
+            admin_message = render_to_string('users/emails/newsletter_admin.html', {
+                'subscription': subscription
+            })
+
+            newsletter_email = getattr(settings, 'NEWSLETTER_EMAIL', 'info@myriad-travel.com')
+
+            admin_sent = send_email_via_mailtrap(
+                subject=admin_subject,
+                html_message=admin_message,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[newsletter_email],
+            )
+
+            if admin_sent:
+                logger.info(f"Admin notification sent for newsletter subscription {subscription_id}")
+            else:
+                logger.error(f"Failed to send admin email for newsletter subscription {subscription_id}")
+
+        except Exception as e:
+            logger.error(f"Failed to send admin email for newsletter subscription {subscription_id}: {e}")
+
+        # Send subscriber confirmation
+        try:
+            subscriber_subject = 'Welcome to the Myriad Travel Newsletter!'
+            subscriber_message = render_to_string('users/emails/newsletter_confirmation.html', {
+                'subscription': subscription
+            })
+
+            subscriber_sent = send_email_via_mailtrap(
+                subject=subscriber_subject,
+                html_message=subscriber_message,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[subscription.email],
+            )
+
+            if subscriber_sent:
+                logger.info(f"Subscriber confirmation sent for newsletter subscription {subscription_id}")
+            else:
+                logger.error(f"Failed to send subscriber email for newsletter subscription {subscription_id}")
+
+        except Exception as e:
+            logger.error(f"Failed to send subscriber email for newsletter subscription {subscription_id}: {e}")
+
+        # Update subscription status
+        try:
+            subscription.admin_notification_sent = admin_sent
+            subscription.confirmation_email_sent = subscriber_sent
+            subscription.save()
+        except Exception as e:
+            logger.error(f"Failed to update newsletter subscription {subscription_id}: {e}")
+
+        success = admin_sent and subscriber_sent
+        result = {
+            'success': success,
+            'admin_sent': admin_sent,
+            'subscriber_sent': subscriber_sent,
+            'subscription_id': subscription_id,
+            'timestamp': timezone.now().isoformat()
+        }
+
+        logger.info(f"Newsletter subscription emails completed for {subscription_id}: success={success}")
+        return result
+
+    except Exception as e:
+        error_msg = f"Unexpected error in newsletter subscription email task: {e}"
+        logger.error(error_msg)
+        return {'success': False, 'error': error_msg}
+
+
+def send_booking_confirmation_email(booking_id):
+    """
+    Send booking confirmation email using Mailtrap HTTP API
+
+    Args:
+        booking_id (int): ID of the Booking object
+
+    Returns:
+        dict: Status of email sending with details
+    """
+    try:
+        from users.models import Booking
+
+        try:
+            booking = Booking.objects.get(id=booking_id)
+        except Booking.DoesNotExist:
+            error_msg = f"Booking with ID {booking_id} not found"
+            logger.error(error_msg)
+            return {'success': False, 'error': error_msg}
+
+        logger.info(f"Sending booking confirmation email for booking {booking_id}")
+
+        # Prepare email context
+        email_context = {
+            'booking_id': booking.id,
+            'full_name': booking.full_name,
+            'package_name': booking.package.package_name,
+            'number_of_adults': booking.number_of_adults,
+            'number_of_children': booking.number_of_children or 0,
+            'number_of_rooms': booking.number_of_rooms,
+            'total_amount': booking.total_amount,
+            'include_travelling': 'Yes' if booking.include_travelling else 'No',
+        }
+
+        # Email subject
+        subject = f'Web Booking - Booking ID {booking.id}'
+
+        # Render email body from template
+        email_body = render_to_string('users/booking_confirmation.html', email_context)
+
+        # Send email
+        email_sent = send_email_via_mailtrap(
+            subject=subject,
+            html_message=email_body,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[getattr(settings, 'ADMIN_EMAIL', 'info@myriad-travel.com')],
+        )
+
+        if email_sent:
+            logger.info(f"Booking confirmation email sent for booking {booking_id}")
+        else:
+            logger.error(f"Failed to send booking confirmation email for booking {booking_id}")
+
+        # Update booking status if needed
+        try:
+            booking.confirmation_email_sent = email_sent
+            booking.save()
+        except Exception as e:
+            logger.error(f"Failed to update booking {booking_id}: {e}")
+
+        result = {
+            'success': email_sent,
+            'booking_id': booking_id,
+            'timestamp': timezone.now().isoformat()
+        }
+
+        return result
+
+    except Exception as e:
+        error_msg = f"Unexpected error in booking confirmation email task: {e}"
+        logger.error(error_msg)
+        return {'success': False, 'error': error_msg}
