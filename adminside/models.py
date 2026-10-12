@@ -313,7 +313,7 @@ class Accommodation(models.Model):
         """Get the image URL with fallback to default accommodation image"""
         if self.image:
             return self.image.cdn_url
-        return '/static/images/placeholders/myriad-package-placeholder.png'
+        return '/static/images/destinations/kenya.jpg'
 
     def get_absolute_url(self):
         return reverse('accommodation_detail', kwargs={'slug': self.slug})
@@ -409,12 +409,56 @@ class Package(models.Model):
         ('kenya-coast', 'Kenya Coast & Beach'),
         ('international', 'International Escapes'),
         ('day-trips', 'Weekend Hikes & Day Trips'),
+        ('tanzania-safari', 'Tanzania Safaris'),
+        ('uganda-safari', 'Uganda Safaris'),
+        ('rwanda-safari', 'Rwanda Safaris'),
+        ('niche-corner', 'NaturesGift Niche Corner'),
+        ('transport', 'Safari Transport & Guides'),
     ]
     region = models.CharField(
         max_length=40,
         choices=REGION_CHOICES,
         default='kenya-safari',
-        help_text="Frontend collection used by the Myriad package filters"
+        help_text="Frontend collection used by the NaturesGift package filters"
+    )
+
+    SAFARI_TYPE_CHOICES = [
+        ('classic', 'Classic Wildlife Safari'),
+        ('photographic', 'Photographic Safari'),
+        ('conservation', 'Conservation Safari'),
+        ('cultural', 'Cultural Expedition'),
+        ('primate', 'Primate & Gorilla Trekking'),
+        ('migration', 'Migration / Calving Safari'),
+        ('birding', 'Avian Safari'),
+        ('beach', 'Bush & Beach'),
+        ('family', 'Family Safari'),
+        ('transport', 'Safari Transport'),
+    ]
+    safari_type = models.CharField(max_length=32, choices=SAFARI_TYPE_CHOICES, default='classic')
+    route_summary = models.CharField(
+        max_length=280,
+        blank=True,
+        help_text='Short route summary, for example Nairobi - Samburu - Ol Pejeta - Naivasha - Maasai Mara.',
+    )
+    best_season = models.CharField(
+        max_length=160,
+        blank=True,
+        help_text='Best travel months or season notes, for example July to October or late December to April.',
+    )
+    comfort_level = models.CharField(
+        max_length=120,
+        blank=True,
+        help_text='Accommodation or travel style, for example mid-range, luxury tented camp, premium lodge, or expedition style.',
+    )
+    group_size_note = models.CharField(
+        max_length=160,
+        blank=True,
+        help_text='Pricing/group note, for example based on 2 people, private safari, or group departure.',
+    )
+    price_note = models.CharField(
+        max_length=180,
+        blank=True,
+        help_text='Public price note, for example per person sharing, available on request, or seasonal pricing applies.',
     )
 
     # Category
@@ -449,7 +493,7 @@ class Package(models.Model):
     # Pricing
     adult_price = models.PositiveIntegerField()
     child_price = models.PositiveIntegerField()
-    lipa_pole_pole = models.BooleanField(default=False, help_text="Show this package as eligible for Myriad's Lipa Pole Pole plan")
+    lipa_pole_pole = models.BooleanField(default=False, help_text="Show this package as eligible for installment planning")
     lipa_pole_pole_months = models.PositiveIntegerField(default=4, help_text="Suggested number of monthly installments")
 
     # Package content
@@ -591,7 +635,7 @@ class PackageGalleryImage(models.Model):
     def get_image_url(self):
         if self.image:
             return self.image.cdn_url
-        return '/static/images/placeholders/myriad-package-placeholder.png'
+        return '/static/images/hero/tours-safaris.jpeg'
 
 
 class Itinerary(models.Model):
@@ -792,4 +836,4 @@ class HeroSlider(models.Model):
         """Get the image URL with fallback to default"""
         if self.image:
             return self.image.cdn_url
-        return '/static/images/placeholders/myriad-package-placeholder.png'
+        return '/static/images/hero/tours-safaris.jpeg'

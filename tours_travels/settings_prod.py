@@ -1,5 +1,5 @@
 """
-Production settings for Mbugani Luxe Adventures
+Production settings for NaturesGift Expeditions
 Uses Supabase PostgreSQL for production
 """
 
@@ -247,7 +247,7 @@ TEMPLATES[0]['OPTIONS']['debug'] = False
 
 # Production email error reporting
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
-EMAIL_SUBJECT_PREFIX = '[Myriad Travel] '
+EMAIL_SUBJECT_PREFIX = '[NaturesGift Expeditions] '
 
 # Production health check
 

@@ -257,7 +257,7 @@ def _package_presenter(package):
     destination_image = getattr(package.main_destination, 'image', None)
     public_image = package.featured_image or destination_image
     curated_destination_image = _curated_destination_image(package.main_destination)
-    image_fallback = curated_destination_image or '/static/images/placeholders/myriad-package-placeholder.png'
+    image_fallback = curated_destination_image or '/static/images/hero/tours-safaris.jpeg'
     price_kes = int(package.adult_price or 0)
     highlights = [line.strip() for line in (package.highlights or '').splitlines() if line.strip()]
     region_label = package.get_region_display() if hasattr(package, 'get_region_display') else category
@@ -277,8 +277,13 @@ def _package_presenter(package):
         'kenya-coast': 'Beach holidays, coastal escapes and relaxed stays',
         'international': 'International holidays and curated city escapes',
         'day-trips': 'Short breaks, weekend escapes and group outings',
-    }.get(package.region, 'Curated Myriad Travel experience')
-    route_summary = ' -> '.join(day['title'] for day in itinerary_days[:4]) if itinerary_days else destination
+        'tanzania-safari': 'Northern Tanzania, migration and calving journeys',
+        'uganda-safari': 'Gorilla, chimpanzee and Pearl of Africa journeys',
+        'rwanda-safari': 'Primate trekking, conservation and refined Rwanda travel',
+        'niche-corner': 'Special-interest expeditions for focused travelers',
+        'transport': 'Guided safari transport and 4x4 Land Cruiser hire',
+    }.get(package.region, 'Purposeful East African safari')
+    route_summary = package.route_summary or (' -> '.join(day['title'] for day in itinerary_days[:4]) if itinerary_days else destination)
     if itinerary_days and len(itinerary_days) > 4:
         route_summary = f'{route_summary} -> ...'
     return {
@@ -300,6 +305,7 @@ def _package_presenter(package):
         'rating': package.rating,
         'reviews_count': package.total_reviews,
         'price_kes': price_kes,
+        'public_price': package.price_note or '',
         'child_price_kes': int(package.child_price or 0),
         'single_price_kes': int(special_offer['single_occupancy_price']) if special_offer else 0,
         'price_usd': round(price_kes / 130) if price_kes else 0,
@@ -314,6 +320,11 @@ def _package_presenter(package):
         'itinerary_audit': itinerary_audit,
         'best_for': best_for,
         'route_summary': route_summary,
+        'safari_type': package.get_safari_type_display() if hasattr(package, 'get_safari_type_display') else '',
+        'best_season': package.best_season,
+        'comfort_level': package.comfort_level,
+        'group_size_note': package.group_size_note,
+        'price_note': package.price_note,
         'accommodations': accommodation_names,
         'transport_modes': transport_names,
         'has_image': bool(public_image or curated_destination_image),
@@ -348,7 +359,7 @@ def _destination_presenter(destination):
         'description': destination.meta_description or destination.description,
         'image': _image_url(
             destination.image,
-            _curated_destination_image(destination) or '/static/images/placeholders/myriad-package-placeholder.png',
+            _curated_destination_image(destination) or '/static/images/hero/discover-kenya.jpeg',
         ),
         'badge': 'Featured' if destination.is_featured else destination.get_destination_type_display(),
         'popular_for': ['Safari', 'Nature', 'Tailored Trips'],

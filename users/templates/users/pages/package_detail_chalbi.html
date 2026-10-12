@@ -2,7 +2,7 @@
 {% load static %}
 {% load currency_filters %}
 
-{% block title %}{{ pkg.title|default:"Safari Itinerary & Package Details" }} - Myriad Travel{% endblock %}
+{% block title %}{{ pkg.title|default:"Safari Itinerary & Package Details" }} - NaturesGift Expeditions{% endblock %}
 {% block site_navbar %}{% endblock %}
 {% block site_footer %}{% endblock %}
 {% block site_floating_widgets %}{% endblock %}
@@ -13,14 +13,14 @@
   <div class="bg-[#1f3031] text-white">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 text-xs sm:px-8">
       <span class="font-semibold">A little further. A little wilder.</span>
-      <span class="hidden sm:inline">Talk to our Nairobi team - <a href="tel:+254712236522" class="font-bold hover:underline">+254 712 236 522</a></span>
+      <span class="hidden sm:inline">Talk to our Nairobi team - <a href="tel:+254704784318" class="font-bold hover:underline">+254 704 784 318</a></span>
     </div>
   </div>
 
   <section id="overview" class="mx-auto max-w-7xl px-5 py-8 sm:px-8 sm:py-12">
     <div class="mb-8 flex items-center justify-between gap-6">
-      <a href="/" class="block" aria-label="Myriad Travel home">
-        <img src="{% static 'images/myriad-logo.png' %}" alt="Myriad Travel" class="h-14 w-auto object-contain" />
+      <a href="/" class="block" aria-label="NaturesGift Expeditions home">
+        <img src="{% static 'images/brand/natures-gift-logo.jpg' %}" alt="NaturesGift Expeditions" class="h-14 w-auto object-contain" />
       </a>
       <nav class="hidden items-center gap-10 text-sm font-semibold text-[#243131] md:flex">
         <a href="#overview" class="hover:text-[#4c8876]">The experience</a>
@@ -28,7 +28,7 @@
         <a href="#included" class="hover:text-[#4c8876]">What's included</a>
       </nav>
       <a
-        href="https://wa.me/{{ company.contacts.whatsapp|default:'254712236522' }}?text=Hello%20Myriad%20Travel,%20I%20would%20like%20to%20talk%20about%20{{ pkg.title|urlencode }}."
+        href="https://wa.me/{{ company.contacts.whatsapp|default:'254704784318' }}?text=Hello%20NaturesGift%20Travel,%20I%20would%20like%20to%20talk%20about%20{{ pkg.title|urlencode }}."
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex items-center gap-3 rounded-md border border-[#d8dedb] bg-white px-5 py-3 text-sm font-semibold text-[#243131] shadow-sm transition hover:border-[#4c8876]"
@@ -306,7 +306,7 @@
 
           <a
             id="chalbi-booking-link"
-            href="https://wa.me/{{ company.contacts.whatsapp|default:'254712236522' }}?text=Hello%20Myriad%20Travel,%20I%20would%20like%20to%20plan%20my%20booking%20for%20Twende%20Chalbi%20on%2010-14%20December%202026."
+            href="https://wa.me/{{ company.contacts.whatsapp|default:'254704784318' }}?text=Hello%20NaturesGift%20Travel,%20I%20would%20like%20to%20plan%20my%20booking%20for%20Twende%20Chalbi%20on%2010-14%20December%202026."
             target="_blank"
             rel="noopener noreferrer"
             class="mt-6 flex w-full items-center justify-center rounded-md bg-[#4c8876] px-5 py-4 text-sm font-black text-white transition hover:bg-[#3f7464]"
@@ -353,7 +353,7 @@
 
           <a
             id="chalbi-specialist-link"
-            href="https://wa.me/{{ company.contacts.whatsapp|default:'254712236522' }}?text=Hi%20Myriad,%20I%20have%20a%20question%20about%20Twende%20Chalbi%20on%2010-14%20December%202026."
+            href="https://wa.me/{{ company.contacts.whatsapp|default:'254704784318' }}?text=Hi%20NaturesGift,%20I%20have%20a%20question%20about%20Twende%20Chalbi%20on%2010-14%20December%202026."
             target="_blank"
             rel="noopener noreferrer"
             class="mt-5 flex w-full items-center justify-center rounded-md border border-[#cbd8d2] bg-white px-5 py-4 text-sm font-bold text-[#4c665d] transition hover:border-[#4c8876]"
@@ -371,15 +371,15 @@
 
   <footer class="border-t border-[#dce3df] bg-white">
     <div class="mx-auto grid max-w-7xl gap-6 px-5 py-10 sm:px-8 md:grid-cols-[220px_1fr] md:items-center">
-      <img src="{% static 'images/myriad-logo.png' %}" alt="Myriad Travel" class="h-20 w-auto object-contain" />
+      <img src="{% static 'images/brand/natures-gift-logo.jpg' %}" alt="NaturesGift Expeditions" class="h-20 w-auto object-contain" />
       <div>
         <h2 class="font-serif text-3xl font-black tracking-[-0.03em] text-[#23302f]">Beyond imagination. Closer than you think.</h2>
         <p class="mt-3 text-sm text-[#66736f]">
           Nairobi, Kenya -
-          <a href="mailto:info@myriad-travel.com" class="font-semibold hover:text-[#4c8876]">info@myriad-travel.com</a> -
-          <a href="tel:+254712236522" class="font-semibold hover:text-[#4c8876]">+254 712 236 522</a>
+          <a href="mailto:info@naturesgiftexpeditions.com" class="font-semibold hover:text-[#4c8876]">info@naturesgiftexpeditions.com</a> -
+          <a href="tel:+254704784318" class="font-semibold hover:text-[#4c8876]">+254 704 784 318</a>
         </p>
-        <p class="mt-3 text-xs text-[#8a9692]">© 2026 Myriad Travel</p>
+        <p class="mt-3 text-xs text-[#8a9692]">© 2026 NaturesGift Expeditions</p>
       </div>
     </div>
   </footer>
@@ -408,7 +408,7 @@
     const formTravelers = document.getElementById('chalbi-form-travelers');
     const formNotes = document.getElementById('chalbi-form-notes');
     const extraNotes = document.getElementById('chalbi-extra-notes');
-    const whatsappPhone = '{{ company.contacts.whatsapp|default:"254712236522" }}';
+    const whatsappPhone = '{{ company.contacts.whatsapp|default:"254704784318" }}';
     let adults = 1;
     let children = 1;
 
@@ -435,7 +435,7 @@
       const kids = childCount();
       const totalPax = adults + kids;
       return [
-        'Hello Myriad Travel, I would like to plan my booking for Twende Chalbi.',
+        'Hello NaturesGift Expeditions, I would like to plan my booking for Twende Chalbi.',
         '',
         'Package: Twende Chalbi',
         'Travel dates: 10-14 December 2026',
@@ -515,7 +515,7 @@
 
     document.querySelectorAll('.chalbi-share-btn').forEach((button) => {
       button.addEventListener('click', () => {
-        const text = encodeURIComponent('Twende Chalbi with Myriad Travel - 10-14 December 2026. ' + window.location.href);
+        const text = encodeURIComponent('Twende Chalbi with NaturesGift Expeditions - 10-14 December 2026. ' + window.location.href);
         window.open('https://wa.me/?text=' + text, '_blank', 'noopener,noreferrer');
       });
     });

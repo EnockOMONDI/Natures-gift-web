@@ -2,17 +2,17 @@
 <header class="myriad-header">
   <div class="myriad-contact">
     <div class="myriad-contact-inner">
-      <a href="tel:{{ company.contacts.primary_phone|default:'+254712236522' }}" class="myriad-phone"><i data-lucide="phone" aria-hidden="true"></i><span>Call {{ company.contacts.phone_formatted|default:'+254 (0) 712 236 522' }}</span></a>
-      <div class="myriad-socials" aria-label="Myriad Travel social media">
-        <a href="{{ company.socials.facebook }}" target="_blank" rel="noopener noreferrer" aria-label="Myriad Travel on Facebook" title="Facebook"><i data-lucide="facebook" aria-hidden="true"></i><span>f</span></a>
-        <a href="{{ company.socials.instagram }}" target="_blank" rel="noopener noreferrer" aria-label="Myriad Travel on Instagram" title="Instagram"><i data-lucide="instagram" aria-hidden="true"></i></a>
-        <a href="{{ company.socials.tiktok }}" target="_blank" rel="noopener noreferrer" aria-label="Myriad Travel on TikTok" title="TikTok"><i data-lucide="music-2" aria-hidden="true"></i></a>
-        <a href="https://wa.me/{{ company.contacts.whatsapp }}" target="_blank" rel="noopener noreferrer" aria-label="Chat with Myriad Travel on WhatsApp" title="WhatsApp"><i data-lucide="message-circle" aria-hidden="true"></i></a>
+      <a href="tel:{{ company.contacts.primary_phone|default:'+254704784318' }}" class="myriad-phone"><i data-lucide="phone" aria-hidden="true"></i><span>Call {{ company.contacts.phone_formatted|default:'+254 704 784 318' }}</span></a>
+      <div class="myriad-socials" aria-label="NaturesGift Expeditions social media">
+        <a href="{{ company.socials.facebook }}" target="_blank" rel="noopener noreferrer" aria-label="NaturesGift Expeditions on Facebook" title="Facebook"><i data-lucide="facebook" aria-hidden="true"></i><span>f</span></a>
+        <a href="{{ company.socials.instagram }}" target="_blank" rel="noopener noreferrer" aria-label="NaturesGift Expeditions on Instagram" title="Instagram"><i data-lucide="instagram" aria-hidden="true"></i></a>
+        <a href="{{ company.socials.tiktok }}" target="_blank" rel="noopener noreferrer" aria-label="NaturesGift Expeditions on TikTok" title="TikTok"><i data-lucide="music-2" aria-hidden="true"></i></a>
+        <a href="https://wa.me/{{ company.contacts.whatsapp }}?text=Hello%20NaturesGift%20Expeditions,%20I%20would%20like%20to%20plan%20a%20safari." target="_blank" rel="noopener noreferrer" aria-label="Chat with NaturesGift Expeditions on WhatsApp" title="WhatsApp"><i data-lucide="message-circle" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
   <nav class="myriad-navigation" aria-label="Main navigation">
-    <a href="/" aria-label="Myriad Travel home"><img src="{% static 'images/myriad-logo.png' %}" width="112" height="80" alt="Myriad Travel"></a>
+    <a href="/" aria-label="NaturesGift Expeditions home"><img src="{% static company.logo|default:'images/brand/natures-gift-logo.jpg' %}" width="112" height="80" alt="NaturesGift Expeditions"></a>
     <button type="button" class="myriad-menu-toggle" aria-expanded="false" aria-controls="myriad-menu"><i data-lucide="menu"></i><span>Menu</span></button>
     <div id="myriad-menu" class="myriad-menu">
       {% for menu in public_menus %}
@@ -36,6 +36,13 @@
           </div>
         </details>
       </div>
+      {% empty %}
+      <div class="myriad-menu-item"><a href="/destinations/">Destinations</a></div>
+      <div class="myriad-menu-item"><a href="/tours-safaris/">Safari Adventures</a></div>
+      <div class="myriad-menu-item"><a href="/themed-packages/">Niche Corner</a></div>
+      <div class="myriad-menu-item"><a href="/services/">Transport</a></div>
+      <div class="myriad-menu-item"><a href="/aboutus/">About Us</a></div>
+      <div class="myriad-menu-item"><a href="/contact/">Contact Us</a></div>
       {% endfor %}
     </div>
     <a class="myriad-quote" href="{% url 'users:quote_request' %}">Request Quote</a>

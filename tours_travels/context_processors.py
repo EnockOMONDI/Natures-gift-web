@@ -1,5 +1,5 @@
 """
-Context processors for Mbugani Luxe Adventures Django project.
+Context processors for NaturesGift Expeditions Django project.
 Provides global template variables and default image management.
 """
 
@@ -66,7 +66,7 @@ def default_images(request):
         if config_key in default_images_urls:
             return default_images_urls[config_key]
         else:
-            return default_images_urls.get('DEFAULT', static('images/placeholders/myriad-package-placeholder.png'))
+            return default_images_urls.get('DEFAULT', static('images/hero/tours-safaris.jpeg'))
     
     # Helper function to get image URL with fallback
     def get_image_url_with_fallback(image_field, content_type='default', use_placeholder=False):
@@ -98,7 +98,7 @@ def default_images(request):
         
         # Use placeholder SVG if requested
         if use_placeholder:
-            return default_images_urls.get('PLACEHOLDER_SVG', static('images/placeholders/myriad-package-placeholder.png'))
+            return default_images_urls.get('PLACEHOLDER_SVG', static('images/hero/tours-safaris.jpeg'))
         
         # Use content-type specific default
         return get_default_for_content_type(content_type)
@@ -132,23 +132,25 @@ def site_settings(request):
         'TURNSTILE_SITE_KEY': getattr(settings, 'TURNSTILE_SITE_KEY', ''),
         'DEBUG': getattr(settings, 'DEBUG', False),
         'company': {
-            'name': 'Myriad Travel',
-            'tagline': 'Beyond Imagination',
+            'name': 'NaturesGift Expeditions',
+            'tagline': 'Travel With Purpose',
+            'short_intro': 'Tailor-made East African safaris, primate journeys, photographic expeditions and guided 4x4 wilderness travel.',
+            'logo': 'images/brand/natures-gift-logo.jpg',
             'address': {
-                'full': 'Parklands, Crescent Business Center, 6th Floor, Nairobi, Kenya',
+                'full': 'Nairobi, Kenya',
             },
             'contacts': {
-                'primary_phone': '+254712236522',
-                'alt_phone': '+254113446213',
-                'phone_formatted': '+254 (0) 712 236 522',
-                'whatsapp': '254712236522',
-                'email_general': 'info@myriad-travel.com',
-                'email_marketing': 'marketing@myriad-travel.com',
+                'primary_phone': '+254704784318',
+                'alt_phone': '',
+                'phone_formatted': '+254 704 784 318',
+                'whatsapp': '254704784318',
+                'email_general': 'info@naturesgiftexpeditions.com',
+                'email_marketing': 'safaris@naturesgiftexpeditions.com',
             },
             'socials': {
-                'facebook': 'https://web.facebook.com/myriadtravelke/?_rdc=1&_rdr#',
-                'instagram': 'https://www.instagram.com/myriadtravelke/',
-                'tiktok': 'https://www.tiktok.com/@myriadtravel',
+                'facebook': 'https://naturesgiftexpeditions.com/',
+                'instagram': 'https://naturesgiftexpeditions.com/',
+                'tiktok': 'https://naturesgiftexpeditions.com/',
             },
         },
     }
@@ -191,15 +193,15 @@ def navigation_collections(request):
         ('Australasia', 'australasia'), ('Europe', 'europe'),
         ('Indian Ocean Islands', 'indian-ocean-islands'), ('Middle East', 'middle-east'),
     ]
-    themed_slugs = ['cruises', 'wellness-retreats', 'shopping-tours', 'religious-pilgrimages', 'honeymoon-packages']
+    themed_slugs = ['photographic-safaris', 'conservation-safaris', 'family-safaris', 'beach-holidays', 'avian-safaris', 'summit-ascent', 'bahari-tides']
     themed_categories = categories.filter(slug__in=themed_slugs)
 
     kenya_sections = [
-        {'label': 'Beach & Coast', 'url': reverse('users:explore_kenya'),
+        {'label': 'Kenya Safaris', 'url': reverse('users:explore_kenya'),
          'items': destination_items(kenya_destinations.filter(packages__region='kenya-coast'))},
-        {'label': 'Safaris', 'url': reverse('users:tours_safaris'),
+        {'label': 'Bush & Wildlife', 'url': reverse('users:tours_safaris'),
          'items': destination_items(kenya_destinations.filter(packages__region='kenya-safari'))},
-        {'label': 'Getaways', 'url': reverse('users:explore_kenya'),
+        {'label': 'Special Interest', 'url': reverse('users:themed_packages'),
          'items': category_items(categories.filter(Q(packages__region='day-trips') | Q(tagged_packages__region='day-trips')), 'explore_kenya')},
         {'label': 'Themed Experiences', 'url': reverse('users:themed_packages'),
          'items': category_items(themed_categories, 'themed_packages')},
@@ -248,22 +250,24 @@ def navigation_collections(request):
     ]
 
     menus = [
-        {'label': 'Explore Kenya', 'url': reverse('users:explore_kenya'), 'parent_clickable': False, 'sections': kenya_sections},
-        {'label': 'Explore The World', 'url': reverse('users:explore_the_world'), 'parent_clickable': False, 'sections': world_sections},
-        {'label': 'Tours & Safaris', 'url': reverse('users:tours_safaris'), 'parent_clickable': False, 'sections': safari_sections},
-        {'label': 'Themed Experiences', 'url': reverse('users:themed_packages'), 'parent_clickable': False, 'sections': theme_sections},
-        {'label': 'Deals', 'url': reverse('users:deals'), 'parent_clickable': True, 'sections': [
-            {'label': 'Current offers', 'url': reverse('users:deals'), 'items': deal_items},
+        {'label': 'Destinations', 'url': reverse('users:explore_kenya'), 'parent_clickable': False, 'sections': kenya_sections + world_sections[:2]},
+        {'label': 'Safari Adventures', 'url': reverse('users:tours_safaris'), 'parent_clickable': False, 'sections': safari_sections},
+        {'label': 'Niche Corner', 'url': reverse('users:themed_packages'), 'parent_clickable': False, 'sections': theme_sections},
+        {'label': 'Transport', 'url': reverse('users:services'), 'parent_clickable': True, 'sections': [
+            {'label': 'Guides & Vehicles', 'url': reverse('users:services'), 'items': [
+                {'label': '4x4 Land Cruiser Hire', 'url': reverse('users:services')},
+                {'label': 'Safari Guides', 'url': reverse('users:services')},
+            ]},
         ]},
         {'label': 'About Us', 'url': reverse('users:aboutus'), 'parent_clickable': True, 'sections': [
-            {'label': 'About Myriad', 'url': reverse('users:aboutus'), 'items': [
+            {'label': 'About NaturesGift', 'url': reverse('users:aboutus'), 'items': [
                 {'label': 'Our Story', 'url': reverse('users:aboutus')},
-                {'label': 'Myriad Services', 'url': reverse('users:services')},
+                {'label': 'Sustainability', 'url': reverse('users:aboutus')},
                 {'label': 'Travel Blog', 'url': reverse('blog:blog-list')},
             ]},
         ]},
         {'label': 'Contact Us', 'url': reverse('users:contact'), 'parent_clickable': True, 'sections': [
-            {'label': 'Talk to Myriad', 'url': reverse('users:contact'), 'items': [
+            {'label': 'Talk to NaturesGift', 'url': reverse('users:contact'), 'items': [
                 {'label': 'Contact Details', 'url': reverse('users:contact')},
                 {'label': 'Request Quote', 'url': reverse('users:quote_request')},
             ]},

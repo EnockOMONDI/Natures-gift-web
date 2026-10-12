@@ -21,22 +21,22 @@ def verification_mail(link, user):
         logger.info(f"Sending verification email to {user.email}")
 
         # Build email HTML content
-        message = f'Hi {user.username}, welcome to Myriad Travel.<br>To activate your account, click the link below:<br><a href="{link}">Activate Account</a><br><br>'
+        message = f'Hi {user.username}, welcome to NaturesGift Expeditions.<br>To activate your account, click the link below:<br><a href="{link}">Activate Account</a><br><br>'
 
         directors_message = """
         <p><strong>Directors message</strong></p>
         """
 
         advantages_message = """
-        <p>We are delighted to have you as part of the Myriad Travel community. Our goal is simple: every trip should feel well planned, memorable, and effortless. Our team handles the details so you can focus on the experience.</p>
+        <p>We are delighted to have you as part of the NaturesGift Expeditions community. Our goal is simple: every trip should feel well planned, memorable, and effortless. Our team handles the details so you can focus on the experience.</p>
         """
 
         html_content = message + directors_message + advantages_message
 
         sent = send_email_via_mailtrap(
-            subject="Welcome to Myriad Travel",
+            subject="Welcome to NaturesGift Expeditions",
             html_message=html_content,
-            from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', 'Myriad Travel <info@myriad-travel.com>'),
+            from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', 'NaturesGift Expeditions <info@naturesgiftexpeditions.com>'),
             recipient_list=[user.email],
         )
         if sent:

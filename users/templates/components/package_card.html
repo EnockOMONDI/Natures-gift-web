@@ -50,6 +50,13 @@
         </span>
       </div>
 
+      {% if pkg.safari_type or pkg.best_season %}
+      <div class="flex flex-wrap gap-2 text-[11px] font-bold uppercase tracking-wide text-emerald-800">
+        {% if pkg.safari_type %}<span class="rounded-full bg-emerald-50 px-2.5 py-1">{{ pkg.safari_type }}</span>{% endif %}
+        {% if pkg.best_season %}<span class="rounded-full bg-amber-50 px-2.5 py-1 text-amber-800">{{ pkg.best_season }}</span>{% endif %}
+      </div>
+      {% endif %}
+
       <!-- Title -->
       <h3 class="text-lg font-bold font-serif text-slate-900 leading-snug transition-colors line-clamp-2">
         <a href="/packages/{{ pkg.slug }}/" class="hover-myriad-red-text">
@@ -61,6 +68,12 @@
       <p class="text-xs text-slate-600 line-clamp-2 leading-relaxed">
         {{ pkg.subtitle }}
       </p>
+
+      {% if pkg.route_summary %}
+      <p class="text-[11px] font-semibold text-slate-500 line-clamp-1">
+        {{ pkg.route_summary }}
+      </p>
+      {% endif %}
 
       <!-- Highlights Preview -->
       <div class="pt-2 border-t border-slate-100 space-y-1.5">
@@ -78,14 +91,16 @@
       <div class="flex items-baseline justify-between">
         <div>
           <span class="text-[11px] text-slate-500 block uppercase font-medium">
-            From (per person)
+            From {% if pkg.group_size_note %}({{ pkg.group_size_note }}){% else %}(per person){% endif %}
           </span>
           <span 
             class="text-xl font-bold text-slate-900" 
+            {% if not pkg.public_price %}
             data-price-kes="{{ pkg.price_kes }}" 
             data-price-usd="{{ pkg.price_usd }}"
+            {% endif %}
           >
-            {{ pkg.price_kes|kes_format }}
+            {% if pkg.public_price %}{{ pkg.public_price }}{% else %}{{ pkg.price_kes|kes_format }}{% endif %}
           </span>
         </div>
 
@@ -102,7 +117,7 @@
         </a>
 
         <a
-          href="https://wa.me/{{ company.contacts.whatsapp|default:'254712236522' }}?text=Hello%20Myriad%20Travel,%20I%20would%20like%20to%20enquire%20/%20book%20the%20%22{{ pkg.title|urlencode }}%22%20({{ pkg.duration|urlencode }}).%20Could%20you%20share%20available%20dates%20and%20quotes?"
+          href="https://wa.me/{{ company.contacts.whatsapp|default:'254704784318' }}?text=Hello%20NaturesGift%20Expeditions,%20I%20would%20like%20to%20enquire%20about%20%22{{ pkg.title|urlencode }}%22%20({{ pkg.duration|urlencode }}).%20Could%20you%20share%20available%20dates%20and%20a%20quote?"
           target="_blank"
           rel="noopener noreferrer"
           class="w-full py-2.5 px-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs rounded-xl transition-all shadow-2xs flex items-center justify-center gap-1.5 text-center"

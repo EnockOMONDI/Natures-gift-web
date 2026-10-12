@@ -2,7 +2,7 @@
 {% load static %}
 {% load currency_filters %}
 
-{% block title %}{{ pkg.title }} - Myriad Travel{% endblock %}
+{% block title %}{{ pkg.title }} - NaturesGift Expeditions{% endblock %}
 {% block site_navbar %}{% endblock %}
 {% block site_footer %}{% endblock %}
 {% block site_floating_widgets %}{% endblock %}
@@ -12,14 +12,14 @@
 <div class="bg-[#F9F2F2] text-[#23302f]">
   <div class="bg-[#1f3031] text-white">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 text-xs sm:px-8">
-      <a href="/" class="font-semibold hover:text-[#f9b1aa]">Myriad Travel</a>
-      <a href="tel:+254712236522" class="hidden font-bold hover:underline sm:inline">+254 712 236 522</a>
+      <a href="/" class="font-semibold hover:text-[#f9b1aa]">NaturesGift Expeditions</a>
+      <a href="tel:{{ company.contacts.primary_phone }}" class="hidden font-bold hover:underline sm:inline">{{ company.contacts.phone_formatted }}</a>
     </div>
   </div>
 
   <section id="overview" class="mx-auto max-w-7xl px-5 py-8 sm:px-8 sm:py-12">
     <div class="mb-8 flex items-center justify-between gap-6">
-      <a href="/" class="block" aria-label="Myriad Travel home"><img src="{% static 'images/myriad-logo.png' %}" alt="Myriad Travel" class="h-14 w-auto object-contain" /></a>
+      <a href="/" class="block" aria-label="NaturesGift Expeditions home"><img src="{% static company.logo|default:'images/brand/natures-gift-logo.jpg' %}" alt="NaturesGift Expeditions" class="h-14 w-auto object-contain" /></a>
       <nav class="hidden items-center gap-8 text-sm font-semibold text-[#243131] md:flex">
         <a href="#overview" class="hover:text-[#eb3728]">Overview</a>
         {% if pkg.itinerary %}<a href="#itinerary" class="hover:text-[#eb3728]">Itinerary</a>{% endif %}
@@ -59,6 +59,7 @@
       {% if pkg.special_offer.date %}<div class="border-[#dce3df] py-3 sm:border-r sm:px-6 lg:pl-0"><dt class="text-[11px] font-black uppercase tracking-[0.2em] text-[#8a9692]">When</dt><dd class="mt-2 text-lg font-black text-[#243131]">{{ pkg.special_offer.date }}</dd></div>{% endif %}
       <div class="border-[#dce3df] py-3 sm:px-6 {% if pkg.special_offer.date %}lg:border-r{% else %}sm:border-r lg:pl-0{% endif %}"><dt class="text-[11px] font-black uppercase tracking-[0.2em] text-[#8a9692]">How long</dt><dd class="mt-2 text-lg font-black text-[#243131]">{{ pkg.duration }}</dd></div>
       <div class="border-[#dce3df] py-3 sm:border-r sm:px-6"><dt class="text-[11px] font-black uppercase tracking-[0.2em] text-[#8a9692]">Destination</dt><dd class="mt-2 text-lg font-black text-[#243131]">{{ pkg.destination }}</dd></div>
+      {% if pkg.safari_type %}<div class="border-[#dce3df] py-3 sm:border-r sm:px-6"><dt class="text-[11px] font-black uppercase tracking-[0.2em] text-[#8a9692]">Safari style</dt><dd class="mt-2 text-lg font-black text-[#243131]">{{ pkg.safari_type }}</dd></div>{% endif %}
       {% if pkg.transport_modes %}<div class="py-3 sm:px-6 lg:pr-0"><dt class="text-[11px] font-black uppercase tracking-[0.2em] text-[#8a9692]">Getting there</dt><dd class="mt-2 text-lg font-black text-[#243131]">{{ pkg.transport_modes|join:", " }}</dd></div>{% endif %}
     </dl>
 
@@ -74,6 +75,14 @@
         <section id="highlights" class="scroll-mt-24">
           <p class="text-[12px] font-black uppercase tracking-[0.24em] text-[#1ca297]">{{ pkg.category }}</p>
           <div class="mt-4 max-w-3xl text-base leading-8 text-[#66736f]">{{ pkg.description|safe }}</div>
+          {% if pkg.route_summary or pkg.best_season or pkg.comfort_level or pkg.group_size_note %}
+          <div class="mt-8 grid gap-3 sm:grid-cols-2">
+            {% if pkg.route_summary %}<div class="bg-white border border-[#dce3df] p-4"><p class="text-[11px] font-black uppercase tracking-[0.18em] text-[#8a9692]">Route</p><p class="mt-2 text-sm font-bold text-[#243131]">{{ pkg.route_summary }}</p></div>{% endif %}
+            {% if pkg.best_season %}<div class="bg-white border border-[#dce3df] p-4"><p class="text-[11px] font-black uppercase tracking-[0.18em] text-[#8a9692]">Best season</p><p class="mt-2 text-sm font-bold text-[#243131]">{{ pkg.best_season }}</p></div>{% endif %}
+            {% if pkg.comfort_level %}<div class="bg-white border border-[#dce3df] p-4"><p class="text-[11px] font-black uppercase tracking-[0.18em] text-[#8a9692]">Comfort level</p><p class="mt-2 text-sm font-bold text-[#243131]">{{ pkg.comfort_level }}</p></div>{% endif %}
+            {% if pkg.group_size_note %}<div class="bg-white border border-[#dce3df] p-4"><p class="text-[11px] font-black uppercase tracking-[0.18em] text-[#8a9692]">Group note</p><p class="mt-2 text-sm font-bold text-[#243131]">{{ pkg.group_size_note }}</p></div>{% endif %}
+          </div>
+          {% endif %}
           {% if pkg.highlights %}<div class="mt-10 grid gap-5 md:grid-cols-3">{% for highlight in pkg.highlights %}<article class="border-t border-[#dce3df] pt-6"><div class="text-sm font-black text-[#eb3728]">{{ forloop.counter|stringformat:"02d" }}</div><p class="mt-3 text-sm leading-6 text-[#66736f]">{{ highlight }}</p></article>{% endfor %}</div>{% endif %}
         </section>
 
@@ -90,7 +99,7 @@
       <aside id="booking" class="lg:sticky lg:top-8">
         <div class="rounded-lg border border-[#dce3df] bg-white p-7 shadow-[0_18px_55px_rgba(31,48,49,0.08)]">
           <p class="text-[11px] font-black uppercase tracking-[0.24em] text-[#1ca297]">Request this package</p>
-          <div class="mt-6"><span class="text-sm text-[#66736f]">From</span><div class="mt-1 text-4xl font-black tracking-[-0.04em] text-[#23302f]">{{ pkg.price_kes|kes_format }}</div><p class="mt-1 text-sm font-semibold text-[#66736f]">per adult sharing</p></div>
+          <div class="mt-6"><span class="text-sm text-[#66736f]">From</span><div class="mt-1 text-4xl font-black tracking-[-0.04em] text-[#23302f]">{% if pkg.public_price %}{{ pkg.public_price }}{% else %}{{ pkg.price_kes|kes_format }}{% endif %}</div><p class="mt-1 text-sm font-semibold text-[#66736f]">{{ pkg.group_size_note|default:"per adult sharing" }}</p></div>
           <div class="mt-7 rounded-sm bg-[#e9f5f3] p-5 text-[#243131]"><div class="flex items-start gap-3"><i data-lucide="calendar-days" class="mt-0.5 h-4 w-4 text-[#1ca297]"></i><div>{% if pkg.special_offer.date %}<p class="font-black">{{ pkg.special_offer.date }}</p>{% else %}<p class="font-black">Travel dates on request</p>{% endif %}<p class="mt-1 text-sm font-semibold text-[#66736f]">{{ pkg.duration }}</p></div></div></div>
 
           <form id="package-enquiry-form" method="POST" action="/quote/?package_id={{ pkg.model.id }}" class="mt-6 space-y-4">
@@ -117,7 +126,7 @@
     </div>
   </section>
 
-  <footer class="border-t border-[#dce3df] bg-white"><div class="mx-auto grid max-w-7xl gap-6 px-5 py-10 sm:px-8 md:grid-cols-[220px_1fr] md:items-center"><img src="{% static 'images/myriad-logo.png' %}" alt="Myriad Travel" class="h-20 w-auto object-contain" /><div><p class="text-sm text-[#66736f]">Nairobi, Kenya - <a href="mailto:info@myriad-travel.com" class="font-semibold hover:text-[#eb3728]">info@myriad-travel.com</a> - <a href="tel:+254712236522" class="font-semibold hover:text-[#eb3728]">+254 712 236 522</a></p><p class="mt-3 text-xs text-[#8a9692]">© 2026 Myriad Travel</p></div></div></footer>
+  <footer class="border-t border-[#dce3df] bg-white"><div class="mx-auto grid max-w-7xl gap-6 px-5 py-10 sm:px-8 md:grid-cols-[220px_1fr] md:items-center"><img src="{% static company.logo|default:'images/brand/natures-gift-logo.jpg' %}" alt="NaturesGift Expeditions" class="h-20 w-auto object-contain" /><div><p class="text-sm text-[#66736f]">Nairobi, Kenya - <a href="mailto:{{ company.contacts.email_general }}" class="font-semibold hover:text-[#eb3728]">{{ company.contacts.email_general }}</a> - <a href="tel:{{ company.contacts.primary_phone }}" class="font-semibold hover:text-[#eb3728]">{{ company.contacts.phone_formatted }}</a></p><p class="mt-3 text-xs text-[#8a9692]">© 2026 NaturesGift Expeditions</p></div></div></footer>
 </div>
 
 <script>
@@ -131,7 +140,7 @@
     const formNotes = document.getElementById('package-form-notes');
     const estimate = document.getElementById('package-estimate');
     const whatsapp = document.getElementById('package-whatsapp');
-    const whatsappPhone = '{{ company.contacts.whatsapp|default:"254712236522" }}';
+    const whatsappPhone = '{{ company.contacts.whatsapp|default:"254704784318" }}';
     const packageTitle = '{{ pkg.title|escapejs }}';
     const packageDates = '{{ pkg.special_offer.date|default:""|escapejs }}';
     const formatKes = (value) => new Intl.NumberFormat('en-KE', {style: 'currency', currency: 'KES', maximumFractionDigits: 0}).format(value).replace('KES', 'KSh');
@@ -141,7 +150,7 @@
     const travelDates = () => packageDates || (dates && dates.value.trim()) || 'Dates to be confirmed';
     function summary() {
       const adultCount = count(adults, 1), childCount = count(children, 0);
-      return ['Hello Myriad Travel, I would like to enquire about ' + packageTitle + '.', '', 'Package: ' + packageTitle, 'Travel dates: ' + travelDates(), 'Adults: ' + adultCount, 'Children: ' + childCount, 'Total pax: ' + (adultCount + childCount), 'Room preference: ' + roomLabel(), 'Adult trip estimate: ' + formatKes(selectedPrice() * adultCount), 'Page: ' + window.location.href].join('\n');
+      return ['Hello NaturesGift Expeditions, I would like to enquire about ' + packageTitle + '.', '', 'Package: ' + packageTitle, 'Travel dates: ' + travelDates(), 'Adults: ' + adultCount, 'Children: ' + childCount, 'Total pax: ' + (adultCount + childCount), 'Room preference: ' + roomLabel(), 'Adult trip estimate: ' + formatKes(selectedPrice() * adultCount), 'Page: ' + window.location.href].join('\n');
     }
     function sync() {
       const adultCount = count(adults, 1), childCount = count(children, 0);
@@ -155,7 +164,7 @@
     if (whatsapp) whatsapp.addEventListener('click', () => { sync(); window.open('https://wa.me/' + whatsappPhone + '?text=' + encodeURIComponent(summary()), '_blank', 'noopener,noreferrer'); });
     document.querySelectorAll('.package-accordion-btn').forEach((button) => button.addEventListener('click', () => { const item = button.closest('.package-accordion'), panel = item.querySelector('.package-accordion-panel'), icon = item.querySelector('.package-accordion-icon'), open = item.dataset.open === 'true'; item.dataset.open = open ? 'false' : 'true'; panel.classList.toggle('hidden', open); icon.textContent = open ? '+' : '-'; }));
     document.querySelectorAll('.expand-all-btn').forEach((button) => button.addEventListener('click', () => document.querySelectorAll('.package-accordion').forEach((item) => { item.dataset.open = 'true'; item.querySelector('.package-accordion-panel').classList.remove('hidden'); item.querySelector('.package-accordion-icon').textContent = '-'; })));
-    document.querySelectorAll('.package-share-btn').forEach((button) => button.addEventListener('click', () => window.open('https://wa.me/?text=' + encodeURIComponent(packageTitle + ' with Myriad Travel. ' + window.location.href), '_blank', 'noopener,noreferrer')));
+    document.querySelectorAll('.package-share-btn').forEach((button) => button.addEventListener('click', () => window.open('https://wa.me/?text=' + encodeURIComponent(packageTitle + ' with NaturesGift Expeditions. ' + window.location.href), '_blank', 'noopener,noreferrer')));
     sync();
   })();
 </script>

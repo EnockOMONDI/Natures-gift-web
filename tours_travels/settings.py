@@ -204,17 +204,17 @@ UPLOADCARE = {
 # Default Image Configuration
 DEFAULT_IMAGES = {
     # Primary default image for most content types
-    'DEFAULT': 'images/placeholders/myriad-package-placeholder.png',
+    'DEFAULT': 'images/hero/tours-safaris.jpeg',
 
     # Category-specific default images
     'DESTINATIONS': 'images/hero/discover-kenya.jpeg',
-    'ACCOMMODATIONS': 'images/placeholders/myriad-package-placeholder.png',
-    'PACKAGES': 'images/placeholders/myriad-package-placeholder.png',
+    'ACCOMMODATIONS': 'images/destinations/kenya.jpg',
+    'PACKAGES': 'images/hero/tours-safaris.jpeg',
     'BLOG_POSTS': 'images/hero/beyond-imagination.jpeg',
 
     # Fallback for job listings and older placeholder helpers
-    'JOB_LISTINGS': 'images/placeholders/myriad-package-placeholder.png',
-    'PLACEHOLDER_SVG': 'images/placeholders/myriad-package-placeholder.png',
+    'JOB_LISTINGS': 'images/hero/signature-tours.jpeg',
+    'PLACEHOLDER_SVG': 'images/hero/tours-safaris.jpeg',
 
     # Fallback images for specific use cases
     'HERO_BACKGROUND': 'images/hero/discover-kenya.jpeg',
@@ -227,20 +227,20 @@ TEMPLATE_DIRS = (
 )
 
 
-# Email settings for Myriad Travel
+# Email settings for NaturesGift Expeditions
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-# Myriad Travel email credentials
+# NaturesGift Expeditions email credentials
 # For development, these can have defaults. For production, MUST be set via environment variables
 EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
-DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='Myriad Travel <info@myriad-travel.com>')
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='NaturesGift Expeditions <info@naturesgiftexpeditions.com>')
 
 # Admin email for notifications
-ADMIN_EMAIL = config('ADMIN_EMAIL', default='info@myriad-travel.com')
+ADMIN_EMAIL = config('ADMIN_EMAIL', default='info@naturesgiftexpeditions.com')
 TURNSTILE_SITE_KEY = os.getenv('TURNSTILE_SITE_KEY', '')
 TURNSTILE_SECRET = os.getenv('TURNSTILE_SECRET', '')
 TURNSTILE_SECRET_KEY = os.getenv('TURNSTILE_SECRET_KEY', '') or TURNSTILE_SECRET
@@ -254,10 +254,10 @@ TURNSTILE_ALLOWED_HOSTNAMES = {
 }
 
 # Jobs email for career applications
-JOBS_EMAIL = config('JOBS_EMAIL', default='info@myriad-travel.com')
+JOBS_EMAIL = config('JOBS_EMAIL', default='info@naturesgiftexpeditions.com')
 
 # Newsletter email for subscriptions
-NEWSLETTER_EMAIL = config('NEWSLETTER_EMAIL', default='info@myriad-travel.com')
+NEWSLETTER_EMAIL = config('NEWSLETTER_EMAIL', default='info@naturesgiftexpeditions.com')
 
 # Django-Q Configuration (Base settings)
 Q_CLUSTER = {
@@ -286,11 +286,11 @@ from django.templatetags.static import static
 from django.urls import reverse_lazy
 
 UNFOLD = {
-    "SITE_TITLE": "Myriad Travel Admin",
-    "SITE_HEADER": "Myriad Travel Administration",
+    "SITE_TITLE": "NaturesGift Expeditions Admin",
+    "SITE_HEADER": "NaturesGift Expeditions Administration",
     "SITE_URL": "/",
-    "SITE_ICON": lambda request: static("images/myriad-logo.png"),
-    "SITE_LOGO": lambda request: static("images/myriad-logo.png"),
+    "SITE_ICON": lambda request: static("images/brand/natures-gift-logo.jpg"),
+    "SITE_LOGO": lambda request: static("images/brand/natures-gift-logo.jpg"),
     "SITE_SYMBOL": "🌍",  # Travel symbol
     "SHOW_HISTORY": True,
     "SHOW_VIEW_ON_SITE": True,
@@ -309,7 +309,7 @@ UNFOLD = {
             "200": "233 213 255",
             "300": "196 181 253",
             "400": "147 51 234",
-            "500": "15 35 141",  # Mbugani primary blue
+            "500": "16 37 30",  # NaturesGift primary green
             "600": "12 28 113",
             "700": "10 23 94",
             "800": "8 18 75",
@@ -414,12 +414,12 @@ customColorPalette = [
         'label': 'Blue'
     },
     {
-        'color': '#291c1b',  # Mbugani primary color - burgundy
-        'label': 'Mbugani Primary'
+        'color': '#10251e',
+        'label': 'NaturesGift Primary'
     },
     {
-        'color': '#fb9300',  # Mbugani accent color - orange
-        'label': 'Mbugani Accent'
+        'color': '#b88746',
+        'label': 'NaturesGift Accent'
     },
 ]
 

@@ -5,22 +5,20 @@
     <div class="space-y-3 max-w-2xl">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold uppercase tracking-wider">
         <i data-lucide="compass" class="w-3.5 h-3.5 text-amber-600"></i>
-        <span>Outbound Holiday Desk</span>
+        <span>East Africa Destination Desk</span>
       </div>
       <h2 class="text-3xl sm:text-5xl font-serif font-bold leading-[0.95] text-slate-900">
-        Explore World Destinations
+        Explore East Africa
       </h2>
       <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-        Myriad plans outbound holidays from Nairobi to the destinations clients ask for most: Dubai, South Africa, Egypt, Rwanda, Seychelles, Thailand, Schengen Europe, and island escapes.
+        NaturesGift plans safari journeys across Kenya, Tanzania, Uganda and Rwanda, from classic wildlife circuits to primate trekking and specialist expeditions.
       </p>
       <div class="flex flex-wrap gap-2 pt-2">
-        <span class="px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">Dubai</span>
-        <span class="px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">South Africa</span>
-        <span class="px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">Egypt</span>
+        <span class="px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">Kenya</span>
+        <span class="px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">Tanzania</span>
+        <span class="px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">Uganda</span>
         <span class="px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">Rwanda</span>
-        <span class="px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">Seychelles</span>
-        <span class="px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">Thailand</span>
-        <span class="px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">Schengen Europe</span>
+        <span class="px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">Indian Ocean extensions</span>
       </div>
     </div>
 
@@ -28,14 +26,18 @@
       type="button"
       class="open-plan-modal-btn inline-flex items-center gap-2 px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white rounded-xl text-xs sm:text-sm font-semibold transition-all shadow-xs cursor-pointer self-start md:self-auto"
     >
-      <span>Request World Holiday</span>
+      <span>Request Safari Advice</span>
       <i data-lucide="arrow-right" class="w-4 h-4"></i>
     </button>
   </div>
 
   <!-- Grid of destinations -->
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-    {% if destinations %}
+    {% if featured_destinations %}
+      {% for dest in featured_destinations %}
+        {% include 'components/destination_card.html' with dest=dest %}
+      {% endfor %}
+    {% elif destinations %}
       {% for dest in destinations %}
         {% include 'components/destination_card.html' with dest=dest %}
       {% endfor %}

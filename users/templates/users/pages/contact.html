@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-Contact &amp; Nairobi Office — Myriad Travel
+Contact &amp; Nairobi Office — NaturesGift Expeditions
 {% endblock %}
 
 {% block content %}
@@ -14,10 +14,10 @@ Contact &amp; Nairobi Office — Myriad Travel
       <span>Parklands Travel Desk</span>
     </div>
     <h1 class="text-3xl sm:text-5xl font-bold font-serif">
-      Talk to the Myriad team handling your trip.
+      Talk to the NaturesGift team handling your trip.
     </h1>
     <p class="text-slate-300 text-sm sm:text-base max-w-2xl">
-      Reach the Nairobi office for Kenya safaris, Twende Chalbi, coastal holidays, world destinations, corporate movement, package edits, bookings and client follow-up.
+      Reach the Nairobi team for Kenya, Tanzania, Uganda and Rwanda safaris, primate journeys, photographic expeditions, 4x4 vehicle hire and custom itinerary planning.
     </p>
     </div>
 
@@ -58,22 +58,22 @@ Contact &amp; Nairobi Office — Myriad Travel
             </div>
             <div>
               <strong class="text-slate-900 block">Telephone &amp; WhatsApp Sales:</strong>
-              <span>{{ company.contacts.phone_formatted|default:"+254 (0) 712 236 522" }}</span>
-              <span class="block text-xs text-slate-500">Alt: +254 113 446 213</span>
+              <span>{{ company.contacts.phone_formatted|default:"+254 704 784 318" }}</span>
+              <span class="block text-xs text-slate-500">WhatsApp: {{ company.contacts.phone_formatted|default:"+254 704 784 318" }}</span>
             </div>
           </div>
 
           <div class="flex items-start gap-3">
-            <div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center shrink-0">
+            <div class="w-10 h-10 rounded-xl bg-[#f7ecea] text-[#b88746] flex items-center justify-center shrink-0">
               <i data-lucide="mail" class="w-5 h-5"></i>
             </div>
             <div>
               <strong class="text-slate-900 block">Email Routing:</strong>
-              <a href="mailto:{{ company.contacts.email_general|default:'info@myriad-travel.com' }}" class="text-amber-700 hover:underline block">
-                {{ company.contacts.email_general|default:"info@myriad-travel.com" }}
+              <a href="mailto:{{ company.contacts.email_general|default:'info@naturesgiftexpeditions.com' }}" class="text-amber-700 hover:underline block">
+                {{ company.contacts.email_general|default:"info@naturesgiftexpeditions.com" }}
               </a>
-              <a href="mailto:{{ company.contacts.email_marketing|default:'marketing@myriad-travel.com' }}" class="text-amber-700 hover:underline block text-xs">
-                {{ company.contacts.email_marketing|default:"marketing@myriad-travel.com" }}
+              <a href="mailto:{{ company.contacts.email_marketing|default:'safaris@naturesgiftexpeditions.com' }}" class="text-amber-700 hover:underline block text-xs">
+                {{ company.contacts.email_marketing|default:"safaris@naturesgiftexpeditions.com" }}
               </a>
             </div>
           </div>
@@ -92,13 +92,13 @@ Contact &amp; Nairobi Office — Myriad Travel
         </div>
 
         <a
-          href="https://wa.me/{{ company.contacts.whatsapp|default:'254712236522' }}?text=Hello%20Myriad%20Travel,%20I%20would%20like%20to%20reach%20your%20safari%20desk."
+          href="https://wa.me/{{ company.contacts.whatsapp|default:'254704784318' }}?text=Hello%20NaturesGift%20Travel,%20I%20would%20like%20to%20reach%20your%20safari%20desk."
           target="_blank"
           rel="noopener noreferrer"
           class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm rounded-sm shadow-md transition-all flex items-center justify-center gap-2 text-center"
         >
           <i data-lucide="send" class="w-4 h-4"></i>
-          <span>WhatsApp Myriad Sales Desk</span>
+          <span>WhatsApp NaturesGift Sales Desk</span>
         </a>
       </div>
 
@@ -116,9 +116,9 @@ Contact &amp; Nairobi Office — Myriad Travel
     <!-- Right Column: Standard Django POST Form (7 cols) -->
     <div class="lg:col-span-7 bg-white p-8 rounded-sm border border-slate-200 shadow-sm space-y-6">
       <div class="space-y-2">
-        <h2 class="text-xl font-bold font-serif text-slate-900">Send a Myriad Travel Request</h2>
+        <h2 class="text-xl font-bold font-serif text-slate-900">Send a NaturesGift Expeditions Request</h2>
         <p class="text-xs sm:text-sm text-slate-600">
-          Use this for Chalbi, Kenya safaris, coast, outbound holidays, hotel offers, corporate movement, flights, visas and package questions.
+          Use this for safari packages, private routes, primate trekking, photography safaris, 4x4 transport and guest planning questions.
         </p>
       </div>
 
@@ -163,7 +163,7 @@ Contact &amp; Nairobi Office — Myriad Travel
           type="submit"
           class="w-full py-3.5 bg-amber-600 hover:bg-amber-700 text-white font-bold text-sm rounded-sm shadow-md transition-colors cursor-pointer"
         >
-          Submit Request to Myriad Travel
+          Submit Request to NaturesGift Expeditions
         </button>
       </form>
     </div>

@@ -24,7 +24,7 @@ def _render_error_response(request, template_name, context, response_class, fall
           <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>{fallback_title} | Myriad Travel</title>
+            <title>{fallback_title} | NaturesGift Expeditions</title>
           </head>
           <body style="margin:0;min-height:100vh;display:grid;place-items:center;background:#f9f2f2;color:#0b192c;font-family:system-ui,sans-serif;">
             <main style="width:min(92vw,720px);padding:48px 28px;text-align:center;">

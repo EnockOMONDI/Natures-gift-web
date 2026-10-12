@@ -8,7 +8,7 @@
           Ready to embark on an unforgettable safari journey?
         </h3>
         <p class="text-xs sm:text-sm text-slate-300">
-          Speak with a dedicated Nairobi travel designer today and start shaping your next journey.
+          Speak with a Nairobi safari specialist and start shaping a purposeful East African journey.
         </p>
       </div>
 
@@ -20,7 +20,7 @@
           Start Custom Itinerary
         </button>
         <a
-          href="https://wa.me/{{ company.contacts.whatsapp|default:'254712236522' }}?text=Hello%20Myriad%20Travel,%20I%20would%20like%20to%20plan%20a%20trip%20to%20Kenya.%20Please%20connect%20me%20with%20a%20safari%20consultant."
+          href="https://wa.me/{{ company.contacts.whatsapp|default:'254704784318' }}?text=Hello%20NaturesGift%20Expeditions,%20I%20would%20like%20to%20plan%20a%20safari.%20Please%20connect%20me%20with%20a%20safari%20consultant."
           target="_blank"
           rel="noopener noreferrer"
           class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow-md transition-all flex items-center gap-2 cursor-pointer"
@@ -40,22 +40,22 @@
         <div class="space-y-3">
           <div class="flex items-center gap-3">
             <img
-              src="{% static 'images/myriad-logo.png' %}"
-              alt="{{ company.name|default:'Myriad Travel' }}"
+              src="{% static company.logo|default:'images/brand/natures-gift-logo.jpg' %}"
+              alt="{{ company.name|default:'NaturesGift Expeditions' }}"
               class="h-10 sm:h-12 w-auto object-contain bg-white/95 p-1.5 rounded-lg shadow-sm"
             />
             <div>
               <span class="text-lg font-bold font-serif text-white tracking-tight block">
-                {{ company.name|default:"Myriad Travel" }}
+                {{ company.name|default:"NaturesGift Expeditions" }}
               </span>
               <span class="text-[11px] font-semibold text-amber-400 tracking-widest uppercase block">
-                {{ company.tagline|default:"Beyond Imagination" }}
+                {{ company.tagline|default:"Travel With Purpose" }}
               </span>
             </div>
           </div>
 
           <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-sm">
-            A premier Kenyan tour operator delivering handcrafted bush safaris, coastal escapes, corporate team building, and global holidays. Headquartered in Nairobi with direct lodge and park relationships.
+            A Nairobi-based East African safari specialist creating purposeful wildlife journeys, primate treks, photographic expeditions, conservation travel and guided 4x4 adventures.
           </p>
         </div>
 
@@ -102,27 +102,27 @@
         <ul class="space-y-2.5 text-xs text-slate-300">
           <li>
             <a href="/tours-safaris/" class="hover:text-amber-400 transition-colors">
-              Maasai Mara Big Five Safaris
+              Kenya Wildlife Safaris
             </a>
           </li>
           <li>
             <a href="/explore-kenya/" class="hover:text-amber-400 transition-colors">
-              Diani Beach &amp; Coastal Luxury
+              Tanzania Migration &amp; Calving Safaris
             </a>
           </li>
           <li>
             <a href="/tours-safaris/" class="hover:text-amber-400 transition-colors">
-              Amboseli Elephant Giants
+              Uganda Gorilla &amp; Chimpanzee Treks
             </a>
           </li>
           <li>
             <a href="/explore-the-world/" class="hover:text-amber-400 transition-colors">
-              Zanzibar Island &amp; Stone Town
+              Rwanda Primate Expeditions
             </a>
           </li>
           <li>
             <a href="/tours-safaris/" class="hover:text-amber-400 transition-colors">
-              Mt. Longonot &amp; Weekend Hikes
+              Niche Corner Experiences
             </a>
           </li>
         </ul>
@@ -131,17 +131,12 @@
       <!-- Col 4: Corporate & Concierge Services -->
       <div class="space-y-4">
         <h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">
-          Travel Services
+          Safari Services
         </h4>
         <ul class="space-y-2.5 text-xs text-slate-300">
           <li>
             <a href="/#services-section" class="hover:text-amber-400 transition-colors">
-              Flight Ticketing &amp; Bush Charters
-            </a>
-          </li>
-          <li>
-            <a href="/#services-section" class="hover:text-amber-400 transition-colors">
-              Corporate Travel &amp; MICE Retreats
+              Tailor-made Safari Planning
             </a>
           </li>
           <li>
@@ -151,17 +146,22 @@
           </li>
           <li>
             <a href="/#services-section" class="hover:text-amber-400 transition-colors">
-              Kenya eTA &amp; Visa Advisory
+              Expert Safari Guides
             </a>
           </li>
           <li>
             <a href="/#services-section" class="hover:text-amber-400 transition-colors">
-              JKIA / Wilson Airport VIP Transfers
+              Conservation &amp; Community Travel
             </a>
           </li>
           <li>
             <a href="/#services-section" class="hover:text-amber-400 transition-colors">
-              Team Building in Naivasha &amp; Nanyuki
+              Primate Trekking Logistics
+            </a>
+          </li>
+          <li>
+            <a href="/#services-section" class="hover:text-amber-400 transition-colors">
+              Beach &amp; Bush Extensions
             </a>
           </li>
         </ul>
@@ -170,7 +170,7 @@
       <!-- Col 5: Physical Contact & Office Location -->
       <div class="space-y-4">
         <h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">
-          Nairobi Operations Desk
+          Nairobi Safari Desk
         </h4>
         <div class="space-y-3 text-xs text-slate-300">
           <div class="flex items-start gap-2.5">
@@ -183,23 +183,23 @@
           <div class="flex items-start gap-2.5">
             <i data-lucide="phone" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
             <div class="space-y-0.5">
-              <a href="tel:{{ company.contacts.primary_phone|default:'+254712236522' }}" class="hover:text-white block">
-                {{ company.contacts.phone_formatted|default:"+254 (0) 712 236 522" }}
+              <a href="tel:{{ company.contacts.primary_phone|default:'+254704784318' }}" class="hover:text-white block">
+                {{ company.contacts.phone_formatted|default:"+254 704 784 318" }}
               </a>
-              <a href="tel:{{ company.contacts.alt_phone|default:'+254113446213' }}" class="hover:text-white block">
-                {{ company.contacts.alt_phone|default:"+254 113 446 213" }}
+              <a href="tel:{{ company.contacts.alt_phone|default:company.contacts.primary_phone|default:'+254704784318' }}" class="hover:text-white block">
+                {{ company.contacts.alt_phone|default:company.contacts.phone_formatted|default:"+254 704 784 318" }}
               </a>
             </div>
           </div>
 
           <div class="flex items-start gap-2.5">
-            <i data-lucide="mail" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i>
+            <i data-lucide="mail" class="w-4 h-4 text-[#b88746] shrink-0 mt-0.5"></i>
             <div class="space-y-0.5">
-              <a href="mailto:{{ company.contacts.email_general|default:'info@myriad-travel.com' }}" class="hover:text-white block">
-                {{ company.contacts.email_general|default:"info@myriad-travel.com" }}
+              <a href="mailto:{{ company.contacts.email_general|default:'info@naturesgiftexpeditions.com' }}" class="hover:text-white block">
+                {{ company.contacts.email_general|default:"info@naturesgiftexpeditions.com" }}
               </a>
-              <a href="mailto:{{ company.contacts.email_marketing|default:'marketing@myriad-travel.com' }}" class="hover:text-white block">
-                {{ company.contacts.email_marketing|default:"marketing@myriad-travel.com" }}
+              <a href="mailto:{{ company.contacts.email_marketing|default:'safaris@naturesgiftexpeditions.com' }}" class="hover:text-white block">
+                {{ company.contacts.email_marketing|default:"safaris@naturesgiftexpeditions.com" }}
               </a>
             </div>
           </div>
@@ -221,7 +221,7 @@
     <!-- Bottom Copyright Bar -->
     <div class="pt-12 mt-12 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
       <div>
-        &copy; {% now "Y" %} {{ company.name|default:"Myriad Travel" }}. All Rights Reserved. Licensed by Tourism Regulatory Authority of Kenya (TRA).
+        &copy; {% now "Y" %} {{ company.name|default:"NaturesGift Expeditions" }}. All Rights Reserved.
       </div>
 
       <div class="flex items-center gap-4 text-slate-400">

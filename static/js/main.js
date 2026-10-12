@@ -1,5 +1,5 @@
 /**
- * Myriad Travel - Core Interactive Client Script (Vanilla JS)
+ * NaturesGift Expeditions - Core Interactive Client Script (Vanilla JS)
  * Handles client-side UI interactions for Django templates without React/SPA dependencies.
  */
 
@@ -283,8 +283,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (lipaWhatsAppBtn && lipaDestSelect) {
       const dest = lipaDestSelect.value;
-      const msg = `Hello Myriad Travel, I would like to start a "Lipa Pole Pole" installment plan for ${dest}.\nTrip Estimated Budget: ${formattedBudget}\nDuration: ${selectedMonths} Months\nMonthly Contribution: ${formattedMonthly}/month\nPlease advise on account details and booking schedule.`;
-      lipaWhatsAppBtn.href = `https://wa.me/254712236522?text=${encodeURIComponent(msg)}`;
+      const msg = `Hello NaturesGift Expeditions, I would like to discuss a safari payment plan for ${dest}.\nTrip Estimated Budget: ${formattedBudget}\nDuration: ${selectedMonths} Months\nMonthly Contribution: ${formattedMonthly}/month\nPlease advise on booking schedule.`;
+      lipaWhatsAppBtn.href = `https://wa.me/254704784318?text=${encodeURIComponent(msg)}`;
     }
   }
 
@@ -358,7 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function openPackageModal(btn) {
     if (!pkgModal) return;
     const card = btn.closest('.package-card');
-    const title = btn.getAttribute('data-pkg-title') || card?.getAttribute('data-title') || 'Signature Myriad Travel Itinerary';
+    const title = btn.getAttribute('data-pkg-title') || card?.getAttribute('data-title') || 'NaturesGift Safari Itinerary';
     const image = btn.getAttribute('data-pkg-image') || card?.querySelector('img')?.getAttribute('src') || '';
     const category = btn.getAttribute('data-pkg-category') || card?.querySelector('.absolute span')?.textContent?.trim() || 'Signature Tour';
     const duration = btn.getAttribute('data-pkg-duration') || card?.querySelector('[data-lucide="clock"]')?.parentElement?.textContent?.trim() || 'Custom Duration';

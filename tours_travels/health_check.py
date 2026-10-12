@@ -279,7 +279,7 @@ def version_info(request):
     
     version_data = {
         "application": {
-            "name": "Myriad Travel",
+            "name": "NaturesGift Expeditions",
             "version": getattr(settings, 'VERSION', '1.0.0'),
             "build_number": getattr(settings, 'BUILD_NUMBER', 'unknown'),
             "commit_hash": getattr(settings, 'COMMIT_HASH', 'unknown'),

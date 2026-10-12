@@ -1,5 +1,5 @@
 """
-Test settings for Mbugani Luxe Adventures
+Test settings for NaturesGift Expeditions
 Uses SQLite for faster testing and avoids PostgreSQL connection issues
 """
 

@@ -314,10 +314,10 @@ class ItineraryQualityFilter(admin.SimpleListFilter):
 @admin.register(Package)
 class PackageAdmin(admin.ModelAdmin):
     form = PackageAdminForm
-    list_display = ('name', 'display_image', 'category', 'region', 'destination_link', 'itinerary_quality', 'adult_price',
+    list_display = ('name', 'display_image', 'category', 'region', 'safari_type', 'destination_link', 'itinerary_quality', 'adult_price',
                    'child_price', 'duration_days', 'lipa_pole_pole', 'status', 'is_featured', 'home_rank', 'total_bookings')
-    list_filter = ('category', 'categories', 'region', 'main_destination', PackageImageStatusFilter, ItineraryQualityFilter, 'status', 'lipa_pole_pole', 'is_featured', 'duration_days')
-    search_fields = ('name', 'subtitle', 'description', 'highlights', 'inclusions', 'exclusions', 'main_destination__name')
+    list_filter = ('category', 'categories', 'region', 'safari_type', 'main_destination', PackageImageStatusFilter, ItineraryQualityFilter, 'status', 'lipa_pole_pole', 'is_featured', 'duration_days')
+    search_fields = ('name', 'subtitle', 'description', 'highlights', 'inclusions', 'exclusions', 'route_summary', 'best_season', 'main_destination__name')
     autocomplete_fields = ('category', 'main_destination')
     filter_horizontal = ('categories', 'available_accommodations', 'available_travel_modes')
     readonly_fields = ('total_bookings', 'total_reviews', 'itinerary_quality')
@@ -327,7 +327,10 @@ class PackageAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Basic Information', {
-            'fields': ('name', 'slug', 'subtitle', 'category', 'categories', 'region', 'main_destination', 'duration_days', 'duration_nights')
+            'fields': ('name', 'slug', 'subtitle', 'category', 'categories', 'region', 'safari_type', 'main_destination', 'duration_days', 'duration_nights')
+        }),
+        ('Safari Positioning', {
+            'fields': ('route_summary', 'best_season', 'comfort_level', 'group_size_note', 'price_note')
         }),
         ('Media', {
             'fields': ('featured_image',)

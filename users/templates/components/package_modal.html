@@ -12,7 +12,7 @@
       <img 
         id="pkg-modal-img"
         src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200&auto=format&fit=crop" 
-        alt="Myriad Travel package" 
+        alt="NaturesGift safari package" 
         class="w-full h-full object-cover" 
       />
       <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent"></div>
@@ -40,7 +40,7 @@
         </div>
 
         <h2 id="pkg-modal-title" class="text-xl sm:text-2xl lg:text-3xl font-bold font-serif text-white leading-snug">
-          Myriad Travel Package
+          NaturesGift Safari Package
         </h2>
 
         <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-200">
@@ -93,7 +93,7 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700">
             <div class="flex items-start gap-2">
               <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5"></i>
-              <span>Curated routing with Myriad Travel planning support</span>
+              <span>Curated routing with NaturesGift safari planning support</span>
             </div>
             <div class="flex items-start gap-2">
               <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5"></i>
@@ -248,10 +248,10 @@
         <form method="POST" action="/quote/" class="space-y-4">
           {% csrf_token %}
           {% include 'users/includes/antispam_fields.html' %}
-          <input type="hidden" id="form-pkg-title" name="destination" value="Myriad Travel Package" />
+          <input type="hidden" id="form-pkg-title" name="destination" value="NaturesGift Safari Package" />
           
           <div class="bg-amber-50/50 p-3 rounded-lg border border-amber-200/50 text-xs text-amber-900 flex items-center justify-between">
-            <span>Enquiring for: <strong id="form-pkg-name-display">Selected Myriad package</strong></span>
+            <span>Enquiring for: <strong id="form-pkg-name-display">Selected NaturesGift package</strong></span>
             <span class="font-semibold text-emerald-800">Fast 2-Hour Response</span>
           </div>
 
@@ -333,7 +333,7 @@
               Submit Website Enquiry
             </button>
             <a
-              href="https://wa.me/254712236522?text=Hello%20Myriad%20Travel,%20I%20would%20like%20to%20enquire%20about%20a%20safari%20booking."
+              href="https://wa.me/{{ company.contacts.whatsapp|default:'254704784318' }}?text=Hello%20NaturesGift%20Expeditions,%20I%20would%20like%20to%20enquire%20about%20a%20safari%20booking."
               target="_blank"
               rel="noopener noreferrer"
               class="flex-1 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-semibold rounded-xl shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer text-center"
@@ -365,7 +365,7 @@
           Book / Enquire
         </button>
         <a
-          href="https://wa.me/254712236522?text=Hi%20Myriad%20Travel,%20I%20am%20interested%20in%20a%20safari%20trip."
+          href="https://wa.me/{{ company.contacts.whatsapp|default:'254704784318' }}?text=Hi%20NaturesGift%20Expeditions,%20I%20am%20interested%20in%20a%20safari%20trip."
           target="_blank"
           rel="noopener noreferrer"
           class="p-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors"
