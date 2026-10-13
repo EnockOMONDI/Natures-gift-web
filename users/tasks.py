@@ -1,5 +1,5 @@
 """
-Synchronous email sending using an HTTP email provider for Myriad Travel
+Synchronous email sending using an HTTP email provider for NaturesGift Expeditions
 
 This module contains all email sending functions that use Resend or Mailtrap
 for direct, synchronous email delivery. No background workers required.
@@ -22,7 +22,7 @@ def _provider_name():
 
 def _parse_from_email(from_email):
     from_name, from_email_addr = parseaddr(from_email)
-    return from_name or "Myriad Travel", from_email_addr or from_email.strip()
+    return from_name or "NaturesGift Expeditions", from_email_addr or from_email.strip()
 
 
 def _send_email_via_resend(subject, html_message, from_email, recipient_list):
@@ -84,7 +84,7 @@ def send_email_via_mailtrap(subject, html_message, from_email, recipient_list):
     Args:
         subject (str): Email subject
         html_message (str): HTML message content
-        from_email (str): From email address (e.g., "Myriad Travel <info@myriad-travel.com>")
+        from_email (str): From email address (e.g., "NaturesGift Expeditions <info@naturesgiftexpeditions.com>")
         recipient_list (list): List of recipient email addresses
 
     Returns:
@@ -152,7 +152,7 @@ def send_quote_request_emails(quote_request_id):
                 'quote_request': quote_request
             })
 
-            admin_email = getattr(settings, 'ADMIN_EMAIL', 'info@myriad-travel.com')
+            admin_email = getattr(settings, 'ADMIN_EMAIL', 'info@naturesgiftexpeditions.com')
 
             admin_sent = send_email_via_mailtrap(
                 subject=admin_subject,
@@ -171,7 +171,7 @@ def send_quote_request_emails(quote_request_id):
 
         # Send user confirmation email
         try:
-            user_subject = 'Quote Request Received - Myriad Travel'
+            user_subject = 'Quote Request Received - NaturesGift Expeditions'
             user_message_html = render_to_string('users/emails/quote_request_confirmation.html', {
                 'quote_request': quote_request
             })
@@ -255,8 +255,8 @@ def send_job_application_emails(application_id):
                 'application': job_application
             })
 
-            careers_email = getattr(settings, 'JOBS_EMAIL', 'info@myriad-travel.com')
-            info_email = getattr(settings, 'ADMIN_EMAIL', 'info@myriad-travel.com')
+            careers_email = getattr(settings, 'JOBS_EMAIL', 'info@naturesgiftexpeditions.com')
+            info_email = getattr(settings, 'ADMIN_EMAIL', 'info@naturesgiftexpeditions.com')
             recipient_list = [careers_email, info_email]
 
             admin_sent = send_email_via_mailtrap(
@@ -354,7 +354,7 @@ def send_newsletter_subscription_emails(subscription_id):
                 'subscription': subscription
             })
 
-            newsletter_email = getattr(settings, 'NEWSLETTER_EMAIL', 'info@myriad-travel.com')
+            newsletter_email = getattr(settings, 'NEWSLETTER_EMAIL', 'info@naturesgiftexpeditions.com')
 
             admin_sent = send_email_via_mailtrap(
                 subject=admin_subject,
@@ -373,7 +373,7 @@ def send_newsletter_subscription_emails(subscription_id):
 
         # Send subscriber confirmation
         try:
-            subscriber_subject = 'Welcome to the Myriad Travel Newsletter!'
+            subscriber_subject = 'Welcome to the NaturesGift Expeditions Newsletter!'
             subscriber_message = render_to_string('users/emails/newsletter_confirmation.html', {
                 'subscription': subscription
             })
@@ -464,7 +464,7 @@ def send_booking_confirmation_email(booking_id):
             subject=subject,
             html_message=email_body,
             from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[getattr(settings, 'ADMIN_EMAIL', 'info@myriad-travel.com')],
+            recipient_list=[getattr(settings, 'ADMIN_EMAIL', 'info@naturesgiftexpeditions.com')],
         )
 
         if email_sent:

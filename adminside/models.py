@@ -145,6 +145,8 @@ class Destination(models.Model):
     # SEO and metadata
     meta_title = models.CharField(max_length=200, blank=True)
     meta_description = models.TextField(max_length=300, blank=True)
+    source_url = models.URLField(max_length=500, blank=True, help_text='Original public safari page used for content reconciliation.')
+    source_image_url = models.URLField(max_length=500, blank=True, help_text='Original public image URL until the image is uploaded through admin.')
     
     # Pricing information
     starting_price = models.DecimalField(
@@ -539,6 +541,8 @@ class Package(models.Model):
     # SEO
     meta_title = models.CharField(max_length=200, blank=True)
     meta_description = models.TextField(max_length=300, blank=True)
+    source_url = models.URLField(max_length=500, blank=True, help_text='Original public safari page used for content reconciliation.')
+    source_image_url = models.URLField(max_length=500, blank=True, help_text='Original public image URL until the image is uploaded through admin.')
     
     # Timestamps
     created_at = models.DateTimeField(auto_now_add=True)

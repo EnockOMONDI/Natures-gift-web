@@ -333,7 +333,7 @@ class PackageAdmin(admin.ModelAdmin):
             'fields': ('route_summary', 'best_season', 'comfort_level', 'group_size_note', 'price_note')
         }),
         ('Media', {
-            'fields': ('featured_image',)
+            'fields': ('featured_image', 'source_image_url', 'source_url')
         }),
         ('Description', {
             'fields': ('description',),
@@ -384,8 +384,8 @@ class PackageAdmin(admin.ModelAdmin):
     def itinerary_quality(self, obj):
         audit = analyse_itinerary(obj)
         colors = {
-            'complete': '#12645d',
-            'grouped': '#1ca297',
+            'complete': '#084536',
+            'grouped': '#F2774D',
             'needs-review': '#eb3728',
         }
         return format_html(
@@ -558,6 +558,6 @@ class HeroSliderAdmin(admin.ModelAdmin):
     display_image_thumbnail.allow_tags = True
 
 # Customize admin site header and title
-admin.site.site_header = 'Myriad Travel Administration'
-admin.site.site_title = 'Myriad Travel Admin Portal'
-admin.site.index_title = 'Welcome to Myriad Travel Admin Portal'
+admin.site.site_header = 'NaturesGift Expeditions Administration'
+admin.site.site_title = 'NaturesGift Expeditions Admin Portal'
+admin.site.index_title = 'Welcome to NaturesGift Expeditions Admin Portal'

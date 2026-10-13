@@ -102,11 +102,11 @@ CHALBI_SPECIAL_OFFER = {
         },
         {
             'question': 'Can children join, and how does room sharing work?',
-            'answer': 'Children can be considered with the Myriad team confirming rooming, age suitability and final pricing before booking. The current child rate is stored separately from the adult sharing rate.',
+            'answer': 'Children can be considered with the NaturesGift team confirming rooming, age suitability and final pricing before booking. The current child rate is stored separately from the adult sharing rate.',
         },
         {
             'question': 'What happens after I send my request?',
-            'answer': 'Myriad Travel will confirm availability, rooming preference, inclusions, final payment steps and any operational updates before your booking is locked in.',
+            'answer': 'NaturesGift Expeditions will confirm availability, rooming preference, inclusions, final payment steps and any operational updates before your booking is locked in.',
         },
     ],
 }
@@ -153,7 +153,7 @@ CHALBI_DAY_META = {
 
 # Reviewed local fallback photographs. An admin-uploaded destination or package
 # image always wins; this list only prevents published pages from falling back
-# to the generic Myriad placeholder while the image library is being completed.
+# to the generic NaturesGift placeholder while the image library is being completed.
 CURATED_DESTINATION_IMAGES = {
     'akagera-national-park',
     '07-tsavo-east-watamu-malindi',
@@ -299,8 +299,8 @@ def _package_presenter(package):
         'destination': destination,
         # A package-specific upload wins. Otherwise its curated destination banner
         # supplies a coherent public image until the package gets its own asset.
-        'featured_image': _image_url(public_image, image_fallback),
-        'hero_image': _uploadcare_preview_url(public_image, image_fallback),
+        'featured_image': _image_url(public_image, getattr(package, 'source_image_url', '') or image_fallback),
+        'hero_image': _uploadcare_preview_url(public_image, getattr(package, 'source_image_url', '') or image_fallback),
         'duration': f'{package.duration_days} Days / {package.duration_nights} Nights',
         'rating': package.rating,
         'reviews_count': package.total_reviews,
@@ -356,10 +356,10 @@ def _destination_presenter(destination):
         'name': destination.name,
         'slug': destination.slug,
         'country': country,
-        'description': destination.meta_description or destination.description,
+        'description': destination.description or destination.meta_description,
         'image': _image_url(
             destination.image,
-            _curated_destination_image(destination) or '/static/images/hero/discover-kenya.jpeg',
+            getattr(destination, 'source_image_url', '') or _curated_destination_image(destination) or '/static/images/hero/discover-kenya.jpeg',
         ),
         'badge': 'Featured' if destination.is_featured else destination.get_destination_type_display(),
         'popular_for': ['Safari', 'Nature', 'Tailored Trips'],
@@ -452,7 +452,7 @@ def aboutus(request):
 
 def services(request):
     """
-    Render the services page showcasing all Mbugani Luxe Adventures services.
+    Render the services page showcasing all NaturesGift Expeditions services.
     """
     return render(request, 'users/pages/services.html', _public_page_context(package_limit=6))
 
@@ -628,7 +628,7 @@ def explore_kenya(request):
     context = _collection_context(
         'Explore Kenya',
         'Kenya holidays, safaris and coast escapes',
-        'Find the Kenya experiences Myriad Travel can shape around your dates, from desert campaigns and wildlife safaris to coast stays and weekend escapes.',
+        'Find the Kenya experiences NaturesGift Expeditions can shape around your dates, from desert campaigns and wildlife safaris to coast stays and weekend escapes.',
         packages_qs,
         destinations_qs,
         active_filter=selected_category,
@@ -649,7 +649,7 @@ def explore_the_world(request):
     ).distinct().order_by('-is_featured', 'display_order', 'name')[:12]
     context = _collection_context(
         'Explore World Destinations',
-        'International holidays from Myriad Travel',
+        'International holidays from NaturesGift Expeditions',
         'Browse global holidays, city breaks and island escapes with planning support from enquiry to confirmed itinerary.',
         packages_qs,
         destinations_qs,
@@ -698,7 +698,7 @@ def signature_experiences(request):
     context = _collection_context(
         'Themed Packages',
         'Curated journeys for a specific reason to travel',
-        'Cruises, wellness retreats, shopping tours, pilgrimages and honeymoon escapes prepared as ready-to-enquire Myriad Travel experiences.',
+        'Cruises, wellness retreats, shopping tours, pilgrimages and honeymoon escapes prepared as ready-to-enquire NaturesGift Expeditions experiences.',
         packages_qs,
         groups=groups,
         active_filter=selected_filter,
@@ -734,7 +734,7 @@ def deals(request):
     context = _collection_context(
         'Current Deals',
         'Limited-date offers and campaigns',
-        'Current Myriad offers are published here while their campaign dates are active. Open any package to request a quote and confirm availability.',
+        'Current NaturesGift offers are published here while their campaign dates are active. Open any package to request a quote and confirm availability.',
         packages_qs,
         active_filter=selected_filter,
         category_filters=filters,
@@ -1282,7 +1282,7 @@ def send_booking_email(booking):
             subject=f"New Booking: {booking.full_name} for {booking.package.name}",
             html_message=message,
             from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[getattr(settings, 'ADMIN_EMAIL', 'info@myriad-travel.com')],
+            recipient_list=[getattr(settings, 'ADMIN_EMAIL', 'info@naturesgiftexpeditions.com')],
         )
 
     except Exception as e:
@@ -1318,7 +1318,7 @@ class ActivateAccountView(View):
 
 def documentation(request):
     """
-    Documentation page for Mbugani Luxe Adventures Django project
+    Documentation page for NaturesGift Expeditions Django project
     """
     # Get project statistics for the documentation
     stats = {
@@ -1342,7 +1342,7 @@ def documentation(request):
         'recent_posts': recent_posts,
         'recent_packages': recent_packages,
         'page_title': 'Project Documentation',
-        'page_description': 'Comprehensive documentation for the Mbugani Luxe Adventures Django project including architecture, user guides, and technical specifications.',
+        'page_description': 'Comprehensive documentation for the NaturesGift Expeditions Django project including architecture, user guides, and technical specifications.',
     }
 
     return render(request, 'users/documentation.html', context)
@@ -1608,7 +1608,7 @@ def generate_user_friendly_error_message(error_report):
 
     # Add specific recommendations for production issues
     if not error_report['environment']['debug_mode'] and not error_report['overall_success']:
-        messages.append("Please contact us directly at info@myriad-travel.com if you don't receive a confirmation email.")
+        messages.append("Please contact us directly at info@naturesgiftexpeditions.com if you don't receive a confirmation email.")
 
     return messages
 

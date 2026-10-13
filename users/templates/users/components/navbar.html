@@ -24,11 +24,11 @@
 
       <div class="flex items-center gap-4">
         <a 
-          href="mailto:{{ company.contacts.email_general|default:'info@myriad-travel.com' }}"
+          href="mailto:{{ company.contacts.email_general|default:'info@naturesgiftexpeditions.com' }}"
           class="hidden lg:flex items-center gap-1.5 hover:text-amber-400 transition-colors"
         >
           <i data-lucide="mail" class="w-3.5 h-3.5 text-amber-500"></i>
-          <span>{{ company.contacts.email_general|default:"info@myriad-travel.com" }}</span>
+          <span>{{ company.contacts.email_general|default:"info@naturesgiftexpeditions.com" }}</span>
         </a>
 
         <!-- Currency Selector -->
@@ -51,7 +51,7 @@
 
         <!-- Direct WhatsApp Link -->
         <a
-          href="https://wa.me/{{ company.contacts.whatsapp|default:'254712236522' }}?text=Hello%20Myriad%20Travel,%20I%20would%20like%20to%20enquire%20about%20planning%20a%20trip%20/%20holiday."
+          href="https://wa.me/{{ company.contacts.whatsapp|default:'254704784318' }}?text=Hello%20NaturesGift%20Expeditions,%20I%20would%20like%20to%20enquire%20about%20planning%20a%20trip%20/%20holiday."
           target="_blank"
           rel="noopener noreferrer"
           class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-600/90 hover:bg-emerald-600 text-white text-[11px] font-medium rounded-full transition-all"
@@ -77,8 +77,8 @@
       >
         <div class="relative w-20 h-20 sm:w-24 sm:h-24 lg:w-24 lg:h-24 flex items-center justify-center rounded-xl bg-white p-1.5 shadow-xs group-hover:scale-105 transition-transform duration-200">
           <img 
-            src="{% static 'images/myriad-logo.png' %}" 
-            alt="Myriad Travel Logo" 
+            src="{% static 'images/brand/natures-gift-logo.webp' %}" 
+            alt="NaturesGift Expeditions Logo" 
             class="w-full h-full object-contain"
           />
         </div>
@@ -250,7 +250,7 @@
         </button>
 
         <a
-          href="https://wa.me/{{ company.contacts.whatsapp|default:'254712236522' }}?text=Hello%20Myriad%20Travel,%20I%20would%20like%20to%20consult%20with%20a%20travel%20specialist."
+          href="https://wa.me/{{ company.contacts.whatsapp|default:'254704784318' }}?text=Hello%20NaturesGift%20Expeditions,%20I%20would%20like%20to%20consult%20with%20a%20travel%20specialist."
           target="_blank"
           rel="noopener noreferrer"
           class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg text-center text-sm flex items-center justify-center gap-2"

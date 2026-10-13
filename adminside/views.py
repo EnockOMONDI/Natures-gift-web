@@ -148,8 +148,8 @@ def package_list(request):
         'current_category': category_slug,
         'current_destination_id': destination_id,
         'search_query': search_query,
-        'page_title': 'Travel Packages - Myriad Travel',
-        'meta_description': 'Discover safari packages, coastal holidays, and international escapes with Myriad Travel.'
+        'page_title': 'Travel Packages - NaturesGift Expeditions',
+        'meta_description': 'Discover safari packages, coastal holidays, and international escapes with NaturesGift Expeditions.'
     }
     return render(request, 'adminside/package_list.html', context)
 

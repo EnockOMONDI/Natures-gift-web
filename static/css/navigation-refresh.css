@@ -1,4 +1,4 @@
-:root { --myriad-red: #b88746; --myriad-blue: #243131; }
+:root { --myriad-red: #F2774D; --myriad-blue: #084536; }
 .myriad-red-bg { background-color: var(--myriad-red); }
 .myriad-red-text { color: var(--myriad-red); }
 .myriad-red-light-text { color: #f9b1aa; }
@@ -84,9 +84,9 @@
 #footer-section > div:nth-child(2) [class*="bg-slate"] { background: #d5ece7; }
 #footer-section > div:nth-child(2) a:hover { color: #b82b20; text-decoration: underline; }
 #footer-section > div:nth-child(2) [class*="border-slate"] { border-color: #bedbd6; }
-#footer-section img[alt="Myriad Travel"] { width: 156px; height: 110px; object-fit: contain; background: white; }
+#footer-section img[alt="NaturesGift Expeditions"] { width: 156px; height: 110px; object-fit: contain; background: white; }
 #footer-section [class*="text-amber"], #footer-section [class*="text-emerald"],
-#footer-section [class*="text-sky"] { color: #b88746; }
+#footer-section [class*="text-sky"] { color: #F2774D; }
 #packages-section { padding-top: 56px; padding-bottom: 56px; }
 #packages-section h2 { font-size: 34px; line-height: 1.2; }
 #packages-section .cat-filter-btn.bg-amber-600 { background: #137970; }

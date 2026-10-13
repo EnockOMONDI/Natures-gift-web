@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Edit Profile — Myriad Travel{% endblock %}
+{% block title %}Edit Profile — NaturesGift Expeditions{% endblock %}
 {% block content %}
 <section class="py-16 px-4 sm:px-8 max-w-3xl mx-auto"><h1 class="text-3xl font-bold font-serif mb-8">Edit Profile</h1><form method="post" class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">{% csrf_token %}
   <div class="grid sm:grid-cols-2 gap-4"><p><label>First Name</label><input name="first_name" value="{{ user.first_name }}"></p><p><label>Last Name</label><input name="last_name" value="{{ user.last_name }}"></p></div>

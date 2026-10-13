@@ -135,7 +135,7 @@ def site_settings(request):
             'name': 'NaturesGift Expeditions',
             'tagline': 'Travel With Purpose',
             'short_intro': 'Tailor-made East African safaris, primate journeys, photographic expeditions and guided 4x4 wilderness travel.',
-            'logo': 'images/brand/natures-gift-logo.jpg',
+            'logo': 'images/brand/natures-gift-logo.webp',
             'address': {
                 'full': 'Nairobi, Kenya',
             },

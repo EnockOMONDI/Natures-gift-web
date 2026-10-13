@@ -1,13 +1,13 @@
 services:
-  # Web service for Mbugani Luxe Adventures# Web service for Mbugani Luxe Adventures
+  # Web service for NaturesGift Expeditions
   - type: web
-    name: Mbuganiapp
+    name: naturesgift-web
     env: python
     region: frankfurt
     plan: starter
-    branch: mugani2026b
+    branch: main
     buildCommand: |
-      echo "🚀 Starting Mbugani Luxe Adventures build process..."
+      echo "🚀 Starting NaturesGift Expeditions build process..."
       pip install --upgrade pip
       pip install -r requirements.txt
       echo "📦 Dependencies installed successfully"
@@ -19,7 +19,7 @@ services:
       echo "💾 Cache table created"
       echo "✅ Build completed successfully"
     startCommand: |
-      echo "🌟 Starting Mbugani Luxe Adventures web server..."
+      echo "🌟 Starting NaturesGift Expeditions web server..."
       gunicorn tours_travels.wsgi:application \
         --bind 0.0.0.0:$PORT \
         --workers $WEB_CONCURRENCY \
@@ -35,7 +35,7 @@ services:
     envVars:
       # Django Core Configuration
       - key: DJANGO_SETTINGS_MODULE
-        value: false # Set manually in Render dashboard - see .env.secrets
+        value: tours_travels.settings_prod
       # NOTE: DJANGO_ENV removed to match Novustell's simple architecture
       - key: PYTHON_VERSION
         value: 3.12.0
@@ -50,7 +50,7 @@ services:
       - key: DEBUG
         value: False
       - key: ALLOWED_HOSTS
-        value: false # Set manually in Render dashboard - see .env.secrets
+        value: naturesgiftexpeditions.com,www.naturesgiftexpeditions.com,.onrender.com
       - key: DB_CONN_MAX_AGE
         value: 600
       - key: DB_CONN_HEALTH_CHECKS
@@ -72,13 +72,13 @@ services:
       - key: MAILTRAP_API_TOKEN
         sync: false  # Set manually in Render dashboard - see .env.secrets
       - key: DEFAULT_FROM_EMAIL
-        value: false # Set manually in Render dashboard - see .env.secrets
+        value: info@naturesgiftexpeditions.com
       - key: ADMIN_EMAIL
-        value: false # Set manually in Render dashboard - see .env.secrets
+        value: info@naturesgiftexpeditions.com
       - key: JOBS_EMAIL
-        value: false # Set manually in Render dashboard - see .env.secrets
+        value: info@naturesgiftexpeditions.com
       - key: NEWSLETTER_EMAIL
-        value: false # Set manually in Render dashboard - see .env.secrets
+        value: info@naturesgiftexpeditions.com
 
       # Uploadcare Configuration - CRITICAL SECRETS
       - key: UPLOADCARE_PUBLIC_KEY
@@ -88,9 +88,9 @@ services:
 
       # Site Configuration
       - key: SITE_URL
-        value: false # Set manually in Render dashboard - see .env.secrets
+        value: https://naturesgiftexpeditions.com
       - key: WHATSAPP_PHONE
-        value: false # Set manually in Render dashboard - see .env.secrets
+        value: 254704784318
 
       # Security Configuration
       - key: SECURE_SSL_REDIRECT
@@ -146,7 +146,7 @@ services:
       - key: DEFAULT_COUNTRY
         value: Kenya
       - key: DEFAULT_CURRENCY
-        value: USD
+        value: KES
 
       # Monitoring (Optional - set manually if needed)
       # - key: SENTRY_DSN

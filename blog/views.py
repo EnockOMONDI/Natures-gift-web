@@ -83,8 +83,8 @@ def blog_list(request):
         "featured_blog": featured_blog,
         "sort_by": sort_by,
         "category_slug": category_slug,
-        "page_title": "Travel Blog - Myriad Travel",
-        "meta_description": "Discover travel stories, safari tips, destination guides, and planning advice from Myriad Travel.",
+        "page_title": "Travel Blog - NaturesGift Expeditions",
+        "meta_description": "Discover travel stories, safari tips, destination guides, and planning advice from NaturesGift Expeditions.",
     }
     return render(request, 'users/bloglist.html', context)
 
@@ -156,7 +156,7 @@ def blog_detail(request, slug=None, pid=None):
     ).order_by("date").first()
 
     # SEO and meta data
-    page_title = f"{post.title} - Myriad Travel Blog"
+    page_title = f"{post.title} - NaturesGift Expeditions Blog"
     meta_description = post.get_meta_description()
     canonical_url = request.build_absolute_uri(post.get_absolute_url())
 
@@ -221,8 +221,8 @@ def category_detail(request, slug):
     ).order_by('title')
 
     # SEO data
-    page_title = f"{category.title} - Travel Blog - Myriad Travel"
-    meta_description = category.description or f"Explore {category.title} articles and travel guides from Myriad Travel."
+    page_title = f"{category.title} - Travel Blog - NaturesGift Expeditions"
+    meta_description = category.description or f"Explore {category.title} articles and travel guides from NaturesGift Expeditions."
 
     context = {
         "category": category,
@@ -274,8 +274,8 @@ def blog_search(request):
         "blog_count": blog_queryset.count(),
         "query": query,
         "categories": categories,
-        "page_title": f"Search Results for '{query}' - Myriad Travel Blog",
-        "meta_description": f"Search results for '{query}' in the Myriad Travel blog.",
+        "page_title": f"Search Results for '{query}' - NaturesGift Expeditions Blog",
+        "meta_description": f"Search results for '{query}' in the NaturesGift Expeditions blog.",
         "breadcrumbs": [
             {"name": "Home", "url": "/"},
             {"name": "Blog", "url": reverse("blog:blog-list")},
@@ -315,9 +315,9 @@ def blog_rss(request):
     rss = f"""<?xml version="1.0" encoding="UTF-8"?>
     <rss version="2.0">
       <channel>
-        <title>Myriad Travel Blog</title>
+        <title>NaturesGift Expeditions Blog</title>
         <link>{escape(site_url)}</link>
-        <description>Travel stories, safari tips, destination guides, and planning advice from Myriad Travel.</description>
+        <description>Travel stories, safari tips, destination guides, and planning advice from NaturesGift Expeditions.</description>
         {''.join(items)}
       </channel>
     </rss>"""

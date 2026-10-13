@@ -64,8 +64,8 @@ def _csv_env(name):
 
 # Production allowed hosts. Keep production domain defaults, but also honor Render envs.
 ALLOWED_HOSTS = [
-    'www.myriad-travel.com',
-    'myriad-travel.com',
+    'naturesgiftexpeditions.com',
+    'www.naturesgiftexpeditions.com',
     '.onrender.com',
     os.getenv('RENDER_EXTERNAL_HOSTNAME', ''),
     *_csv_env('ALLOWED_HOSTS'),
@@ -190,15 +190,15 @@ DATA_UPLOAD_MAX_MEMORY_SIZE = 5 * 1024 * 1024  # 5MB
 # Production CORS settings
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = list(dict.fromkeys([
-    "https://www.myriad-travel.com",
-    "https://myriad-travel.com",
+    "https://www.naturesgiftexpeditions.com",
+    "https://naturesgiftexpeditions.com",
     *_csv_env('CORS_ALLOWED_ORIGINS'),
 ]))
 CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = list(dict.fromkeys([
-    "https://www.myriad-travel.com",
-    "https://myriad-travel.com",
+    "https://www.naturesgiftexpeditions.com",
+    "https://naturesgiftexpeditions.com",
     *_csv_env('CSRF_TRUSTED_ORIGINS'),
 ]))
 

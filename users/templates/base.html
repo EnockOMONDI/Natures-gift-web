@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/jpeg" href="{% static company.logo|default:'images/brand/natures-gift-logo.jpg' %}" />
+    <link rel="icon" type="image/webp" href="{% static company.logo|default:'images/brand/natures-gift-logo.webp' %}" />
     
     <title>{% block title %}NaturesGift Expeditions — Travel With Purpose | East African Safaris{% endblock %}</title>
     
@@ -14,7 +14,7 @@
     <!-- Open Graph / Social Meta -->
     <meta property="og:title" content="{% block og_title %}NaturesGift Expeditions — East African Safari Specialists{% endblock %}" />
     <meta property="og:description" content="{% block og_description %}Purposeful safaris, primate journeys, photographic expeditions and guided 4x4 travel across East Africa.{% endblock %}" />
-    <meta property="og:image" content="{% static company.logo|default:'images/brand/natures-gift-logo.jpg' %}" />
+    <meta property="og:image" content="{% static company.logo|default:'images/brand/natures-gift-logo.webp' %}" />
     <meta property="og:type" content="website" />
     
     <!-- Google Fonts -->
@@ -38,8 +38,8 @@
             },
             colors: {
               safari: {
-                gold: '#B88746',
-                dark: '#10251E',
+                gold: '#F2774D',
+                dark: '#084536',
                 sand: '#F6F0E6',
               }
             }
@@ -89,8 +89,8 @@
       form input:focus,
       form select:focus,
       form textarea:focus {
-        border-color: #b88746;
-        box-shadow: 0 0 0 3px rgba(184, 135, 70, 0.16);
+        border-color: #F2774D;
+        box-shadow: 0 0 0 3px rgba(242, 119, 77, 0.16);
       }
       form label {
         display: block;

@@ -195,10 +195,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
 UPLOADCARE = {
-  # Don’t forget to set real keys when it gets real :)
-
-  'pub_key': 'ee9d364d0155cae58db7',
-  'secret': '23d12b50d22b09097026',
+  'pub_key': os.getenv('UPLOADCARE_PUBLIC_KEY', ''),
+  'secret': os.getenv('UPLOADCARE_SECRET_KEY', ''),
 }
 
 # Default Image Configuration
@@ -248,7 +246,7 @@ TURNSTILE_ALLOWED_HOSTNAMES = {
     hostname.strip().lower()
     for hostname in os.getenv(
         'TURNSTILE_ALLOWED_HOSTNAMES',
-        'myriad-travel.com,www.myriad-travel.com,localhost,127.0.0.1',
+        'naturesgiftexpeditions.com,www.naturesgiftexpeditions.com,localhost,127.0.0.1',
     ).split(',')
     if hostname.strip()
 }
@@ -289,8 +287,8 @@ UNFOLD = {
     "SITE_TITLE": "NaturesGift Expeditions Admin",
     "SITE_HEADER": "NaturesGift Expeditions Administration",
     "SITE_URL": "/",
-    "SITE_ICON": lambda request: static("images/brand/natures-gift-logo.jpg"),
-    "SITE_LOGO": lambda request: static("images/brand/natures-gift-logo.jpg"),
+    "SITE_ICON": lambda request: static("images/brand/natures-gift-logo.webp"),
+    "SITE_LOGO": lambda request: static("images/brand/natures-gift-logo.webp"),
     "SITE_SYMBOL": "🌍",  # Travel symbol
     "SHOW_HISTORY": True,
     "SHOW_VIEW_ON_SITE": True,
@@ -418,7 +416,7 @@ customColorPalette = [
         'label': 'NaturesGift Primary'
     },
     {
-        'color': '#b88746',
+        'color': '#F2774D',
         'label': 'NaturesGift Accent'
     },
 ]

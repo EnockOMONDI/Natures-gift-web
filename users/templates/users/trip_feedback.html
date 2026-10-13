@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Trip Feedback — Myriad Travel{% endblock %}
+{% block title %}Trip Feedback — NaturesGift Expeditions{% endblock %}
 
 {% block content %}
 <section class="py-14 sm:py-20 px-4 sm:px-8 bg-[#F9F2F2]">
@@ -9,14 +9,14 @@
     <div class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
       <div class="bg-[#071321] text-white p-6 sm:p-8">
         <div class="flex items-center gap-3">
-          <img src="{% static 'images/myriad-logo.png' %}" alt="Myriad Travel" class="h-14 w-14 object-contain bg-white rounded-lg p-1.5">
+          <img src="{% static 'images/brand/natures-gift-logo.webp' %}" alt="NaturesGift Expeditions" class="h-14 w-14 object-contain bg-white rounded-lg p-1.5">
           <div>
             <p class="text-xs uppercase tracking-[0.2em] text-amber-300 font-bold">Private Client Feedback</p>
             <h1 class="text-2xl sm:text-3xl font-serif font-bold">How was your trip?</h1>
           </div>
         </div>
         <p class="mt-4 text-sm text-slate-300 max-w-2xl">
-          Thank you for travelling with Myriad. Your feedback helps our team improve future experiences.
+          Thank you for travelling with NaturesGift Expeditions. Your feedback helps our team improve future experiences.
         </p>
       </div>
 
@@ -34,7 +34,7 @@
           {% elif feedback_request.package %}
             {{ feedback_request.package.name }}
           {% else %}
-            Myriad Travel Experience
+            NaturesGift Expeditions Experience
           {% endif %}
         </div>
 
@@ -80,7 +80,7 @@
 
           <label class="flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700 normal-case font-medium">
             {{ form.permission_to_publish }}
-            <span>I allow Myriad Travel to publish my feedback on the website after admin review.</span>
+            <span>I allow NaturesGift Expeditions to publish my feedback on the website after admin review.</span>
           </label>
 
           <button type="submit" class="w-full rounded-xl bg-amber-600 px-5 py-3 text-sm font-bold text-white hover:bg-amber-700 transition-colors">

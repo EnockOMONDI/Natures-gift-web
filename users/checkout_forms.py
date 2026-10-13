@@ -81,7 +81,7 @@ class CheckoutForm(AntiSpamFormMixin, forms.Form):
         widget=forms.CheckboxInput(attrs={
             'class': 'form-check-input'
         }),
-        label='I would like to receive travel updates and special offers from Myriad Travel'
+        label='I would like to receive travel updates and special offers from NaturesGift Expeditions'
     )
 
     def clean_full_name(self):

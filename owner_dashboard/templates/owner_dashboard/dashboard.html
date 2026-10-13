@@ -4,8 +4,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ page_title }} | Myriad Travel</title>
-    <link rel="icon" type="image/png" href="{% static 'images/myriad-logo.png' %}">
+    <title>{{ page_title }} | NaturesGift Expeditions</title>
+    <link rel="icon" type="image/webp" href="{% static 'images/brand/natures-gift-logo.webp' %}">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -17,10 +17,10 @@
             },
             colors: {
               myriad: {
-                navy: '#071321',
-                teal: '#079b8e',
-                orange: '#e07900',
-                mist: '#f9f2f2',
+                navy: '#084536',
+                teal: '#084536',
+                orange: '#F2774D',
+                mist: '#fff1ed',
               }
             }
           }
@@ -36,11 +36,11 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div class="flex items-center gap-4">
           <div class="h-16 w-16 rounded-md bg-white flex items-center justify-center overflow-hidden">
-            <img src="{% static 'images/myriad-logo.png' %}" alt="Myriad Travel" class="h-14 w-14 object-contain">
+            <img src="{% static 'images/brand/natures-gift-logo.webp' %}" alt="NaturesGift Expeditions" class="h-14 w-14 object-contain">
           </div>
           <div>
             <p class="text-xs uppercase tracking-[0.2em] text-amber-300 font-bold">Owner Cockpit</p>
-            <h1 class="text-2xl sm:text-3xl font-serif font-bold">Myriad Travel Dashboard</h1>
+            <h1 class="text-2xl sm:text-3xl font-serif font-bold">NaturesGift Expeditions Dashboard</h1>
             <p class="text-sm text-slate-300">Last updated {{ last_updated|date:"M d, Y H:i" }}</p>
           </div>
         </div>

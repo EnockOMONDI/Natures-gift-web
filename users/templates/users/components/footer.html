@@ -20,7 +20,7 @@
           Start Custom Itinerary
         </button>
         <a
-          href="https://wa.me/{{ company.contacts.whatsapp|default:'254712236522' }}?text=Hello%20Myriad%20Travel,%20I%20would%20like%20to%20plan%20a%20trip%20to%20Kenya.%20Please%20connect%20me%20with%20a%20safari%20consultant."
+          href="https://wa.me/{{ company.contacts.whatsapp|default:'254704784318' }}?text=Hello%20NaturesGift%20Expeditions,%20I%20would%20like%20to%20plan%20a%20trip%20to%20Kenya.%20Please%20connect%20me%20with%20a%20safari%20consultant."
           target="_blank"
           rel="noopener noreferrer"
           class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow-md transition-all flex items-center gap-2 cursor-pointer"
@@ -40,13 +40,13 @@
         <div class="space-y-3">
           <div class="flex items-center gap-3">
             <img
-              src="{% static 'images/myriad-logo.png' %}"
-              alt="{{ company.name|default:'Myriad Travel' }}"
+              src="{% static 'images/brand/natures-gift-logo.webp' %}"
+              alt="{{ company.name|default:'NaturesGift Expeditions' }}"
               class="h-10 sm:h-12 w-auto object-contain bg-white/95 p-1.5 rounded-lg shadow-sm"
             />
             <div>
               <span class="text-lg font-bold font-serif text-white tracking-tight block">
-                {{ company.name|default:"Myriad Travel" }}
+                {{ company.name|default:"NaturesGift Expeditions" }}
               </span>
               <span class="text-[11px] font-semibold text-amber-400 tracking-widest uppercase block">
                 {{ company.tagline|default:"Beyond Imagination" }}
@@ -193,13 +193,13 @@
           </div>
 
           <div class="flex items-start gap-2.5">
-            <i data-lucide="mail" class="w-4 h-4 text-[#b88746] shrink-0 mt-0.5"></i>
+            <i data-lucide="mail" class="w-4 h-4 text-[#F2774D] shrink-0 mt-0.5"></i>
             <div class="space-y-0.5">
-              <a href="mailto:{{ company.contacts.email_general|default:'info@myriad-travel.com' }}" class="hover:text-white block">
-                {{ company.contacts.email_general|default:"info@myriad-travel.com" }}
+              <a href="mailto:{{ company.contacts.email_general|default:'info@naturesgiftexpeditions.com' }}" class="hover:text-white block">
+                {{ company.contacts.email_general|default:"info@naturesgiftexpeditions.com" }}
               </a>
-              <a href="mailto:{{ company.contacts.email_marketing|default:'marketing@myriad-travel.com' }}" class="hover:text-white block">
-                {{ company.contacts.email_marketing|default:"marketing@myriad-travel.com" }}
+              <a href="mailto:{{ company.contacts.email_marketing|default:'marketing@naturesgiftexpeditions.com' }}" class="hover:text-white block">
+                {{ company.contacts.email_marketing|default:"marketing@naturesgiftexpeditions.com" }}
               </a>
             </div>
           </div>
@@ -221,7 +221,7 @@
     <!-- Bottom Copyright Bar -->
     <div class="pt-12 mt-12 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
       <div>
-        &copy; {% now "Y" %} {{ company.name|default:"Myriad Travel" }}. All Rights Reserved. Licensed by Tourism Regulatory Authority of Kenya (TRA).
+        &copy; {% now "Y" %} {{ company.name|default:"NaturesGift Expeditions" }}. All Rights Reserved. Licensed by Tourism Regulatory Authority of Kenya (TRA).
       </div>
 
       <div class="flex items-center gap-4 text-slate-400">

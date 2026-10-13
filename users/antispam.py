@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 SECURITY_BLOCK_MESSAGE = (
     'This request was blocked for security reasons. '
     'Please do not use automated or abusive submissions. '
-    'If this is an error, chat with Myriad Travel on WhatsApp: '
+    'If this is an error, chat with NaturesGift Expeditions on WhatsApp: '
     'https://wa.me/254712236522?text=I%20need%20help%20with%20a%20blocked%20website%20request'
 )
 

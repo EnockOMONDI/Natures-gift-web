@@ -19,11 +19,11 @@ def send_service_inquiry_emails(inquiry, form, title):
             subject=f'New {title} Inquiry #{inquiry.pk} from {inquiry.contact_person}',
             html_message=render_to_string('users/emails/service_inquiry_admin.html', context),
             from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[getattr(settings, 'ADMIN_EMAIL', 'info@myriad-travel.com')],
+            recipient_list=[getattr(settings, 'ADMIN_EMAIL', 'info@naturesgiftexpeditions.com')],
         )
         # The submitted record is retained even when either notification fails.
         customer_sent = send_email_via_mailtrap(
-            subject=f'{title} Inquiry Received - Myriad Travel',
+            subject=f'{title} Inquiry Received - NaturesGift Expeditions',
             html_message=render_to_string('users/emails/service_inquiry_confirmation.html', context),
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[inquiry.email],

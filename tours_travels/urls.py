@@ -31,7 +31,7 @@ urlpatterns = [
     path('version/', version_info, name='version_info'),
 
     # Favicon handling
-    path('favicon.ico', RedirectView.as_view(url='/static/images/brand/natures-gift-logo.jpg', permanent=True)),
+    path('favicon.ico', RedirectView.as_view(url='/static/images/brand/natures-gift-logo.webp', permanent=True)),
 
     #path('',tours_travels_views.home,name = 'home'),
 
