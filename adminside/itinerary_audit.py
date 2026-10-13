@@ -6,7 +6,7 @@ from django.utils.html import strip_tags
 
 
 DAY_TITLE_RE = re.compile(
-    r"^\s*day\s*(?P<start>\d+)(?:\s*(?:-|–|to)\s*(?:day\s*)?(?P<end>\d+))?\s*[:\-–]?\s*",
+    r"^\s*days?\s*(?P<start>\d+)(?:\s*(?:-|–|to)\s*(?:days?\s*)?(?P<end>\d+))?\s*[:\-–]?\s*",
     re.IGNORECASE,
 )
 DESCRIPTION_RANGE_RE = re.compile(

@@ -188,6 +188,13 @@ def navigation_collections(request):
     ).distinct().order_by('display_order', 'name')
 
     kenya_destinations = destinations.filter(region='kenya')
+    east_africa_destinations = destinations.filter(
+        slug__in=['kenya', 'tanzania', 'uganda', 'rwanda']
+    )
+    east_africa_regions = [
+        'kenya-safari', 'kenya-coast', 'tanzania-safari',
+        'uganda-safari', 'rwanda-safari', 'day-trips',
+    ]
     world_regions = [
         ('Africa', 'africa'), ('Americas', 'americas'), ('Asia', 'asia'),
         ('Australasia', 'australasia'), ('Europe', 'europe'),
@@ -214,14 +221,14 @@ def navigation_collections(request):
         for label, region in world_regions
     ]
     safari_categories = categories.exclude(slug__in=themed_slugs).filter(
-        Q(packages__region__in=['kenya-safari', 'kenya-coast', 'day-trips']) |
-        Q(tagged_packages__region__in=['kenya-safari', 'kenya-coast', 'day-trips'])
+        Q(packages__region__in=east_africa_regions) |
+        Q(tagged_packages__region__in=east_africa_regions)
     )
     safari_sections = [
         {'label': 'Safari & Adventure', 'url': reverse('users:tours_safaris'),
          'items': category_items(safari_categories, 'tours_safaris')},
         {'label': 'Destinations', 'url': reverse('users:tours_safaris'),
-         'items': destination_items(kenya_destinations)},
+         'items': destination_items(east_africa_destinations)},
     ]
     theme_sections = [
         {'label': 'Travel Themes', 'url': reverse('users:themed_packages'),

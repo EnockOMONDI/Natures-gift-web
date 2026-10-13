@@ -1,0 +1,17 @@
+{% load i18n static %}
+
+<div class="border-b border-white/20 mb-8 pb-6 flex flex-col items-center gap-4 text-center">
+    <img
+        src="{% static 'images/brand/natures-gift-logo.webp' %}"
+        alt="NaturesGift Expeditions"
+        class="h-20 w-auto object-contain"
+    >
+    <div>
+        <h1 class="font-semibold">
+            {% if subtitle %}
+                <span class="block text-font-important-light dark:text-font-important-dark">{{ subtitle }}</span>
+            {% endif %}
+            <span class="block font-semibold text-primary-600 tracking-tight text-xl dark:text-primary-500">{{ title }}</span>
+        </h1>
+    </div>
+</div>

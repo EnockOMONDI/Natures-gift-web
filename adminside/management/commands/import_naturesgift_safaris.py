@@ -17,7 +17,23 @@ PRICE_USD_TO_KES = 130
 
 
 def clean_text(value):
-    return ' '.join(str(value or '').split())
+    text = ' '.join(str(value or '').split())
+    replacements = (
+        (r'\bknown for known for\b', 'known for'),
+        (r'\bgamer drive\b', 'game drive'),
+        (r'\benroute\b', 'en route'),
+        (r'\blandcruiser\b', 'Land Cruiser'),
+        (r'\bMasai Mara\b', 'Maasai Mara'),
+        (r'\bLike Naivasha\b', 'Lake Naivasha'),
+        (r'\bsurrounding that are\b', 'surroundings that are'),
+        (r'\bcamps schedule\b', "camp's schedule"),
+        (r'\bBUHOMA LODGE\b', 'Buhoma Lodge'),
+        (r'\bapprox…\b', 'approximately'),
+    )
+    for pattern, replacement in replacements:
+        text = re.sub(pattern, replacement, text, flags=re.IGNORECASE)
+    text = re.sub(r'\s+([,.;:!?])', r'\1', text)
+    return text.strip()
 
 
 def html_paragraph(value):
@@ -41,7 +57,10 @@ def panel_html(detail, heading):
 
 def parse_itinerary(detail):
     days = []
-    headings = detail.find_all('h4', string=lambda value: value and re.match(r'^DAY\s+\d+', clean_text(value), re.I))
+    headings = [
+        heading for heading in detail.find_all('h4')
+        if re.match(r'^DAY\s+\d+', clean_text(heading.get_text(' ', strip=True)), re.I)
+    ]
     for heading in headings:
         label = clean_text(heading.get_text(' ', strip=True))
         match = re.match(r'^DAY\s+([0-9/&\s]+):\s*(.*)$', label, re.I)
@@ -57,22 +76,77 @@ def parse_itinerary(detail):
             if getattr(sibling, 'name', None) != 'p':
                 continue
             text = clean_text(sibling.get_text(' ', strip=True))
-            if text.lower().startswith('overnight:'):
+            inline_meta = re.search(r'\s+Overnight:\s*(.*?)(?:\s+Meals:\s*(.*))?$', text, re.I)
+            if inline_meta:
+                before_meta = text[:inline_meta.start()].strip()
+                if before_meta and not description:
+                    description = before_meta
+                overnight = clean_text(inline_meta.group(1))
+                meals = clean_text(inline_meta.group(2) or '')
+            elif text.lower().startswith('overnight:'):
                 overnight_match = re.search(r'Overnight:\s*(.*?)(?:\s+Meals:|$)', text, re.I)
                 meals_match = re.search(r'Meals:\s*(.*)$', text, re.I)
                 overnight = clean_text(overnight_match.group(1) if overnight_match else '')
                 meals = clean_text(meals_match.group(1) if meals_match else '')
             elif not description:
                 description = text
+        if not description:
+            # A few source pages place the heading and its prose in one
+            # Elementor text widget instead of separate sibling paragraphs.
+            parent_text = clean_text(heading.parent.get_text(' ', strip=True))
+            start = parent_text.find(label)
+            if start >= 0:
+                start += len(label)
+                next_heading = heading.find_next('h4')
+                end = len(parent_text)
+                if next_heading and next_heading.parent == heading.parent:
+                    next_label = clean_text(next_heading.get_text(' ', strip=True))
+                    next_start = parent_text.find(next_label, start)
+                    if next_start >= 0:
+                        end = next_start
+                text = clean_text(parent_text[start:end])
+                inline_meta = re.search(r'\s+Overnight:\s*(.*?)(?:\s+Meals:\s*(.*))?$', text, re.I)
+                if inline_meta:
+                    text = text[:inline_meta.start()].strip()
+                    overnight = clean_text(inline_meta.group(1))
+                    meals = clean_text(inline_meta.group(2) or '')
+                description = text
         day_number = numbers[0] if numbers else len(days) + 1
+        day_title = clean_text(match.group(2))
+        if len(numbers) > 1:
+            day_title = f'Days {numbers[0]}-{numbers[-1]}: {day_title}'
+        else:
+            day_title = f'Day {day_number}: {day_title}'
         days.append({
             'day_number': day_number,
-            'title': f"{match.group(2)}" + (f" (Days {'/'.join(str(number) for number in numbers)})" if len(numbers) > 1 else ''),
+            'day_end': numbers[-1] if numbers else day_number,
+            'title': day_title,
             'description': description,
             'overnight': overnight,
             'meals': meals,
         })
     return days
+
+
+def extract_introduction(detail):
+    """Read the published introduction, including pages that use 'Introduction:'."""
+    heading = detail.find(
+        ['h2', 'h3'],
+        string=lambda value: clean_text(value).rstrip(':').lower() == 'introduction',
+    )
+    if heading:
+        for paragraph in heading.find_all_next('p'):
+            text = clean_text(paragraph.get_text(' ', strip=True))
+            if len(text) >= 80:
+                return text
+
+    # Some source pages omit the heading even though the first paragraph is the
+    # package introduction. Skip operational labels and find that paragraph.
+    for paragraph in detail.find_all('p'):
+        text = clean_text(paragraph.get_text(' ', strip=True))
+        if len(text) >= 120 and not re.match(r'^(overnight|meals|from|based on)\b', text, re.I):
+            return text
+    return ''
 
 
 def destination_for(category_slugs, slug, title, route):
@@ -176,13 +250,11 @@ class Command(BaseCommand):
             price_note = f"US $ {price_match.group(1)} per person" if price_match else 'Available on request'
             duration_match = re.search(r'(\d+)\s*Days', card_text, re.I)
             days = parse_itinerary(detail)
-            duration_days = int(duration_match.group(1)) if duration_match else (max(day['day_number'] for day in days) if days else 1)
+            # The source cards occasionally carry stale duration text. The
+            # published day headings are the authoritative itinerary length.
+            duration_days = max((day.get('day_end', day['day_number']) for day in days), default=1)
 
-            intro_heading = detail.find(['h3', 'h2'], string=lambda value: clean_text(value).lower() == 'introduction')
-            intro = ''
-            if intro_heading:
-                intro_node = intro_heading.find_next('p')
-                intro = clean_text(intro_node.get_text(' ', strip=True)) if intro_node else ''
+            intro = extract_introduction(detail)
             image = card.select_one('img')
             image_url = image.get('src') if image else ''
             image_path = ''
@@ -203,7 +275,7 @@ class Command(BaseCommand):
                     'description': html_paragraph(intro),
                     'region': region,
                     'safari_type': 'primate' if 'gorilla' in title.lower() or 'primate' in title.lower() else ('migration' if 'migration' in route.lower() or 'calving' in title.lower() else 'classic'),
-                    'route_summary': intro[:280],
+                    'route_summary': ' -> '.join(day['title'] for day in days[:5]) + (' -> ...' if len(days) > 5 else ''),
                     'best_season': '',
                     'comfort_level': 'Tailor-made safari planning',
                     'group_size_note': 'Pricing and travel dates are subject to confirmation.',
@@ -234,11 +306,15 @@ class Command(BaseCommand):
             )
             itinerary.days.all().delete()
             for day in days:
+                meals_text = day.get('meals', '').lower()
                 ItineraryDay.objects.create(
                     itinerary=itinerary,
                     day_number=day['day_number'],
                     title=day['title'],
                     description=day['description'],
+                    breakfast='breakfast' in meals_text,
+                    lunch='lunch' in meals_text,
+                    dinner='dinner' in meals_text,
                 )
             imported += 1
             self.stdout.write(self.style.SUCCESS(f'Imported {title} ({len(days)} itinerary entries) -> {image_path or "no image"}'))

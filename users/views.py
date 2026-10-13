@@ -542,6 +542,15 @@ SIGNATURE_CATEGORY_SLUGS = [
     'honeymoon-packages',
 ]
 
+EAST_AFRICA_SAFARI_REGIONS = [
+    'kenya-safari',
+    'kenya-coast',
+    'tanzania-safari',
+    'uganda-safari',
+    'rwanda-safari',
+    'day-trips',
+]
+
 TOURS_SAFARI_CATEGORY_SLUGS = [
     'adventure-safaris',
     'bird-watching-safaris',
@@ -560,6 +569,10 @@ TOURS_SAFARI_CATEGORY_SLUGS = [
     'wildlife-photography',
     'hiking-day-adventure',
     'beach-holiday-water-sports',
+    'kenya-safaris',
+    'tanzania-safaris',
+    'uganda-safaris',
+    'rwanda-safaris',
 ]
 
 
@@ -661,8 +674,9 @@ def explore_the_world(request):
 
 def tours_safaris(request):
     packages_qs = _packages_for_collection().filter(
-        Q(region__in=['kenya-safari', 'kenya-coast', 'day-trips']) |
-        Q(category__slug__in=TOURS_SAFARI_CATEGORY_SLUGS)
+        Q(region__in=EAST_AFRICA_SAFARI_REGIONS) |
+        Q(category__slug__in=TOURS_SAFARI_CATEGORY_SLUGS) |
+        Q(categories__slug__in=TOURS_SAFARI_CATEGORY_SLUGS)
     ).exclude(
         Q(category__slug__in=SIGNATURE_CATEGORY_SLUGS) | Q(categories__slug__in=SIGNATURE_CATEGORY_SLUGS)
     ).distinct()

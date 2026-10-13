@@ -289,7 +289,7 @@ UNFOLD = {
     "SITE_URL": "/",
     "SITE_ICON": lambda request: static("images/brand/natures-gift-logo.webp"),
     "SITE_LOGO": lambda request: static("images/brand/natures-gift-logo.webp"),
-    "SITE_SYMBOL": "🌍",  # Travel symbol
+    "SITE_SYMBOL": "🌿",  # NaturesGift symbol
     "SHOW_HISTORY": True,
     "SHOW_VIEW_ON_SITE": True,
     "ENVIRONMENT": "tours_travels.settings.environment_callback",
@@ -298,21 +298,21 @@ UNFOLD = {
         "image": lambda request: static("images/hero/discover-kenya.jpeg"),
         "redirect_after": lambda request: reverse_lazy("admin:index"),
     },
-    "STYLES": [],
+    "STYLES": ["css/admin-branding.css"],
     "SCRIPTS": [],
     "COLORS": {
         "primary": {
-            "50": "250 245 255",
-            "100": "243 232 255",
-            "200": "233 213 255",
-            "300": "196 181 253",
-            "400": "147 51 234",
-            "500": "16 37 30",  # NaturesGift primary green
-            "600": "12 28 113",
-            "700": "10 23 94",
-            "800": "8 18 75",
-            "900": "6 14 56",
-            "950": "4 9 37"
+            "50": "255 241 237",
+            "100": "255 226 216",
+            "200": "252 204 190",
+            "300": "249 169 143",
+            "400": "246 143 111",
+            "500": "242 119 77",
+            "600": "217 95 57",
+            "700": "190 75 44",
+            "800": "145 55 36",
+            "900": "98 37 25",
+            "950": "56 20 14"
         },
     },
     "EXTENSIONS": {
