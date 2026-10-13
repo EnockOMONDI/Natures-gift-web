@@ -1,9 +1,9 @@
 {% load static %}
-<header class="myriad-header">
-  <div class="myriad-contact">
-    <div class="myriad-contact-inner">
-      <a href="tel:{{ company.contacts.primary_phone|default:'+254704784318' }}" class="myriad-phone"><i data-lucide="phone" aria-hidden="true"></i><span>Call {{ company.contacts.phone_formatted|default:'+254 704 784 318' }}</span></a>
-      <div class="myriad-socials" aria-label="NaturesGift Expeditions social media">
+<header class="naturesgift-header">
+  <div class="naturesgift-contact">
+    <div class="naturesgift-contact-inner">
+      <a href="tel:{{ company.contacts.primary_phone|default:'+254704784318' }}" class="naturesgift-phone"><i data-lucide="phone" aria-hidden="true"></i><span>Call {{ company.contacts.phone_formatted|default:'+254 704 784 318' }}</span></a>
+      <div class="naturesgift-socials" aria-label="NaturesGift Expeditions social media">
         <a href="{{ company.socials.facebook }}" target="_blank" rel="noopener noreferrer" aria-label="NaturesGift Expeditions on Facebook" title="Facebook"><i data-lucide="facebook" aria-hidden="true"></i><span>f</span></a>
         <a href="{{ company.socials.instagram }}" target="_blank" rel="noopener noreferrer" aria-label="NaturesGift Expeditions on Instagram" title="Instagram"><i data-lucide="instagram" aria-hidden="true"></i></a>
         <a href="{{ company.socials.tiktok }}" target="_blank" rel="noopener noreferrer" aria-label="NaturesGift Expeditions on TikTok" title="TikTok"><i data-lucide="music-2" aria-hidden="true"></i></a>
@@ -11,19 +11,19 @@
       </div>
     </div>
   </div>
-  <nav class="myriad-navigation" aria-label="Main navigation">
+  <nav class="naturesgift-navigation" aria-label="Main navigation">
     <a href="/" aria-label="NaturesGift Expeditions home"><img src="{% static company.logo|default:'images/brand/natures-gift-logo.webp' %}" width="112" height="80" alt="NaturesGift Expeditions"></a>
-    <button type="button" class="myriad-menu-toggle" aria-expanded="false" aria-controls="myriad-menu"><i data-lucide="menu"></i><span>Menu</span></button>
-    <div id="myriad-menu" class="myriad-menu">
+    <button type="button" class="naturesgift-menu-toggle" aria-expanded="false" aria-controls="naturesgift-menu"><i data-lucide="menu"></i><span>Menu</span></button>
+    <div id="naturesgift-menu" class="naturesgift-menu">
       {% for menu in public_menus %}
-      <div class="myriad-menu-item">
+      <div class="naturesgift-menu-item">
         {% if menu.parent_clickable %}<a href="{{ menu.url }}">{{ menu.label }}</a>{% else %}<span>{{ menu.label }}</span>{% endif %}
         <details><summary aria-label="{{ menu.label }} submenu"><i data-lucide="chevron-down"></i></summary>
-          <div class="myriad-dropdown myriad-mega-dropdown">
-            <div class="myriad-mega-grid">
+          <div class="naturesgift-dropdown naturesgift-mega-dropdown">
+            <div class="naturesgift-mega-grid">
               {% for section in menu.sections %}
-              <section class="myriad-menu-section">
-                {% if section.url %}<a class="myriad-menu-section-title" href="{{ section.url }}">{{ section.label }}</a>{% else %}<span class="myriad-menu-section-title">{{ section.label }}</span>{% endif %}
+              <section class="naturesgift-menu-section">
+                {% if section.url %}<a class="naturesgift-menu-section-title" href="{{ section.url }}">{{ section.label }}</a>{% else %}<span class="naturesgift-menu-section-title">{{ section.label }}</span>{% endif %}
                 {% if section.items %}
                   {% for item in section.items %}<a href="{{ item.url }}">{{ item.label }}</a>{% endfor %}
                 {% else %}
@@ -32,44 +32,44 @@
               </section>
               {% endfor %}
             </div>
-            <a class="myriad-view-all" href="{{ menu.url }}">View all {{ menu.label|lower }}</a>
+            <a class="naturesgift-view-all" href="{{ menu.url }}">View all {{ menu.label|lower }}</a>
           </div>
         </details>
       </div>
       {% empty %}
-      <div class="myriad-menu-item"><a href="/destinations/">Destinations</a></div>
-      <div class="myriad-menu-item"><a href="/tours-safaris/">Safari Adventures</a></div>
-      <div class="myriad-menu-item"><a href="/themed-packages/">Niche Corner</a></div>
-      <div class="myriad-menu-item"><a href="/services/">Transport</a></div>
-      <div class="myriad-menu-item"><a href="/aboutus/">About Us</a></div>
-      <div class="myriad-menu-item"><a href="/contact/">Contact Us</a></div>
+      <div class="naturesgift-menu-item"><a href="/destinations/">Destinations</a></div>
+      <div class="naturesgift-menu-item"><a href="/tours-safaris/">Safari Adventures</a></div>
+      <div class="naturesgift-menu-item"><a href="/themed-packages/">Niche Corner</a></div>
+      <div class="naturesgift-menu-item"><a href="/services/">Transport</a></div>
+      <div class="naturesgift-menu-item"><a href="/aboutus/">About Us</a></div>
+      <div class="naturesgift-menu-item"><a href="/contact/">Contact Us</a></div>
       {% endfor %}
     </div>
-    <a class="myriad-quote" href="{% url 'users:quote_request' %}">Request Quote</a>
+    <a class="naturesgift-quote" href="{% url 'users:quote_request' %}">Request Quote</a>
   </nav>
 </header>
 <script>
-document.querySelector('.myriad-menu-toggle').addEventListener('click', function () {
+document.querySelector('.naturesgift-menu-toggle').addEventListener('click', function () {
   const expanded = this.getAttribute('aria-expanded') !== 'true';
   this.setAttribute('aria-expanded', String(expanded));
-  document.getElementById('myriad-menu').classList.toggle('is-open', expanded);
+  document.getElementById('naturesgift-menu').classList.toggle('is-open', expanded);
 });
-document.querySelectorAll('.myriad-menu details').forEach(function (current) {
+document.querySelectorAll('.naturesgift-menu details').forEach(function (current) {
   current.querySelector('summary').addEventListener('click', function (event) {
     event.preventDefault();
     var wasOpen = current.open;
-    document.querySelectorAll('.myriad-menu details[open]').forEach(function (other) {
+    document.querySelectorAll('.naturesgift-menu details[open]').forEach(function (other) {
       other.open = false;
     });
     current.open = !wasOpen;
   });
 });
 document.addEventListener('click', function (event) {
-  if (!event.target.closest('.myriad-navigation')) {
-    document.querySelectorAll('.myriad-menu details[open]').forEach(function (item) { item.open = false; });
+  if (!event.target.closest('.naturesgift-navigation')) {
+    document.querySelectorAll('.naturesgift-menu details[open]').forEach(function (item) { item.open = false; });
   }
 });
 document.addEventListener('keydown', function (event) {
-  if (event.key === 'Escape') document.querySelectorAll('.myriad-menu details[open]').forEach(function (item) { item.open = false; });
+  if (event.key === 'Escape') document.querySelectorAll('.naturesgift-menu details[open]').forEach(function (item) { item.open = false; });
 });
 </script>

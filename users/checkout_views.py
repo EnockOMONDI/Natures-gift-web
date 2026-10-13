@@ -1,5 +1,5 @@
 """
-Modern checkout views for Mbugani Luxe Adventures
+Modern checkout views for NaturesGift Expeditions
 """
 
 from django.shortcuts import render, redirect, get_object_or_404

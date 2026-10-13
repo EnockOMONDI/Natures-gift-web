@@ -1,5 +1,5 @@
 """
-Django management command to update package categories for Mbugani Luxe Adventures.
+Django management command to update package categories for NaturesGift Expeditions.
 This command will:
 1. Create 3 new package categories (Nairobi Excursions, Kenyan Multi-Day Safaris, Outbound Packages)
 2. Intelligently reassign existing packages to appropriate categories based on destination and duration
@@ -19,7 +19,7 @@ from datetime import datetime
 
 
 class Command(BaseCommand):
-    help = 'Update package categories for Mbugani Luxe Adventures'
+    help = 'Update package categories for NaturesGift Expeditions'
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -32,7 +32,7 @@ class Command(BaseCommand):
         dry_run = options['dry_run']
         
         self.stdout.write(self.style.WARNING('=' * 80))
-        self.stdout.write(self.style.WARNING('MBUGANI LUXE ADVENTURES - PACKAGE CATEGORY UPDATE'))
+        self.stdout.write(self.style.WARNING('NATURESGIFT EXPEDITIONS - PACKAGE CATEGORY UPDATE'))
         self.stdout.write(self.style.WARNING('=' * 80))
         
         if dry_run:

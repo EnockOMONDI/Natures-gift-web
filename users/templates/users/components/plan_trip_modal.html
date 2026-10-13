@@ -1,17 +1,17 @@
 {% load static %}
 <div 
   id="plan-trip-modal" 
-  class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-950/80 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6"
+  class="hidden fixed inset-0 z-50 overflow-y-auto bg-[#084536]/80 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6"
 >
   <div 
     class="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-200 my-auto"
     onclick="event.stopPropagation()"
   >
     <!-- Modal Top Header -->
-    <div class="bg-[#0B192C] text-white p-5 sm:p-6 flex items-center justify-between border-b border-slate-800">
+    <div class="bg-[#084536] text-white p-5 sm:p-6 flex items-center justify-between border-b border-slate-800">
       <div class="space-y-1">
         <div class="flex items-center gap-2">
-          <span class="text-xs font-bold uppercase tracking-widest text-amber-400 flex items-center gap-1">
+          <span class="text-xs font-bold uppercase tracking-widest text-[#F2774D] flex items-center gap-1">
             <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
             <span>NaturesGift Expeditions Concierge</span>
           </span>
@@ -35,8 +35,8 @@
 
     <!-- Step Indicator Bar -->
     <div class="bg-slate-50 px-6 py-3 border-b border-slate-200 flex items-center justify-between text-xs font-bold text-slate-600">
-      <div class="plan-step-indicator flex items-center gap-1.5 text-amber-700">
-        <span class="step-circle w-5 h-5 rounded-full flex items-center justify-center text-[10px] bg-amber-600 text-white">1</span>
+      <div class="plan-step-indicator flex items-center gap-1.5 text-[#F2774D]">
+        <span class="step-circle w-5 h-5 rounded-full flex items-center justify-center text-[10px] bg-[#F2774D] text-white">1</span>
         <span>Style &amp; Places</span>
       </div>
       <span class="text-slate-300">——</span>
@@ -65,7 +65,7 @@
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
             <button
               type="button"
-              class="travel-style-btn p-3 rounded-xl text-left border transition-all cursor-pointer bg-amber-50/80 border-amber-600 text-amber-900 shadow-xs"
+              class="travel-style-btn p-3 rounded-xl text-left border transition-all cursor-pointer bg-[#fff1ed] border-[#F2774D] text-[#084536] shadow-xs"
               data-style="Kenya Bush Safari"
             >
               <div class="text-xs font-bold">Bush Safari</div>
@@ -136,7 +136,7 @@
             Which destinations interest you? (Select all that apply)
           </label>
           <div class="flex flex-wrap gap-2">
-            <button type="button" class="dest-pill-btn px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer bg-amber-600 text-white font-semibold">Maasai Mara</button>
+            <button type="button" class="dest-pill-btn px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer bg-[#F2774D] text-white font-semibold">Maasai Mara</button>
             <button type="button" class="dest-pill-btn px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer bg-slate-100 text-slate-700 hover:bg-slate-200">Amboseli</button>
             <button type="button" class="dest-pill-btn px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer bg-slate-100 text-slate-700 hover:bg-slate-200">Samburu</button>
             <button type="button" class="dest-pill-btn px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer bg-slate-100 text-slate-700 hover:bg-slate-200">Diani Beach</button>
@@ -154,7 +154,7 @@
         <div class="pt-3 flex justify-end">
           <button
             type="button"
-            class="plan-next-btn px-6 py-2.5 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl shadow-xs cursor-pointer"
+            class="plan-next-btn px-6 py-2.5 bg-[#F2774D] hover:bg-[#084536] text-white text-xs font-bold rounded-xl shadow-xs cursor-pointer"
             data-next-step="2"
           >
             Next: Dates &amp; Travelers &rarr;
@@ -234,7 +234,7 @@
           </button>
           <button
             type="button"
-            class="plan-next-btn px-6 py-2.5 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl shadow-xs cursor-pointer"
+            class="plan-next-btn px-6 py-2.5 bg-[#F2774D] hover:bg-[#084536] text-white text-xs font-bold rounded-xl shadow-xs cursor-pointer"
             data-next-step="3"
           >
             Next: Contact &amp; Quote &rarr;
@@ -304,7 +304,7 @@
 
           <button
             type="submit"
-            class="flex-1 py-3 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow-xs transition-colors cursor-pointer"
+            class="flex-1 py-3 bg-[#F2774D] hover:bg-[#084536] text-white font-bold text-xs sm:text-sm rounded-xl shadow-xs transition-colors cursor-pointer"
           >
             Submit Website Request
           </button>

@@ -54,7 +54,7 @@ class OwnerDashboardTests(TestCase):
         response = self.client.get(reverse("owner_dashboard:dashboard"))
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Myriad Travel Dashboard")
+        self.assertContains(response, "NaturesGift Expeditions Dashboard")
         self.assertContains(response, "Business Overview")
         self.assertContains(response, "Open follow-ups")
 

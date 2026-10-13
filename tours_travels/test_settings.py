@@ -65,11 +65,11 @@ CACHES = {
 }
 
 # Media files for testing
-MEDIA_ROOT = '/tmp/mbugani_test_media'
+MEDIA_ROOT = '/tmp/naturesgift_test_media'
 MEDIA_URL = '/test_media/'
 
 # Static files for testing
-STATIC_ROOT = '/tmp/mbugani_test_static'
+STATIC_ROOT = '/tmp/naturesgift_test_static'
 
 # Uploadcare settings for testing
 UPLOADCARE = {

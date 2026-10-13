@@ -1,4 +1,4 @@
-# Generated for Myriad Travel template integration.
+# Generated for NaturesGift Expeditions template integration.
 
 from django.db import migrations, models
 
@@ -18,12 +18,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='package',
             name='region',
-            field=models.CharField(choices=[('kenya-safari', 'Kenya Safaris & Bush'), ('kenya-coast', 'Kenya Coast & Beach'), ('international', 'International Escapes'), ('day-trips', 'Weekend Hikes & Day Trips')], default='kenya-safari', help_text='Frontend collection used by the Myriad package filters', max_length=40),
+            field=models.CharField(choices=[('kenya-safari', 'Kenya Safaris & Bush'), ('kenya-coast', 'Kenya Coast & Beach'), ('international', 'International Escapes'), ('day-trips', 'Weekend Hikes & Day Trips')], default='kenya-safari', help_text='Frontend collection used by the NaturesGift package filters', max_length=40),
         ),
         migrations.AddField(
             model_name='package',
             name='lipa_pole_pole',
-            field=models.BooleanField(default=False, help_text="Show this package as eligible for Myriad's Lipa Pole Pole plan"),
+            field=models.BooleanField(default=False, help_text="Show this package as eligible for NaturesGift's Lipa Pole Pole plan"),
         ),
         migrations.AddField(
             model_name='package',

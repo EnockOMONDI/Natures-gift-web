@@ -8,7 +8,7 @@ import os
 
 
 class Command(BaseCommand):
-    help = 'Test all email templates for Mbugani Luxe Adventures branding'
+    help = 'Test all email templates for NaturesGift Expeditions branding'
 
     def handle(self, *args, **options):
         self.stdout.write(self.style.SUCCESS('📧 Testing Email Templates'))
@@ -62,9 +62,9 @@ class Command(BaseCommand):
                 'is_new_user': False
             })
             
-            # Check for Mbugani branding
-            if 'Mbugani Luxe Adventures' in html_content:
-                self.stdout.write('✅ Company name: Mbugani Luxe Adventures found')
+            # Check for NaturesGift branding
+            if 'NaturesGift Expeditions' in html_content:
+                self.stdout.write('✅ Company name: NaturesGift Expeditions found')
             else:
                 self.stdout.write(self.style.ERROR('❌ Company name not found'))
             
@@ -74,7 +74,7 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.WARNING('⚠️  Updated phone number not found'))
             
             if '#291c1b' in html_content or '#fb9300' in html_content:
-                self.stdout.write('✅ Mbugani brand colors found')
+                self.stdout.write('✅ NaturesGift brand colors found')
             else:
                 self.stdout.write(self.style.WARNING('⚠️  Brand colors not found'))
                 
@@ -98,7 +98,7 @@ class Command(BaseCommand):
                 'password': 'temppassword123'
             })
             
-            if 'Mbugani Luxe Adventures' in html_content:
+            if 'NaturesGift Expeditions' in html_content:
                 self.stdout.write('✅ Welcome email branding correct')
             else:
                 self.stdout.write(self.style.ERROR('❌ Welcome email branding incorrect'))
@@ -127,7 +127,7 @@ class Command(BaseCommand):
                 'subscription': type('MockSubscription', (), subscription_data)()
             })
             
-            if 'Mbugani Luxe Adventures' in html_content:
+            if 'NaturesGift Expeditions' in html_content:
                 self.stdout.write('✅ Newsletter branding correct')
             else:
                 self.stdout.write(self.style.ERROR('❌ Newsletter branding incorrect'))
@@ -163,7 +163,7 @@ class Command(BaseCommand):
                 })()
             })
             
-            if 'Mbugani Luxe Adventures' in html_content:
+            if 'NaturesGift Expeditions' in html_content:
                 self.stdout.write('✅ Job application branding correct')
             else:
                 self.stdout.write(self.style.ERROR('❌ Job application branding incorrect'))
@@ -204,7 +204,7 @@ class Command(BaseCommand):
                 'booking': type('MockBooking', (), booking_data)()
             })
             
-            if 'Mbugani Luxe Adventures' in html_content:
+            if 'NaturesGift Expeditions' in html_content:
                 self.stdout.write('✅ Admin notification branding correct')
             else:
                 self.stdout.write(self.style.ERROR('❌ Admin notification branding incorrect'))

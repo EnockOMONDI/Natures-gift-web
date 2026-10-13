@@ -1,5 +1,5 @@
 """
-Currency formatting template filters for Mbugani Luxe Adventures
+Currency formatting template filters for NaturesGift Expeditions
 """
 
 from django import template

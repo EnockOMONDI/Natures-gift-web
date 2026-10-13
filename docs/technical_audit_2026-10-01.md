@@ -1,6 +1,6 @@
-# Myriad Travel: Technical and Workflow Audit
+# NaturesGift Expeditions: Technical and Workflow Audit
 
-Date: 1 October 2026. Repository: `/Users/djsean/Desktop/APPS2026/MYRIAD_TRAVEL_MAIN`.
+Date: 1 October 2026. Repository: `/Users/djsean/Desktop/APPS2026/NATURESGIFT_TRAVEL_MAIN`.
 Branch: `client-presentation-polish`. Audited commit: `933de55` (`Polish collection and destination pages`).
 
 ## Executive Assessment
@@ -40,7 +40,7 @@ Runtime dependencies include Django, PostgreSQL driver/dj-database-url, Uploadca
 
 ### Settings and Deployment
 
-`manage.py` and `tours_travels/wsgi.py` default to base settings. Base settings load dotenv and select development/production overrides through `DJANGO_ENV`. Production sets PostgreSQL SSL, secure cookies, HTTPS redirect, HSTS, database cache, and environment-provided integrations. Local settings select `myriad_local.sqlite3`; development settings select a different SQLite database. Test settings use memory SQLite and normally disable migrations.
+`manage.py` and `tours_travels/wsgi.py` default to base settings. Base settings load dotenv and select development/production overrides through `DJANGO_ENV`. Production sets PostgreSQL SSL, secure cookies, HTTPS redirect, HSTS, database cache, and environment-provided integrations. Local settings select `naturesgift_local.sqlite3`; development settings select a different SQLite database. Test settings use memory SQLite and normally disable migrations.
 
 `build.sh` installs requirements, collects static files, applies production migrations, and creates the cache table. Therefore a deployment running this build script can migrate the database selected by its production environment. This audit did not run that script.
 
@@ -127,7 +127,7 @@ Priority definitions: P0 = serious security/data exposure; P1 = broken core work
 
 **S05 - P1: A development database is tracked.**
 
-- Location: `mbugani_development.sqlite3`, `.gitignore`.
+- Location: `naturesgift_development.sqlite3`, `.gitignore`.
 - Current read-only counts: 1 auth user, 1 profile, 8 quote requests, 10 packages, 3 posts, 0 modern bookings. Whether these are real customer records was not established.
 - Expected: database snapshots with account or enquiry data excluded from source control. Cause: ignore rules cover different SQLite names; `.env.secrets` also remains tracked.
 - Fix/dependencies: preserve a private backup, classify data, stop tracking databases and broaden appropriate ignore rules. Removing from history needs explicit coordinated approval; do not delete working data. Treat potential account-hash exposure seriously without printing hashes.
@@ -409,7 +409,7 @@ Priority definitions: P0 = serious security/data exposure; P1 = broken core work
 **O05 - P2: Destructive/demo commands remain operationally dangerous.**
 
 - Location: `blog/management/commands/populate_luxury_blogs.py:38`; production-sync/sample itinerary/category/hero commands; migration 0007.
-- Current: populate_luxury_blogs deletes every Post before seeding; createsu has unsafe defaults; historical hero migration seeds Mbugani content; sample/sync commands can introduce old business assumptions.
+- Current: populate_luxury_blogs deletes every Post before seeding; createsu has unsafe defaults; historical hero migration seeds NaturesGift content; sample/sync commands can introduce old business assumptions.
 - Expected: explicit environment guards, dry runs and clear production restrictions. Fix safe guardrails; never run these against live data as a repair. Historical migrations applied successfully; do not casually rewrite applied history.
 
 **O06 - P2: Query and error behavior degrade with catalog growth.**

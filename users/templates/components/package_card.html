@@ -30,7 +30,7 @@
 
     <!-- Duration Tag -->
     <div class="absolute bottom-3 right-3 bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-lg text-slate-800 text-xs font-bold shadow-xs flex items-center gap-1.5">
-      <i data-lucide="clock" class="w-3.5 h-3.5 myriad-red-text"></i>
+      <i data-lucide="clock" class="w-3.5 h-3.5 naturesgift-red-text"></i>
       <span>{{ pkg.duration }}</span>
     </div>
   </div>
@@ -40,12 +40,12 @@
     <div class="space-y-2">
       <!-- Destination & Rating -->
       <div class="flex items-center justify-between text-xs text-slate-500">
-        <span class="myriad-red-text flex items-center gap-1 font-medium">
+        <span class="naturesgift-red-text flex items-center gap-1 font-medium">
           <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
           <span class="truncate max-w-[200px]">{{ pkg.destination }}</span>
         </span>
         <span class="flex items-center gap-1 font-semibold text-slate-700">
-          <i data-lucide="star" class="myriad-red-fill myriad-red-text w-3.5 h-3.5"></i>
+          <i data-lucide="star" class="naturesgift-red-fill naturesgift-red-text w-3.5 h-3.5"></i>
           <span>{{ pkg.rating|default:"5.0" }} ({{ pkg.reviews_count|default:"45" }})</span>
         </span>
       </div>
@@ -59,7 +59,7 @@
 
       <!-- Title -->
       <h3 class="text-lg font-bold font-serif text-slate-900 leading-snug transition-colors line-clamp-2">
-        <a href="/packages/{{ pkg.slug }}/" class="hover-myriad-red-text">
+        <a href="/packages/{{ pkg.slug }}/" class="hover-naturesgift-red-text">
           {{ pkg.title }}
         </a>
       </h3>
@@ -110,7 +110,7 @@
       <div class="grid grid-cols-2 gap-2 pt-1">
         <a
           href="/packages/{{ pkg.slug }}/"
-          class="hover-myriad-red-border hover-myriad-red-text myriad-red-soft-bg w-full py-2.5 px-3 bg-slate-50 text-slate-800 font-semibold text-xs rounded-xl border border-slate-200 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+          class="hover-naturesgift-red-border hover-naturesgift-red-text naturesgift-red-soft-bg w-full py-2.5 px-3 bg-slate-50 text-slate-800 font-semibold text-xs rounded-xl border border-slate-200 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
         >
           <i data-lucide="eye" class="w-3.5 h-3.5"></i>
           <span>View Details</span>

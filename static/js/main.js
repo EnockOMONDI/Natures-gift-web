@@ -12,11 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
   /* -------------------------------------------------------------------------- */
   /* 1. Currency Switching (KES <-> USD)                                        */
   /* -------------------------------------------------------------------------- */
-  let currentCurrency = localStorage.getItem('myriad_currency') || 'KES';
+  let currentCurrency = localStorage.getItem('naturesgift_currency') || 'KES';
 
   function setCurrency(curr) {
     currentCurrency = curr;
-    localStorage.setItem('myriad_currency', curr);
+    localStorage.setItem('naturesgift_currency', curr);
     document.documentElement.setAttribute('data-currency', curr);
 
     const btnKes = document.getElementById('btn-currency-kes');
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Update Lipa Pole Pole calculator after its controls have been initialized.
-    window.dispatchEvent(new CustomEvent('myriad:currency-changed'));
+    window.dispatchEvent(new CustomEvent('naturesgift:currency-changed'));
   }
 
   const btnKes = document.getElementById('btn-currency-kes');
@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (lipaDestSelect) {
     lipaDestSelect.addEventListener('change', updateLipaCalculator);
   }
-  window.addEventListener('myriad:currency-changed', updateLipaCalculator);
+  window.addEventListener('naturesgift:currency-changed', updateLipaCalculator);
 
   document.querySelectorAll('.lipa-month-btn').forEach((btn) => {
     btn.addEventListener('click', () => {

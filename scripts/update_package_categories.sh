@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script to update package categories for Mbugani Luxe Adventures
+# Script to update package categories for NaturesGift Expeditions
 # This script provides a convenient wrapper around the Django management command
 
 set -e  # Exit on error
@@ -18,7 +18,7 @@ PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
 echo -e "${BLUE}========================================${NC}"
 echo -e "${BLUE}Package Category Update Script${NC}"
-echo -e "${BLUE}Mbugani Luxe Adventures${NC}"
+echo -e "${BLUE}NaturesGift Expeditions${NC}"
 echo -e "${BLUE}========================================${NC}"
 echo ""
 

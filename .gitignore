@@ -1,5 +1,5 @@
 # ============================================
-# Mbugani Luxe Adventures - .gitignore
+# NaturesGift Expeditions - .gitignore
 # ============================================
 # This file protects sensitive data from being committed to version control
 
@@ -58,7 +58,7 @@ db.sqlite3-journal
 
 # Development database (keep local only)
 db_development.sqlite3
-myriad_local.sqlite3
+naturesgift_local.sqlite3
 *.sqlite3
 *.sqlite3-journal
 

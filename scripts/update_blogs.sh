@@ -1,9 +1,9 @@
 #!/bin/bash
-# Script to update Mbugani Luxe Adventures blog posts
+# Script to update NaturesGift Expeditions blog posts
 # This script runs the populate_luxury_blogs management command
 
 echo "=========================================="
-echo "Mbugani Luxe Adventures - Blog Update"
+echo "NaturesGift Expeditions - Blog Update"
 echo "=========================================="
 echo ""
 

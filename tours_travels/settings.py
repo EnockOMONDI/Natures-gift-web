@@ -259,7 +259,7 @@ NEWSLETTER_EMAIL = config('NEWSLETTER_EMAIL', default='info@naturesgiftexpeditio
 
 # Django-Q Configuration (Base settings)
 Q_CLUSTER = {
-    'name': 'myriad_travel',
+    'name': 'naturesgift_travel',
     'workers': 2,
     'recycle': 500,
     'timeout': 60,  # Task timeout in seconds (well under Gunicorn's 240s)

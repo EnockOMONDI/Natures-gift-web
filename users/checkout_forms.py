@@ -1,5 +1,5 @@
 """
-Checkout forms for Mbugani Luxe Adventures
+Checkout forms for NaturesGift Expeditions
 """
 
 from django import forms

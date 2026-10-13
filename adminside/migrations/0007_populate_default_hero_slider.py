@@ -1,4 +1,4 @@
-# Generated manually for Mbugani Luxe Adventures
+# Generated manually for NaturesGift Expeditions
 
 from django.db import migrations
 
@@ -8,7 +8,7 @@ def create_default_hero_slider(apps, schema_editor):
     
     # Create default hero slider entry
     HeroSlider.objects.create(
-        title="Welcome to Mbugani Luxe Adventures",
+        title="Welcome to NaturesGift Expeditions",
         subtitle="Discover Extraordinary Safari & Adventure Experiences in East Africa",
         is_active=True,
         order=1,
@@ -20,7 +20,7 @@ def reverse_default_hero_slider(apps, schema_editor):
     """Remove default hero slider entry"""
     HeroSlider = apps.get_model('adminside', 'HeroSlider')
     HeroSlider.objects.filter(
-        title="Welcome to Mbugani Luxe Adventures"
+        title="Welcome to NaturesGift Expeditions"
     ).delete()
 
 class Migration(migrations.Migration):

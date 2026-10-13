@@ -1,5 +1,5 @@
 """
-Form data persistence utilities for Mbugani Luxe Adventures booking system
+Form data persistence utilities for NaturesGift Expeditions booking system
 """
 
 from django.core.serializers.json import DjangoJSONEncoder

@@ -74,7 +74,7 @@ class Command(BaseCommand):
                 
                 # Test with no image
                 if not accommodation.image:
-                    expected_default = '/static/images/placeholders/myriad-package-placeholder.png'
+                    expected_default = '/static/images/placeholders/naturesgift-package-placeholder.webp'
                     if image_url == expected_default:
                         self.stdout.write('✅ Accommodation fallback working correctly')
                     else:

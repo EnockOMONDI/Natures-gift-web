@@ -10,7 +10,7 @@ import os
 
 
 class Command(BaseCommand):
-    help = 'Debug template issues for Mbugani Luxe Adventures backup templates'
+    help = 'Debug template issues for NaturesGift Expeditions backup templates'
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -26,7 +26,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         self.stdout.write(
-            self.style.SUCCESS('🔍 TEMPLATE DEBUG TOOL - Mbugani Luxe Adventures')
+            self.style.SUCCESS('🔍 TEMPLATE DEBUG TOOL - NaturesGift Expeditions')
         )
         self.stdout.write('=' * 60)
 

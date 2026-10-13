@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Comprehensive test runner for Mbugani Luxe Adventures booking system
+Comprehensive test runner for NaturesGift Expeditions booking system
 """
 
 import os
@@ -12,13 +12,13 @@ from django.core.management import execute_from_command_line
 
 
 def run_tests():
-    """Run all tests for the Mbugani Luxe Adventures booking system"""
+    """Run all tests for the NaturesGift Expeditions booking system"""
     
     # Set up Django environment
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tours_travels.settings')
     django.setup()
     
-    print("🧪 Starting Comprehensive Test Suite for Mbugani Luxe Adventures")
+    print("🧪 Starting Comprehensive Test Suite for NaturesGift Expeditions")
     print("=" * 60)
     
     # Test categories to run

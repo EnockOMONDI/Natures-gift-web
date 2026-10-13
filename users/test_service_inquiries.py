@@ -9,7 +9,7 @@ from users.tasks import send_email_via_mailtrap
 from users.inquiry_email import send_service_inquiry_emails
 
 
-@override_settings(DEFAULT_FROM_EMAIL='Mbugani <info@example.com>', ADMIN_EMAIL='admin@example.com', MAILTRAP_API_TOKEN='test-token')
+@override_settings(DEFAULT_FROM_EMAIL='NaturesGift <info@example.com>', ADMIN_EMAIL='admin@example.com', MAILTRAP_API_TOKEN='test-token')
 class ServiceInquiryTests(SimpleTestCase):
     def request(self):
         request = RequestFactory().post('/mice/', {})
@@ -72,13 +72,13 @@ class ServiceInquiryTests(SimpleTestCase):
             with self.subTest(response_body=response_body), patch('users.tasks.requests.post') as post:
                 post.return_value.json.return_value = response_body
                 self.assertEqual(
-                    send_email_via_mailtrap('Test', '<p>Test</p>', 'Myriad <info@example.com>', ['qa@example.com']),
+                    send_email_via_mailtrap('Test', '<p>Test</p>', 'NaturesGift <info@example.com>', ['qa@example.com']),
                     accepted,
                 )
                 self.assertEqual(post.call_args.args[0], 'https://api.resend.com/emails')
                 self.assertEqual(post.call_args.kwargs['timeout'], (3, 8))
                 self.assertEqual(post.call_args.kwargs['headers']['Authorization'], 'Bearer test-resend-key')
-                self.assertEqual(post.call_args.kwargs['json']['from'], 'Myriad <info@example.com>')
+                self.assertEqual(post.call_args.kwargs['json']['from'], 'NaturesGift <info@example.com>')
 
 
 from django.test import TestCase

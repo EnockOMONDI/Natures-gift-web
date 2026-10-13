@@ -32,7 +32,7 @@ class Command(BaseCommand):
                 
                 # Check for the gradient overlay
                 if 'rgba(93, 0, 0, 0.8)' in html_content and 'rgba(251, 147, 0, 0.6)' in html_content:
-                    self.stdout.write(self.style.SUCCESS('✅ Mbugani brand gradient overlay found'))
+                    self.stdout.write(self.style.SUCCESS('✅ NaturesGift brand gradient overlay found'))
                 else:
                     self.stdout.write(self.style.WARNING('⚠️  Brand gradient overlay not found'))
                 
@@ -42,11 +42,11 @@ class Command(BaseCommand):
                 else:
                     self.stdout.write(self.style.ERROR('❌ Our Inspiration section not found'))
                 
-                # Check for the Mbugani meaning content
-                if 'Mbugani means' in html_content:
-                    self.stdout.write(self.style.SUCCESS('✅ Mbugani meaning content found'))
+                # Check for the NaturesGift meaning content
+                if 'NaturesGift means' in html_content:
+                    self.stdout.write(self.style.SUCCESS('✅ NaturesGift meaning content found'))
                 else:
-                    self.stdout.write(self.style.WARNING('⚠️  Mbugani meaning content not found'))
+                    self.stdout.write(self.style.WARNING('⚠️  NaturesGift meaning content not found'))
                 
                 self.stdout.write('\n📊 Summary:')
                 self.stdout.write(f'   - Page Status: {response.status_code}')

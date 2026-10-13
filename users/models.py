@@ -146,7 +146,7 @@ class TripFeedback(models.Model):
     rating = models.PositiveSmallIntegerField(choices=RATING_CHOICES, null=True, blank=True)
     feedback = models.TextField(blank=True)
     highlights = models.TextField(blank=True, help_text='What went especially well?')
-    improvements = models.TextField(blank=True, help_text='What could Myriad improve?')
+    improvements = models.TextField(blank=True, help_text='What could NaturesGift improve?')
     permission_to_publish = models.BooleanField(default=False)
 
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=DRAFT)

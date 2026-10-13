@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Comprehensive Production Testing Script for Mbugani Luxe Adventures
+Comprehensive Production Testing Script for NaturesGift Expeditions
 Tests all critical functionality in production environment
 """
 
@@ -53,7 +53,7 @@ def log_warning(test_name, message):
     test_results['warnings'].append((test_name, message))
 
 print("=" * 80)
-print("🧪 MBUGANI LUXE ADVENTURES - COMPREHENSIVE PRODUCTION TESTING")
+print("🧪 NATURESGIFT EXPEDITIONS - COMPREHENSIVE PRODUCTION TESTING")
 print("=" * 80)
 print()
 
@@ -163,12 +163,12 @@ if settings.MAILTRAP_API_TOKEN:
     
     # Test email sending
     try:
-        test_subject = "🧪 Mbugani Luxe Adventures - Production Test Email"
+        test_subject = "🧪 NaturesGift Expeditions - Production Test Email"
         test_html = """
         <html>
         <body style="font-family: Arial, sans-serif; padding: 20px;">
             <h2 style="color: #291c1a;">Production Environment Test</h2>
-            <p>This is a test email from the Mbugani Luxe Adventures production environment.</p>
+            <p>This is a test email from the NaturesGift Expeditions production environment.</p>
             <p><strong>Test Details:</strong></p>
             <ul>
                 <li>Environment: Production</li>
@@ -179,7 +179,7 @@ if settings.MAILTRAP_API_TOKEN:
             <p style="color: #bd8c06;">If you received this email, the email system is working correctly! ✅</p>
             <hr>
             <p style="font-size: 12px; color: #666;">
-                Mbugani Luxe Adventures<br>
+                NaturesGift Expeditions<br>
                 Luxury Safari & Adventure Tourism<br>
                 Phone: +254701810167
             </p>
@@ -243,9 +243,9 @@ print("📋 TEST 6: Allowed Hosts Configuration")
 print("-" * 80)
 
 expected_hosts = [
-    'mbuganiapp.onrender.com',
-    'www.mbuganiluxeadventures.com',
-    'mbuganiluxeadventures.com',
+    'naturesgiftapp.onrender.com',
+    'www.naturesgiftexpeditions.com',
+    'naturesgiftexpeditions.com',
 ]
 
 for host in expected_hosts:

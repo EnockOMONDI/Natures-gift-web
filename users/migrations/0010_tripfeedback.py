@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                 ('rating', models.PositiveSmallIntegerField(blank=True, choices=[(1, '1 Star'), (2, '2 Stars'), (3, '3 Stars'), (4, '4 Stars'), (5, '5 Stars')], null=True)),
                 ('feedback', models.TextField(blank=True)),
                 ('highlights', models.TextField(blank=True, help_text='What went especially well?')),
-                ('improvements', models.TextField(blank=True, help_text='What could Myriad improve?')),
+                ('improvements', models.TextField(blank=True, help_text='What could NaturesGift improve?')),
                 ('permission_to_publish', models.BooleanField(default=False)),
                 ('status', models.CharField(choices=[('draft', 'Draft'), ('sent', 'Sent to Client'), ('submitted', 'Submitted'), ('reviewed', 'Reviewed'), ('archived', 'Archived')], default='draft', max_length=20)),
                 ('is_visible_on_site', models.BooleanField(default=False, help_text='Show this feedback on public review sections.')),

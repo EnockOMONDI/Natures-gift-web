@@ -1,5 +1,5 @@
 """
-Session-based cart system for Mbugani Luxe Adventures
+Session-based cart system for NaturesGift Expeditions
 """
 
 from decimal import Decimal

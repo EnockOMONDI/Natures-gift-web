@@ -1,5 +1,5 @@
 """
-Django management command to populate Mbugani Luxe Adventures blog with luxury safari content.
+Django management command to populate NaturesGift Expeditions blog with luxury safari content.
 This command will:
 1. Delete all existing blog posts
 2. Create/update blog categories
@@ -18,7 +18,7 @@ from datetime import datetime, timedelta
 
 
 class Command(BaseCommand):
-    help = 'Populate blog with luxury safari content for Mbugani Luxe Adventures'
+    help = 'Populate blog with luxury safari content for NaturesGift Expeditions'
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -29,7 +29,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         self.stdout.write(self.style.WARNING('=' * 80))
-        self.stdout.write(self.style.WARNING('MBUGANI LUXE ADVENTURES - BLOG POPULATION SCRIPT'))
+        self.stdout.write(self.style.WARNING('NATURESGIFT EXPEDITIONS - BLOG POPULATION SCRIPT'))
         self.stdout.write(self.style.WARNING('=' * 80))
         
         # Step 1: Clear existing blog posts
@@ -150,7 +150,7 @@ class Command(BaseCommand):
 
 <p>The Great Migration is often called the "Greatest Show on Earth," and for good reason. Every year, over 1.5 million wildebeest, accompanied by hundreds of thousands of zebras and gazelles, embark on a circular journey through the Serengeti-Mara ecosystem in search of fresh grazing and water. This ancient rhythm of life and death plays out across the vast plains of Tanzania and Kenya, culminating in the dramatic river crossings of the Mara River.</p>
 
-<p>At Mbugani Luxe Adventures, we've spent years perfecting the art of positioning our guests at the right place at the right time to witness this extraordinary natural phenomenon in ultimate comfort and style.</p>
+<p>At NaturesGift Expeditions, we've spent years perfecting the art of positioning our guests at the right place at the right time to witness this extraordinary natural phenomenon in ultimate comfort and style.</p>
 
 <h2>Understanding the Migration Cycle</h2>
 
@@ -182,7 +182,7 @@ class Command(BaseCommand):
 
 <h2>Where to Stay: Luxury Lodges and Camps</h2>
 
-<p>Your accommodation can make or break your migration experience. At Mbugani Luxe Adventures, we partner with the finest luxury lodges and tented camps strategically positioned for optimal wildlife viewing.</p>
+<p>Your accommodation can make or break your migration experience. At NaturesGift Expeditions, we partner with the finest luxury lodges and tented camps strategically positioned for optimal wildlife viewing.</p>
 
 <h3>Our Top Recommendations:</h3>
 
@@ -225,7 +225,7 @@ class Command(BaseCommand):
 
 <h2>Conservation and Responsible Tourism</h2>
 
-<p>The Great Migration is a fragile natural wonder that requires our protection. At Mbugani Luxe Adventures, we're committed to sustainable tourism practices that support conservation efforts and local communities.</p>
+<p>The Great Migration is a fragile natural wonder that requires our protection. At NaturesGift Expeditions, we're committed to sustainable tourism practices that support conservation efforts and local communities.</p>
 
 <p>When you travel with us, you're contributing to:</p>
 <ul>
@@ -239,7 +239,7 @@ class Command(BaseCommand):
 
 <p>The Great Migration is more than just a safari—it's a transformative experience that connects you with the raw power and beauty of nature. Whether you're watching thousands of wildebeest thunder across the plains, holding your breath as they plunge into crocodile-infested waters, or simply sitting in awe as the sun sets over this ancient landscape, the migration will leave an indelible mark on your soul.</p>
 
-<p>Let Mbugani Luxe Adventures craft your perfect migration safari. Our expert team will handle every detail, from selecting the ideal accommodations to timing your visit for maximum wildlife encounters, ensuring you experience this natural wonder in unparalleled luxury and comfort.</p>
+<p>Let NaturesGift Expeditions craft your perfect migration safari. Our expert team will handle every detail, from selecting the ideal accommodations to timing your visit for maximum wildlife encounters, ensuring you experience this natural wonder in unparalleled luxury and comfort.</p>
 
 <p><strong>Contact us today to start planning your Great Migration adventure.</strong></p>''',
             'category': categories['wildlife-nature'],
@@ -257,7 +257,7 @@ class Command(BaseCommand):
             'excerpt': '''<p>Packing for a luxury safari requires a delicate balance between practicality and style. Our comprehensive guide ensures you're perfectly prepared for your Kenyan adventure, from the right clothing and footwear to essential accessories and photography gear.</p>''',
             'content': '''<h2>Introduction: Packing Smart for Your Safari Adventure</h2>
 
-<p>Embarking on a luxury safari to Kenya is the adventure of a lifetime, but knowing what to pack can be challenging. Unlike typical vacations, a safari requires specific clothing and gear to ensure comfort, safety, and optimal wildlife viewing. At Mbugani Luxe Adventures, we've helped thousands of travelers prepare for their journeys, and we're sharing our insider knowledge to help you pack like a pro.</p>
+<p>Embarking on a luxury safari to Kenya is the adventure of a lifetime, but knowing what to pack can be challenging. Unlike typical vacations, a safari requires specific clothing and gear to ensure comfort, safety, and optimal wildlife viewing. At NaturesGift Expeditions, we've helped thousands of travelers prepare for their journeys, and we're sharing our insider knowledge to help you pack like a pro.</p>
 
 <p>The key to successful safari packing is versatility. You'll need items that work in multiple situations—from early morning game drives in cool temperatures to midday heat, from elegant lodge dinners to dusty bush walks.</p>
 
@@ -438,7 +438,7 @@ class Command(BaseCommand):
 
 <p>With this comprehensive packing guide, you're well-prepared for an unforgettable luxury safari experience in Kenya. Remember, the most important things to bring are an open mind, a sense of adventure, and your camera to capture memories that will last a lifetime.</p>
 
-<p>At Mbugani Luxe Adventures, we provide detailed pre-departure information tailored to your specific itinerary, including current weather conditions, specific lodge requirements, and any special items you might need for unique experiences like hot air balloon safaris or cultural visits.</p>
+<p>At NaturesGift Expeditions, we provide detailed pre-departure information tailored to your specific itinerary, including current weather conditions, specific lodge requirements, and any special items you might need for unique experiences like hot air balloon safaris or cultural visits.</p>
 
 <p><strong>Contact us today to start planning your perfectly prepared luxury safari adventure.</strong></p>''',
             'category': categories['safari-tips'],
@@ -598,7 +598,7 @@ class Command(BaseCommand):
 <li><strong>Education Initiatives:</strong> Environmental education programs help local communities understand the value of wildlife conservation.</li>
 </ul>
 
-<p>When you visit Amboseli with Mbugani Luxe Adventures, you're supporting these conservation efforts through park fees and by staying at lodges that contribute to community development.</p>
+<p>When you visit Amboseli with NaturesGift Expeditions, you're supporting these conservation efforts through park fees and by staying at lodges that contribute to community development.</p>
 
 <h2>Combining Amboseli with Other Destinations</h2>
 
@@ -633,9 +633,9 @@ class Command(BaseCommand):
 <li>Light jacket for early morning game drives</li>
 </ul>
 
-<h2>Why Choose Mbugani Luxe Adventures for Your Amboseli Safari</h2>
+<h2>Why Choose NaturesGift Expeditions for Your Amboseli Safari</h2>
 
-<p>At Mbugani Luxe Adventures, we've been crafting exceptional Amboseli experiences for years. Our advantages include:</p>
+<p>At NaturesGift Expeditions, we've been crafting exceptional Amboseli experiences for years. Our advantages include:</p>
 
 <ul>
 <li><strong>Expert Guides:</strong> Our guides know Amboseli intimately, including the best spots for Kilimanjaro views and elephant sightings</li>
@@ -651,7 +651,7 @@ class Command(BaseCommand):
 
 <p>The park's accessibility from Nairobi, combined with its spectacular scenery and reliable wildlife viewing, makes it an essential component of any Kenyan safari itinerary. And with luxury accommodations that blend comfort with authentic bush experiences, you can enjoy this wild paradise without sacrificing any amenities.</p>
 
-<p><strong>Ready to experience the magic of Amboseli? Contact Mbugani Luxe Adventures today to start planning your elephant encounter beneath Kilimanjaro.</strong></p>''',
+<p><strong>Ready to experience the magic of Amboseli? Contact NaturesGift Expeditions today to start planning your elephant encounter beneath Kilimanjaro.</strong></p>''',
             'category': categories['destinations'],
             'status': 'published',
             'featured': False,

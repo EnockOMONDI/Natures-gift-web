@@ -1,18 +1,18 @@
 # File: createsu.py
-# Custom management command to create superuser for Mbugani Luxe Adventures
+# Custom management command to create superuser for NaturesGift Expeditions
 #
 import os
 from django.contrib.auth.models import User
 from django.core.management.base import BaseCommand
 
 class Command(BaseCommand):
-    help = 'Creates a superuser for Mbugani Luxe Adventures.'
+    help = 'Creates a superuser for NaturesGift Expeditions.'
 
     def handle(self, *args, **options):
         # Use environment variables for credentials, with fallbacks
-        username = os.getenv('DJANGO_SUPERUSER_USERNAME', 'mbuganiluxeadventures')
-        email = os.getenv('DJANGO_SUPERUSER_EMAIL', 'admin@mbuganiluxeadventures.com')
-        password = os.getenv('DJANGO_SUPERUSER_PASSWORD', 'mbuganiluxeadventurespassword')
+        username = os.getenv('DJANGO_SUPERUSER_USERNAME', 'naturesgiftexpeditions')
+        email = os.getenv('DJANGO_SUPERUSER_EMAIL', 'admin@naturesgiftexpeditions.com')
+        password = os.getenv('DJANGO_SUPERUSER_PASSWORD', 'naturesgiftexpeditionspassword')
 
         if not User.objects.filter(username=username).exists():
             try:

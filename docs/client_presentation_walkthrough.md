@@ -1,10 +1,10 @@
-# Myriad Travel Website Client Presentation Walkthrough
+# NaturesGift Expeditions Website Client Presentation Walkthrough
 
 ## Purpose of the platform
 
-The website is designed to help Myriad Travel turn campaign traffic, social media interest, referrals, and direct search visitors into qualified travel enquiries. It gives clients a polished way to explore packages, understand current offers, submit booking requests, and reach the team quickly by WhatsApp.
+The website is designed to help NaturesGift Expeditions turn campaign traffic, social media interest, referrals, and direct search visitors into qualified travel enquiries. It gives clients a polished way to explore packages, understand current offers, submit booking requests, and reach the team quickly by WhatsApp.
 
-The business goal is simple: make Myriad Travel easier to discover, easier to trust, and easier to contact, while giving the internal team better structure for handling enquiries, package updates, content, and follow ups.
+The business goal is simple: make NaturesGift Expeditions easier to discover, easier to trust, and easier to contact, while giving the internal team better structure for handling enquiries, package updates, content, and follow ups.
 
 ## Presentation flow for the client
 
@@ -62,7 +62,7 @@ Admin receives email -> Opens quote request in admin -> Confirms dates, pax, chi
 
 ## Current features to highlight
 
-- Branded public website for Myriad Travel.
+- Branded public website for NaturesGift Expeditions.
 - Responsive navigation for Kenya, international, safaris, signature experiences, blogs, about, and contact.
 - Four featured home packages controlled through admin ranking.
 - Clickable package cards with direct package detail pages.
@@ -118,7 +118,7 @@ The admin side is the control center. It is not only for editing pages; it suppo
 
 ## Suggested demo script
 
-1. “This is the home page. It quickly positions Myriad Travel and shows the main travel categories.”
+1. “This is the home page. It quickly positions NaturesGift Expeditions and shows the main travel categories.”
 2. “This section is the sales priority area. The four packages here are controlled by admin ranking.”
 3. “When I open Twende Chalbi, it feels like a special current campaign, not just a generic package.”
 4. “A client can select adults, children, and room preference, then WhatsApp the team with those details already captured.”

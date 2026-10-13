@@ -33,7 +33,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         self.stdout.write(
-            self.style.SUCCESS('🌍 Testing Mbugani Luxe Adventures Quote Request Emails')
+            self.style.SUCCESS('🌍 Testing NaturesGift Expeditions Quote Request Emails')
         )
         
         # Check if real emails should be used
@@ -133,7 +133,7 @@ class Command(BaseCommand):
         self.stdout.write('\n🎯 Next Steps:')
         if options['real_emails']:
             self.stdout.write('   - Check your email inbox for test emails')
-            self.stdout.write('   - Verify admin email at info@mbuganiluxeadventures.com')
+            self.stdout.write('   - Verify admin email at info@naturesgiftexpeditions.com')
         else:
             self.stdout.write('   - Use --real-emails flag to test actual email sending')
         self.stdout.write('   - Test the quote form on the website')

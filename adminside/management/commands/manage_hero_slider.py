@@ -5,7 +5,7 @@ import os
 
 
 class Command(BaseCommand):
-    help = 'Manage hero slider entries for Mbugani Luxe Adventures'
+    help = 'Manage hero slider entries for NaturesGift Expeditions'
 
     def add_arguments(self, parser):
         parser.add_argument(

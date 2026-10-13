@@ -1,21 +1,21 @@
 {% load static %}
 <div 
   id="package-detail-modal" 
-  class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-950/80 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6"
+  class="hidden fixed inset-0 z-50 overflow-y-auto bg-[#084536]/80 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6"
 >
   <div 
     class="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200 my-auto flex flex-col max-h-[90vh]"
     onclick="event.stopPropagation()"
   >
     <!-- Header with Image Banner -->
-    <div class="relative h-56 sm:h-72 w-full bg-slate-900 shrink-0">
+    <div class="relative h-56 sm:h-72 w-full bg-[#084536] shrink-0">
       <img 
         id="pkg-modal-img"
         src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200&auto=format&fit=crop" 
         alt="NaturesGift Expeditions package" 
         class="w-full h-full object-cover" 
       />
-      <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#084536] via-[#084536]/50 to-transparent"></div>
       
       <!-- Close Button -->
       <button
@@ -30,7 +30,7 @@
       <!-- Badges and Title -->
       <div class="absolute bottom-4 left-4 right-4 text-white space-y-2">
         <div class="flex flex-wrap items-center gap-2 text-xs">
-          <span id="pkg-modal-cat" class="px-2.5 py-0.5 bg-amber-600 text-white font-semibold rounded-md">
+          <span id="pkg-modal-cat" class="px-2.5 py-0.5 bg-[#F2774D] text-white font-semibold rounded-md">
             Curated Travel Experience
           </span>
           <span class="px-2.5 py-0.5 bg-white/20 backdrop-blur-xs text-white font-medium rounded-md flex items-center gap-1">
@@ -44,12 +44,12 @@
         </h2>
 
         <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-200">
-          <span class="flex items-center gap-1 text-amber-300 font-medium">
+          <span class="flex items-center gap-1 text-[#F2774D] font-medium">
             <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
             <span id="pkg-modal-dest">Selected destination</span>
           </span>
           <span class="flex items-center gap-1 font-semibold text-slate-100">
-            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+            <i data-lucide="star" class="w-3.5 h-3.5 fill-[#F2774D] text-[#F2774D]"></i>
             <span>5.0 (48 verified traveler reviews)</span>
           </span>
         </div>
@@ -60,7 +60,7 @@
     <div class="flex items-center border-b border-slate-200 px-4 sm:px-6 bg-slate-50 overflow-x-auto shrink-0">
       <button
         type="button"
-        class="pkg-modal-tab-btn py-3 px-4 text-xs sm:text-sm font-semibold border-b-2 transition-all cursor-pointer whitespace-nowrap border-amber-600 text-amber-700 bg-white"
+        class="pkg-modal-tab-btn py-3 px-4 text-xs sm:text-sm font-semibold border-b-2 transition-all cursor-pointer whitespace-nowrap border-[#F2774D] text-[#F2774D] bg-white"
         data-tab-target="itinerary"
       >
         Day-by-Day Itinerary
@@ -74,7 +74,7 @@
       </button>
       <button
         type="button"
-        class="pkg-modal-tab-btn py-3 px-4 text-xs sm:text-sm font-semibold border-b-2 transition-all cursor-pointer whitespace-nowrap border-transparent text-amber-700 hover:text-amber-800 ml-auto"
+        class="pkg-modal-tab-btn py-3 px-4 text-xs sm:text-sm font-semibold border-b-2 transition-all cursor-pointer whitespace-nowrap border-transparent text-[#F2774D] hover:text-[#084536] ml-auto"
         data-tab-target="booking"
       >
         Enquire / Book
@@ -85,8 +85,8 @@
     <div class="overflow-y-auto p-4 sm:p-6 space-y-6 flex-1 text-slate-800">
       <!-- PANE 1: ITINERARY -->
       <div id="pkg-pane-itinerary" class="pkg-modal-tab-pane space-y-6">
-        <div class="bg-amber-50/60 p-4 rounded-xl border border-amber-200/60 space-y-2">
-          <h4 class="text-xs font-bold uppercase tracking-wider text-amber-800 flex items-center gap-1.5">
+        <div class="bg-[#fff1ed] p-4 rounded-xl border border-[#f3c6b8] space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-[#084536] flex items-center gap-1.5">
             <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
             <span>Trip Highlights</span>
           </h4>
@@ -114,14 +114,14 @@
           <h3 class="text-base font-bold font-serif text-slate-900">
             Detailed Day-by-Day Program
           </h3>
-          <div class="relative border-l-2 border-amber-200/80 ml-3 pl-6 space-y-6">
+          <div class="relative border-l-2 border-[#f3c6b8]/80 ml-3 pl-6 space-y-6">
             <!-- Day 1 -->
             <div class="relative">
-              <span class="absolute -left-[31px] top-1 w-6 h-6 rounded-full bg-amber-600 text-white text-[11px] font-bold flex items-center justify-center shadow-xs">1</span>
+              <span class="absolute -left-[31px] top-1 w-6 h-6 rounded-full bg-[#F2774D] text-white text-[11px] font-bold flex items-center justify-center shadow-xs">1</span>
               <div class="space-y-1.5 bg-slate-50/70 p-3.5 rounded-xl border border-slate-200/60">
                 <div class="flex flex-wrap items-center justify-between gap-2">
                   <h4 class="text-sm font-bold text-slate-900">Day 1: Departure and arrival experience</h4>
-                  <span class="text-[11px] font-semibold text-amber-700 bg-amber-100/70 px-2 py-0.5 rounded-md">🍽️ Meals: Lunch, Dinner</span>
+                  <span class="text-[11px] font-semibold text-[#F2774D] bg-amber-100/70 px-2 py-0.5 rounded-md">🍽️ Meals: Lunch, Dinner</span>
                 </div>
                 <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
                   Depart Nairobi early through the Great Rift Valley viewpoint. Arrive at camp in time for lunch, followed by late-afternoon game drive tracking golden savannah light.
@@ -134,11 +134,11 @@
 
             <!-- Day 2 -->
             <div class="relative">
-              <span class="absolute -left-[31px] top-1 w-6 h-6 rounded-full bg-amber-600 text-white text-[11px] font-bold flex items-center justify-center shadow-xs">2</span>
+              <span class="absolute -left-[31px] top-1 w-6 h-6 rounded-full bg-[#F2774D] text-white text-[11px] font-bold flex items-center justify-center shadow-xs">2</span>
               <div class="space-y-1.5 bg-slate-50/70 p-3.5 rounded-xl border border-slate-200/60">
                 <div class="flex flex-wrap items-center justify-between gap-2">
                   <h4 class="text-sm font-bold text-slate-900">Day 2: Main destination experience</h4>
-                  <span class="text-[11px] font-semibold text-amber-700 bg-amber-100/70 px-2 py-0.5 rounded-md">🍽️ Meals: Breakfast, Picnic Lunch, Dinner</span>
+                  <span class="text-[11px] font-semibold text-[#F2774D] bg-amber-100/70 px-2 py-0.5 rounded-md">🍽️ Meals: Breakfast, Picnic Lunch, Dinner</span>
                 </div>
                 <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
                   Full day game drive with packed picnic lunch near hippo pods and basking Nile crocodiles. Watch massive herds across rolling plains.
@@ -151,11 +151,11 @@
 
             <!-- Day 3 -->
             <div class="relative">
-              <span class="absolute -left-[31px] top-1 w-6 h-6 rounded-full bg-amber-600 text-white text-[11px] font-bold flex items-center justify-center shadow-xs">3</span>
+              <span class="absolute -left-[31px] top-1 w-6 h-6 rounded-full bg-[#F2774D] text-white text-[11px] font-bold flex items-center justify-center shadow-xs">3</span>
               <div class="space-y-1.5 bg-slate-50/70 p-3.5 rounded-xl border border-slate-200/60">
                 <div class="flex flex-wrap items-center justify-between gap-2">
                   <h4 class="text-sm font-bold text-slate-900">Day 3: Signature activities and local highlights</h4>
-                  <span class="text-[11px] font-semibold text-amber-700 bg-amber-100/70 px-2 py-0.5 rounded-md">🍽️ Meals: Breakfast, Lunch, Dinner</span>
+                  <span class="text-[11px] font-semibold text-[#F2774D] bg-amber-100/70 px-2 py-0.5 rounded-md">🍽️ Meals: Breakfast, Lunch, Dinner</span>
                 </div>
                 <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
                   Early morning predator tracking for pride lions on the prowl. In the afternoon, visit an authentic local village for traditional dances and beadwork.
@@ -168,11 +168,11 @@
 
             <!-- Day 4 -->
             <div class="relative">
-              <span class="absolute -left-[31px] top-1 w-6 h-6 rounded-full bg-amber-600 text-white text-[11px] font-bold flex items-center justify-center shadow-xs">4</span>
+              <span class="absolute -left-[31px] top-1 w-6 h-6 rounded-full bg-[#F2774D] text-white text-[11px] font-bold flex items-center justify-center shadow-xs">4</span>
               <div class="space-y-1.5 bg-slate-50/70 p-3.5 rounded-xl border border-slate-200/60">
                 <div class="flex flex-wrap items-center justify-between gap-2">
                   <h4 class="text-sm font-bold text-slate-900">Day 4: Dawn Safari &amp; Journey to Nairobi</h4>
-                  <span class="text-[11px] font-semibold text-amber-700 bg-amber-100/70 px-2 py-0.5 rounded-md">🍽️ Meals: Breakfast, Lunch</span>
+                  <span class="text-[11px] font-semibold text-[#F2774D] bg-amber-100/70 px-2 py-0.5 rounded-md">🍽️ Meals: Breakfast, Lunch</span>
                 </div>
                 <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
                   Sunrise game drive followed by hearty breakfast at camp before a scenic drive back to Nairobi, arriving late afternoon.
@@ -250,7 +250,7 @@
           {% include 'users/includes/antispam_fields.html' %}
           <input type="hidden" id="form-pkg-title" name="destination" value="NaturesGift Expeditions Package" />
           
-          <div class="bg-amber-50/50 p-3 rounded-lg border border-amber-200/50 text-xs text-amber-900 flex items-center justify-between">
+          <div class="bg-[#fff1ed] p-3 rounded-lg border border-[#f3c6b8]/50 text-xs text-[#084536] flex items-center justify-between">
             <span>Enquiring for: <strong id="form-pkg-name-display">Selected NaturesGift package</strong></span>
             <span class="font-semibold text-emerald-800">Fast 2-Hour Response</span>
           </div>
@@ -328,7 +328,7 @@
           <div class="flex flex-col sm:flex-row gap-3 pt-2">
             <button
               type="submit"
-              class="flex-1 py-3 bg-amber-600 hover:bg-amber-700 text-white text-xs sm:text-sm font-semibold rounded-xl shadow-xs transition-colors cursor-pointer"
+              class="flex-1 py-3 bg-[#F2774D] hover:bg-[#084536] text-white text-xs sm:text-sm font-semibold rounded-xl shadow-xs transition-colors cursor-pointer"
             >
               Submit Website Enquiry
             </button>
@@ -360,7 +360,7 @@
         <button
           type="button"
           onclick="document.querySelector('.pkg-modal-tab-btn[data-tab-target=\'booking\']').click()"
-          class="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white text-xs font-semibold rounded-lg transition-colors cursor-pointer"
+          class="px-4 py-2 bg-[#F2774D] hover:bg-[#084536] text-white text-xs font-semibold rounded-lg transition-colors cursor-pointer"
         >
           Book / Enquire
         </button>
